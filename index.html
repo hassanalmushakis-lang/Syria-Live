@@ -6,1865 +6,1249 @@
 <title>سوريا لايف</title>
 
 <style>
-
 *{
-box-sizing:border-box;
-margin:0;
-padding:0;
-font-family:Arial,Tahoma,sans-serif;
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,Tahoma,sans-serif;
 }
 
 body{
-background:#090d13;
-color:#fff;
-min-height:100vh;
+  background:#080b12;
+  color:#fff;
+  min-height:100vh;
 }
 
 button{
-cursor:pointer;
-border:0;
+  border:0;
+  cursor:pointer;
 }
 
 .hidden{
-display:none!important;
+  display:none!important;
 }
 
-/* تسجيل الدخول */
-
-.login{
-min-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-padding:18px;
-
-background:
-linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.8)),
-url("civilizations-syria.jpg");
-
-background-size:cover;
-background-position:center;
+/* LOGIN */
+#loginPage{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:
+    linear-gradient(rgba(0,0,0,.68),rgba(0,0,0,.82)),
+    url("civilizations-syria.jpg") center/cover no-repeat;
 }
 
 .login-box{
-width:100%;
-max-width:430px;
-background:rgba(15,20,28,.94);
-border:1px solid #454545;
-border-radius:25px;
-padding:28px 22px;
-text-align:center;
-box-shadow:0 15px 50px rgba(0,0,0,.7);
+  width:100%;
+  max-width:420px;
+  padding:30px 22px;
+  border-radius:25px;
+  background:rgba(15,18,27,.94);
+  border:1px solid rgba(255,215,0,.35);
+  box-shadow:0 0 35px rgba(255,215,0,.12);
+  text-align:center;
 }
 
-.login-logo{
-font-size:55px;
-margin-bottom:8px;
+.logo{
+  font-size:42px;
+  margin-bottom:8px;
 }
 
 .login-box h1{
-font-size:32px;
-margin-bottom:8px;
+  color:#ffd700;
+  font-size:30px;
+  margin-bottom:8px;
 }
 
-.subtitle{
-color:#bbb;
-margin-bottom:25px;
+.login-box p{
+  color:#bbb;
+  margin-bottom:25px;
 }
 
 .input{
-width:100%;
-padding:15px;
-margin-bottom:12px;
-border-radius:13px;
-border:1px solid #3a424d;
-background:#202732;
-color:#fff;
-font-size:16px;
-outline:none;
+  width:100%;
+  padding:15px;
+  margin-bottom:13px;
+  border-radius:13px;
+  border:1px solid #333;
+  background:#202531;
+  color:white;
+  font-size:16px;
+  outline:none;
 }
 
 .main-btn{
-width:100%;
-padding:15px;
-border-radius:13px;
-background:#c90000;
-color:#fff;
-font-size:17px;
-font-weight:bold;
+  width:100%;
+  padding:15px;
+  border-radius:13px;
+  background:linear-gradient(135deg,#ffd700,#b8860b);
+  color:#111;
+  font-weight:bold;
+  font-size:17px;
 }
 
-.small-text{
-margin-top:15px;
-color:#888;
-font-size:12px;
+/* APP */
+#app{
+  min-height:100vh;
+  padding-bottom:75px;
 }
-
-/* الهيدر */
 
 .header{
-background:linear-gradient(135deg,#b90000,#610000);
-padding:17px;
-text-align:center;
-border-bottom:2px solid #e6b800;
-position:sticky;
-top:0;
-z-index:20;
+  position:sticky;
+  top:0;
+  z-index:10;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:13px 16px;
+  background:#10141e;
+  border-bottom:1px solid #252b38;
 }
 
-.header h1{
-font-size:27px;
+.header-title{
+  color:#ffd700;
+  font-size:21px;
+  font-weight:bold;
 }
 
-.header p{
-font-size:12px;
-color:#eee;
-margin-top:5px;
+.coins{
+  background:#202632;
+  color:#ffd700;
+  padding:8px 12px;
+  border-radius:20px;
+  font-weight:bold;
 }
 
-/* الملف */
-
-.profile{
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:13px 15px;
-background:#131923;
-border-bottom:1px solid #29313c;
+/* HOME */
+.page{
+  padding:16px;
 }
 
-.profile-info{
-display:flex;
-align-items:center;
-gap:10px;
+.welcome{
+  background:linear-gradient(135deg,#151c2a,#0d1119);
+  border:1px solid #293243;
+  border-radius:20px;
+  padding:18px;
+  margin-bottom:15px;
 }
 
-.avatar{
-width:46px;
-height:46px;
-border-radius:50%;
-background:#303944;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:22px;
+.welcome h2{
+  margin-bottom:6px;
 }
 
-.profile-name{
-font-weight:bold;
+.gold{
+  color:#ffd700;
 }
-
-.profile-id{
-font-size:11px;
-color:#888;
-margin-top:3px;
-}
-
-.logout{
-background:#343b45;
-color:#fff;
-padding:9px 12px;
-border-radius:9px;
-}
-
-/* المحتوى */
-
-.container{
-width:100%;
-max-width:650px;
-margin:auto;
-padding:16px;
-}
-
-.balance{
-background:linear-gradient(135deg,#222a35,#151b23);
-border:1px solid #39424e;
-border-radius:17px;
-padding:17px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-margin-bottom:15px;
-}
-
-.coin{
-color:#ffd700;
-font-weight:bold;
-}
-
-/* القائمة */
-
-.menu-grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:8px;
-margin-bottom:18px;
-}
-
-.menu-item{
-background:#171e27;
-border:1px solid #303844;
-border-radius:13px;
-padding:13px 4px;
-text-align:center;
-font-size:12px;
-color:#fff;
-}
-
-.menu-icon{
-font-size:23px;
-display:block;
-margin-bottom:5px;
-}
-
-/* البانر */
 
 .banner{
-border-radius:18px;
-overflow:hidden;
-margin-bottom:20px;
-border:1px solid #444;
+  min-height:145px;
+  border-radius:20px;
+  margin-bottom:18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:20px;
+  background:
+    linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.7)),
+    url("civilizations-syria.jpg") center/cover no-repeat;
+  border:1px solid rgba(255,215,0,.35);
 }
 
-.banner img{
-width:100%;
-display:block;
-height:180px;
-object-fit:cover;
+.banner h2{
+  color:#ffd700;
+  font-size:28px;
 }
-
-/* إنشاء غرفة */
-
-.create-room{
-width:100%;
-padding:15px;
-background:#c90000;
-color:#fff;
-border-radius:14px;
-font-size:16px;
-font-weight:bold;
-margin-bottom:20px;
-}
-
-/* الغرف */
 
 .section-title{
-font-size:21px;
-margin-bottom:12px;
+  margin:18px 0 12px;
+  font-size:20px;
 }
 
-.room{
-background:#151c25;
-border:1px solid #303a46;
-border-radius:17px;
-padding:15px;
-margin-bottom:12px;
+/* ROOM CARDS */
+.rooms{
+  display:grid;
+  gap:12px;
+}
+
+.room-card{
+  background:#151a24;
+  border:1px solid #293243;
+  border-radius:18px;
+  padding:15px;
 }
 
 .room-top{
-display:flex;
-align-items:center;
-justify-content:space-between;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:12px;
 }
 
-.room-title{
-font-size:18px;
-font-weight:bold;
+.room-name{
+  font-size:18px;
+  font-weight:bold;
 }
 
 .live{
-background:#bd0000;
-padding:5px 8px;
-border-radius:7px;
-font-size:11px;
+  color:#5cff8d;
+  font-size:13px;
 }
 
 .room-info{
-color:#999;
-font-size:13px;
-margin:9px 0 12px;
+  color:#aaa;
+  margin-bottom:13px;
+  font-size:14px;
 }
 
-.join{
-background:#008d58;
-color:#fff;
-padding:10px 17px;
-border-radius:10px;
-font-weight:bold;
+.join-btn{
+  width:100%;
+  padding:12px;
+  border-radius:12px;
+  background:#242c3a;
+  color:#fff;
+  font-weight:bold;
 }
 
-/* صفحة الغرفة */
-
-.room-page-title{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:15px;
-gap:10px;
+.create-btn{
+  margin-top:15px;
 }
 
-.room-page-title h2{
-font-size:20px;
+/* PROFILE */
+.profile-card{
+  background:#151a24;
+  border-radius:20px;
+  padding:22px;
+  text-align:center;
+  border:1px solid #293243;
 }
 
-.back{
-background:#363d47;
-color:#fff;
-padding:10px 14px;
-border-radius:10px;
+.avatar{
+  width:90px;
+  height:90px;
+  margin:auto auto 12px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#ffd700,#8b6508);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:40px;
+  color:#111;
 }
 
-/* تحكم المسؤول */
+.profile-id{
+  color:#aaa;
+  margin:8px 0 20px;
+}
 
+.menu-btn{
+  width:100%;
+  padding:14px;
+  margin-top:10px;
+  border-radius:12px;
+  background:#222a37;
+  color:#fff;
+}
+
+/* SHOP */
+.shop-card{
+  background:#151a24;
+  border:1px solid #293243;
+  padding:18px;
+  border-radius:18px;
+  margin-bottom:12px;
+}
+
+.shop-card h3{
+  color:#ffd700;
+  margin-bottom:7px;
+}
+
+.shop-card p{
+  color:#aaa;
+  margin-bottom:13px;
+}
+
+.buy-btn{
+  background:#ffd700;
+  color:#111;
+  padding:11px 20px;
+  border-radius:10px;
+  font-weight:bold;
+}
+
+/* ROOM */
+#roomPage{
+  min-height:100vh;
+  padding-bottom:20px;
+}
+
+.room-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 16px;
+  background:#10141e;
+  border-bottom:1px solid #293243;
+}
+
+.back-btn{
+  background:#252d3a;
+  color:#fff;
+  padding:9px 13px;
+  border-radius:10px;
+}
+
+.room-title{
+  color:#ffd700;
+  font-weight:bold;
+  font-size:19px;
+}
+
+.room-body{
+  padding:15px;
+}
+
+/* ADMIN */
 .admin-panel{
-background:#201a0a;
-border:1px solid #9b7911;
-border-radius:15px;
-padding:14px;
-margin-bottom:15px;
+  background:#161c27;
+  border:1px solid rgba(255,215,0,.35);
+  border-radius:18px;
+  padding:15px;
+  margin-bottom:15px;
 }
 
 .admin-title{
-font-weight:bold;
-color:#ffd700;
-margin-bottom:10px;
+  color:#ffd700;
+  font-weight:bold;
+  margin-bottom:12px;
 }
 
 .seat-buttons{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:7px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:7px;
 }
 
 .seat-btn{
-background:#303844;
-color:#fff;
-padding:11px 4px;
-border-radius:9px;
-font-weight:bold;
+  padding:10px 3px;
+  border-radius:9px;
+  background:#252d3a;
+  color:white;
 }
 
 .seat-btn.active{
-background:#c90000;
+  background:#ffd700;
+  color:#111;
 }
 
-/* المقاعد */
-
+/* SEATS */
 .mic-grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:9px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  margin-bottom:18px;
+}
+
+.seat{
+  min-height:92px;
+  background:#151b26;
+  border:1px solid #293243;
+  border-radius:15px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:7px;
 }
 
 .mic{
-background:#171e27;
-border:1px solid #303844;
-border-radius:15px;
-padding:12px 4px;
-text-align:center;
-min-height:100px;
+  width:43px;
+  height:43px;
+  border-radius:50%;
+  background:#252e3d;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:21px;
+  margin-bottom:6px;
 }
 
-.mic-avatar{
-width:45px;
-height:45px;
-border-radius:50%;
-background:#323b47;
-display:flex;
-align-items:center;
-justify-content:center;
-margin:auto auto 7px;
-font-size:21px;
+.seat-name{
+  font-size:11px;
+  color:#bbb;
 }
 
-.mic-name{
-font-size:12px;
-white-space:nowrap;
-overflow:hidden;
-text-overflow:ellipsis;
+.seat.occupied .mic{
+  background:#403610;
+  border:1px solid #ffd700;
 }
 
-.mic-status{
-font-size:11px;
-color:#888;
-margin-top:4px;
-}
-
-/* الدردشة */
-
+/* CHAT */
 .chat{
-margin-top:18px;
-background:#151c25;
-border:1px solid #303844;
-border-radius:17px;
-padding:14px;
+  background:#111620;
+  border-radius:18px;
+  border:1px solid #293243;
+  padding:13px;
 }
 
-.messages{
-height:190px;
-overflow-y:auto;
-margin-top:10px;
-margin-bottom:10px;
+.chat-messages{
+  height:180px;
+  overflow-y:auto;
+  margin-bottom:10px;
 }
 
 .message{
-background:#242d38;
-padding:9px;
-border-radius:9px;
-margin-bottom:7px;
-font-size:13px;
+  background:#202733;
+  padding:8px 11px;
+  border-radius:10px;
+  margin-bottom:7px;
+  font-size:13px;
 }
 
-.chat-form{
-display:flex;
-gap:7px;
+.message strong{
+  color:#ffd700;
 }
 
-.chat-form input{
-flex:1;
-padding:12px;
-border:0;
-border-radius:10px;
-background:#252e39;
-color:#fff;
-outline:none;
+.chat-send{
+  display:flex;
+  gap:7px;
 }
 
-.send{
-background:#c90000;
-color:#fff;
-padding:10px 15px;
-border-radius:10px;
+.chat-send input{
+  flex:1;
+  background:#202733;
+  border:1px solid #303949;
+  color:#fff;
+  border-radius:10px;
+  padding:11px;
 }
 
-/* الهدايا */
+.chat-send button{
+  background:#ffd700;
+  padding:0 15px;
+  border-radius:10px;
+  font-weight:bold;
+}
 
+/* GIFTS */
 .gifts{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:9px;
-margin-top:12px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+  margin-top:15px;
 }
 
 .gift{
-background:#222b36;
-color:#fff;
-border-radius:12px;
-padding:12px 5px;
-text-align:center;
+  background:#202733;
+  border-radius:12px;
+  padding:10px 4px;
+  text-align:center;
+  color:#fff;
 }
 
-.gift-icon{
-font-size:30px;
+.gift span{
+  display:block;
+  font-size:27px;
+  margin-bottom:4px;
 }
 
-.gift-price{
-font-size:11px;
-color:#ffd700;
-margin-top:4px;
+.gift small{
+  color:#ffd700;
 }
 
-/* الملف الشخصي */
-
-.card{
-background:#151c25;
-border:1px solid #303844;
-border-radius:18px;
-padding:20px;
-margin-bottom:15px;
-}
-
-.profile-large{
-width:80px;
-height:80px;
-border-radius:50%;
-background:#343d48;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:38px;
-margin:0 auto 12px;
-}
-
-.center{
-text-align:center;
-}
-
-.stat-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:8px;
-margin-top:15px;
-}
-
-.stat{
-background:#202832;
-padding:12px 5px;
-border-radius:10px;
-text-align:center;
-}
-
-.stat b{
-display:block;
-font-size:18px;
-}
-
-.stat span{
-font-size:11px;
-color:#888;
-}
-
-/* التنقل */
-
+/* NAV */
 .bottom-nav{
-position:sticky;
-bottom:0;
-background:#111720;
-border-top:1px solid #303844;
-display:grid;
-grid-template-columns:repeat(4,1fr);
-padding:8px 3px;
-z-index:30;
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  z-index:20;
+  height:65px;
+  background:#10141e;
+  border-top:1px solid #293243;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
 }
 
 .nav-btn{
-background:none;
-color:#aaa;
-font-size:11px;
-padding:6px;
+  background:transparent;
+  color:#aaa;
+  font-size:12px;
 }
 
 .nav-btn.active{
-color:#fff;
+  color:#ffd700;
 }
 
 .nav-icon{
-font-size:21px;
-display:block;
-margin-bottom:3px;
+  display:block;
+  font-size:21px;
+  margin-bottom:3px;
 }
 
-/* الهاتف */
-
-@media(max-width:420px){
-
-.mic-grid{
-grid-template-columns:repeat(2,1fr);
+/* MODAL */
+.modal{
+  position:fixed;
+  inset:0;
+  z-index:50;
+  background:rgba(0,0,0,.75);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
 }
 
-.banner img{
-height:145px;
+.modal-box{
+  width:100%;
+  max-width:390px;
+  background:#151a24;
+  border:1px solid #343d4e;
+  border-radius:20px;
+  padding:20px;
 }
 
+.modal-box h2{
+  color:#ffd700;
+  margin-bottom:15px;
 }
 
+.close-btn{
+  width:100%;
+  margin-top:10px;
+  padding:12px;
+  border-radius:10px;
+  background:#252d3a;
+  color:white;
+}
+
+@media(max-width:450px){
+  .mic-grid{
+    grid-template-columns:repeat(4,1fr);
+  }
+
+  .seat{
+    min-height:82px;
+  }
+
+  .gifts{
+    grid-template-columns:repeat(4,1fr);
+  }
+}
 </style>
 </head>
 
 <body>
 
+<!-- LOGIN -->
+<section id="loginPage">
+  <div class="login-box">
+    <div class="logo">🇸🇾</div>
+    <h1>سوريا لايف</h1>
+    <p>دردشة صوتية سورية</p>
 
-<!-- تسجيل الدخول -->
+    <input id="usernameInput"
+           class="input"
+           type="text"
+           placeholder="اسم المستخدم">
 
-<div id="loginPage" class="login">
+    <input id="phoneInput"
+           class="input"
+           type="tel"
+           placeholder="رقم الهاتف">
 
-<div class="login-box">
+    <button class="main-btn" onclick="login()">
+      دخول إلى سوريا لايف
+    </button>
+  </div>
+</section>
+
 
-<div class="login-logo">
-🇸🇾
-</div>
+<!-- APP -->
+<section id="app" class="hidden">
 
-<h1>
-سوريا لايف
-</h1>
+  <header class="header">
+    <div class="header-title">🇸🇾 سوريا لايف</div>
+    <div class="coins">🪙 <span id="coinBalance">1000</span></div>
+  </header>
 
-<div class="subtitle">
-غرف صوتية • تعارف • دردشة مباشرة
-</div>
 
-<input
-id="username"
-class="input"
-type="text"
-placeholder="اسم المستخدم">
+  <!-- HOME -->
+  <main id="homePage" class="page">
 
-<input
-id="phone"
-class="input"
-type="tel"
-placeholder="رقم الهاتف">
+    <div class="welcome">
+      <h2>أهلاً <span id="welcomeName" class="gold"></span> 👋</h2>
+      <p>مرحباً بك في سوريا لايف</p>
+    </div>
 
-<button
-class="main-btn"
-onclick="login()">
+    <div class="banner">
+      <div>
+        <h2>سوريا لايف</h2>
+        <p>غرف صوتية • دردشة • هدايا</p>
+      </div>
+    </div>
 
-دخول إلى سوريا لايف
+    <h2 class="section-title">🎙️ الغرف الصوتية</h2>
 
-</button>
+    <div id="roomsList" class="rooms"></div>
 
-<div class="small-text">
-أهلاً بك في مجتمع سوريا لايف 🇸🇾
-</div>
+    <button class="main-btn create-btn" onclick="openCreateRoom()">
+      ➕ إنشاء غرفة جديدة
+    </button>
 
-</div>
+  </main>
 
-</div>
 
+  <!-- PROFILE -->
+  <main id="profilePage" class="page hidden">
 
-<!-- التطبيق -->
+    <div class="profile-card">
+      <div class="avatar">👤</div>
 
-<div id="app" class="hidden">
+      <h2 id="profileName">مستخدم</h2>
 
-<div class="header">
+      <div class="profile-id">
+        ID: <span id="profileId">100001</span>
+      </div>
 
-<h1>
-🇸🇾 سوريا لايف
-</h1>
+      <p>
+        🪙 الرصيد:
+        <strong class="gold">
+          <span id="profileCoins">1000</span>
+        </strong>
+      </p>
 
-<p>
-غرف صوتية • تعارف • أصدقاء
-</p>
+      <button class="menu-btn" onclick="showShop()">
+        🪙 شحن العملات
+      </button>
 
-</div>
+      <button class="menu-btn" onclick="showGifts()">
+        🎁 الهدايا
+      </button>
 
+      <button class="menu-btn" onclick="logout()">
+        🚪 تسجيل الخروج
+      </button>
+    </div>
 
-<div class="profile">
+  </main>
 
-<div class="profile-info">
 
-<div class="avatar">
-👤
-</div>
+  <!-- SHOP -->
+  <main id="shopPage" class="page hidden">
 
-<div>
+    <h2 class="section-title">🪙 شحن العملات</h2>
 
-<div
-id="profileName"
-class="profile-name">
+    <div class="shop-card">
+      <h3>1,000 عملة</h3>
+      <p>باقة تجريبية</p>
+      <button class="buy-btn" onclick="addCoins(1000)">
+        إضافة 1,000
+      </button>
+    </div>
 
-المستخدم
+    <div class="shop-card">
+      <h3>5,000 عملة</h3>
+      <p>باقة تجريبية</p>
+      <button class="buy-btn" onclick="addCoins(5000)">
+        إضافة 5,000
+      </button>
+    </div>
 
-</div>
+    <div class="shop-card">
+      <h3>10,000 عملة</h3>
+      <p>باقة تجريبية</p>
+      <button class="buy-btn" onclick="addCoins(10000)">
+        إضافة 10,000
+      </button>
+    </div>
 
-<div class="profile-id">
+  </main>
 
-ID:
-<span id="userId">
-100001
-</span>
 
-</div>
+  <!-- GIFTS -->
+  <main id="giftsPage" class="page hidden">
 
-</div>
+    <h2 class="section-title">🎁 الهدايا</h2>
 
-</div>
+    <div class="shop-card">
+      <h3>هدايا سوريا لايف</h3>
+      <p>يمكن لاحقاً ربطها بنظام العملات الحقيقي.</p>
+    </div>
 
-<button
-class="logout"
-onclick="logout()">
+    <div class="gifts">
 
-خروج
+      <button class="gift" onclick="sendGift('🌹',10)">
+        <span>🌹</span>
+        <small>10</small>
+      </button>
 
-</button>
+      <button class="gift" onclick="sendGift('❤️',50)">
+        <span>❤️</span>
+        <small>50</small>
+      </button>
 
-</div>
+      <button class="gift" onclick="sendGift('🎁',100)">
+        <span>🎁</span>
+        <small>100</small>
+      </button>
 
+      <button class="gift" onclick="sendGift('👑',500)">
+        <span>👑</span>
+        <small>500</small>
+      </button>
 
-<div class="container">
+    </div>
 
+  </main>
 
-<!-- الرئيسية -->
 
-<div id="homePage">
+  <!-- BOTTOM NAV -->
+  <nav class="bottom-nav">
 
-<div class="balance">
+    <button id="navHome"
+            class="nav-btn active"
+            onclick="goHome()">
+      <span class="nav-icon">🏠</span>
+      الرئيسية
+    </button>
 
-<span>
-رصيد الكوينز
-</span>
+    <button id="navGifts"
+            class="nav-btn"
+            onclick="showGifts()">
+      <span class="nav-icon">🎁</span>
+      الهدايا
+    </button>
 
-<span class="coin">
-🪙
-<span id="coins">
-1000
-</span>
-</span>
+    <button id="navProfile"
+            class="nav-btn"
+            onclick="showProfile()">
+      <span class="nav-icon">👤</span>
+      حسابي
+    </button>
 
-</div>
+  </nav>
 
+</section>
 
-<div class="menu-grid">
 
-<button
-class="menu-item"
-onclick="showProfile()">
+<!-- ROOM PAGE -->
+<section id="roomPage" class="hidden">
 
-<span class="menu-icon">
-👤
-</span>
+  <header class="room-header">
 
-ملفي
+    <button class="back-btn" onclick="leaveRoom()">
+      ← رجوع
+    </button>
 
-</button>
+    <div class="room-title" id="roomTitle">
+      غرفة صوتية
+    </div>
 
+    <div class="coins">
+      🪙 <span id="roomCoins">1000</span>
+    </div>
 
-<button
-class="menu-item"
-onclick="showShop()">
+  </header>
 
-<span class="menu-icon">
-🪙
-</span>
 
-شحن
+  <div class="room-body">
 
-</button>
+    <!-- ADMIN -->
+    <div id="adminPanel" class="admin-panel hidden">
 
+      <div class="admin-title">
+        👑 لوحة مسؤول الغرفة
+      </div>
 
-<button
-class="menu-item"
-onclick="showGifts()">
+      <p style="color:#aaa;margin-bottom:12px;">
+        اختر عدد المقاعد:
+      </p>
 
-<span class="menu-icon">
-🎁
-</span>
+      <div class="seat-buttons">
 
-الهدايا
+        <button id="seat8"
+                class="seat-btn"
+                onclick="changeSeats(8)">
+          8
+        </button>
 
-</button>
+        <button id="seat10"
+                class="seat-btn"
+                onclick="changeSeats(10)">
+          10
+        </button>
 
+        <button id="seat15"
+                class="seat-btn"
+                onclick="changeSeats(15)">
+          15
+        </button>
 
-<button
-class="menu-item"
-onclick="createRoom()">
+        <button id="seat20"
+                class="seat-btn"
+                onclick="changeSeats(20)">
+          20
+        </button>
 
-<span class="menu-icon">
-🎤
-</span>
+      </div>
 
-غرفة
+    </div>
 
-</button>
 
-</div>
+    <div id="micGrid" class="mic-grid"></div>
 
 
-<div class="banner">
+    <!-- CHAT -->
+    <div class="chat">
 
-<img
-src="civilizations-syria.jpg"
-alt="حضارات سوريا">
+      <h3 style="margin-bottom:10px;color:#ffd700;">
+        💬 الدردشة
+      </h3>
 
-</div>
+      <div id="chatMessages" class="chat-messages">
 
+        <div class="message">
+          <strong>النظام:</strong>
+          أهلاً بكم في الغرفة 🇸🇾
+        </div>
 
-<button
-class="create-room"
-onclick="createRoom()">
+      </div>
 
-＋ إنشاء غرفة صوتية
+      <div class="chat-send">
 
-</button>
+        <input id="chatInput"
+               type="text"
+               placeholder="اكتب رسالة...">
 
+        <button onclick="sendMessage()">
+          إرسال
+        </button>
 
-<h2 class="section-title">
-🔥 الغرف المباشرة
-</h2>
+      </div>
 
+    </div>
 
-<div id="rooms">
 
+    <!-- ROOM GIFTS -->
+    <div class="gifts">
 
-<div class="room">
+      <button class="gift" onclick="sendGift('🌹',10)">
+        <span>🌹</span>
+        <small>10</small>
+      </button>
 
-<div class="room-top">
+      <button class="gift" onclick="sendGift('❤️',50)">
+        <span>❤️</span>
+        <small>50</small>
+      </button>
 
-<div class="room-title">
-🎤 خدمة العملاء
-</div>
+      <button class="gift" onclick="sendGift('🎁',100)">
+        <span>🎁</span>
+        <small>100</small>
+      </button>
 
-<div class="live">
-LIVE
-</div>
+      <button class="gift" onclick="sendGift('👑',500)">
+        <span>👑</span>
+        <small>500</small>
+      </button>
 
-</div>
+    </div>
 
-<div class="room-info">
-👥 1 شخص • 🎤 8 مقاعد
-</div>
+  </div>
 
-<button
-class="join"
-onclick="joinRoom('خدمة العملاء',8,true)">
+</section>
 
-دخول الغرفة
 
-</button>
+<!-- CREATE ROOM MODAL -->
+<div id="createModal" class="modal hidden">
 
-</div>
+  <div class="modal-box">
 
+    <h2>➕ إنشاء غرفة</h2>
 
-<div class="room">
+    <input id="newRoomName"
+           class="input"
+           type="text"
+           placeholder="اسم الغرفة">
 
-<div class="room-top">
+    <p style="color:#aaa;margin-bottom:10px;">
+      عدد المقاعد
+    </p>
 
-<div class="room-title">
-🇸🇾 سهرة سوريا
-</div>
+    <select id="newRoomSeats" class="input">
+      <option value="8">8 مقاعد</option>
+      <option value="10">10 مقاعد</option>
+      <option value="15">15 مقعد</option>
+      <option value="20">20 مقعد</option>
+    </select>
 
-<div class="live">
-LIVE
-</div>
+    <button class="main-btn" onclick="createRoom()">
+      إنشاء الغرفة
+    </button>
 
-</div>
+    <button class="close-btn" onclick="closeCreateRoom()">
+      إلغاء
+    </button>
 
-<div class="room-info">
-👥 5 أشخاص • 🎤 10 مقاعد
-</div>
-
-<button
-class="join"
-onclick="joinRoom('سهرة سوريا',10,false)">
-
-دخول الغرفة
-
-</button>
-
-</div>
-
-
-<div class="room">
-
-<div class="room-top">
-
-<div class="room-title">
-🎵 أغاني ودردشة
-</div>
-
-<div class="live">
-LIVE
-</div>
-
-</div>
-
-<div class="room-info">
-👥 3 أشخاص • 🎤 15 مقعد
-</div>
-
-<button
-class="join"
-onclick="joinRoom('أغاني ودردشة',15,false)">
-
-دخول الغرفة
-
-</button>
-
-</div>
-
-
-<div class="room">
-
-<div class="room-top">
-
-<div class="room-title">
-💬 تعارف وأصدقاء
-</div>
-
-<div class="live">
-LIVE
-</div>
-
-</div>
-
-<div class="room-info">
-👥 7 أشخاص • 🎤 20 مقعد
-</div>
-
-<button
-class="join"
-onclick="joinRoom('تعارف وأصدقاء',20,false)">
-
-دخول الغرفة
-
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- الغرفة -->
-
-<div id="roomPage" class="hidden">
-
-
-<div class="room-page-title">
-
-<h2 id="roomName">
-🎤 الغرفة
-</h2>
-
-<button
-class="back"
-onclick="goHome()">
-
-← رجوع
-
-</button>
-
-</div>
-
-
-<!-- لوحة المسؤول -->
-
-<div
-id="adminPanel"
-class="admin-panel hidden">
-
-<div class="admin-title">
-👑 لوحة مسؤول الغرفة
-</div>
-
-<div style="font-size:13px;color:#bbb;margin-bottom:10px">
-اختر عدد المقاعد الصوتية:
-</div>
-
-<div class="seat-buttons">
-
-<button
-id="seat8"
-class="seat-btn"
-onclick="changeSeats(8)">
-8
-</button>
-
-<button
-id="seat10"
-class="seat-btn"
-onclick="changeSeats(10)">
-10
-</button>
-
-<button
-id="seat15"
-class="seat-btn"
-onclick="changeSeats(15)">
-15
-</button>
-
-<button
-id="seat20"
-class="seat-btn"
-onclick="changeSeats(20)">
-20
-</button>
-
-</div>
-
-</div>
-
-
-<div
-id="micGrid"
-class="mic-grid">
-</div>
-
-
-<div class="chat">
-
-<h3>
-💬 الدردشة
-</h3>
-
-<div
-id="messages"
-class="messages">
-
-<div class="message">
-<b>المضيف:</b>
-أهلاً وسهلاً بالجميع 👋
-</div>
-
-<div class="message">
-<b>أحمد:</b>
-أهلاً ❤️
-</div>
-
-</div>
-
-
-<div class="chat-form">
-
-<input
-id="messageInput"
-type="text"
-placeholder="اكتب رسالة..."
-onkeydown="if(event.key==='Enter') sendMessage()">
-
-<button
-class="send"
-onclick="sendMessage()">
-
-إرسال
-
-</button>
-
-</div>
-
-</div>
-
-
-<h3 style="margin-top:20px">
-🎁 إرسال هدية
-</h3>
-
-
-<div class="gifts">
-
-<button
-class="gift"
-onclick="sendGift('❤️',50)">
-
-<div class="gift-icon">
-❤️
-</div>
-
-<div class="gift-price">
-50
-</div>
-
-</button>
-
-
-<button
-class="gift"
-onclick="sendGift('🌹',100)">
-
-<div class="gift-icon">
-🌹
-</div>
-
-<div class="gift-price">
-100
-</div>
-
-</button>
-
-
-<button
-class="gift"
-onclick="sendGift('💎',500)">
-
-<div class="gift-icon">
-💎
-</div>
-
-<div class="gift-price">
-500
-</div>
-
-</button>
-
-
-<button
-class="gift"
-onclick="sendGift('👑',1000)">
-
-<div class="gift-icon">
-👑
-</div>
-
-<div class="gift-price">
-1000
-</div>
-
-</button>
-
-</div>
-
-</div>
-
-
-<!-- الملف الشخصي -->
-
-<div
-id="profilePage"
-class="hidden">
-
-<div class="card center">
-
-<div class="profile-large">
-👤
-</div>
-
-<h2 id="profilePageName">
-المستخدم
-</h2>
-
-<p style="color:#888;margin-top:5px">
-عضو في سوريا لايف
-</p>
-
-
-<div class="stat-grid">
-
-<div class="stat">
-
-<b id="profileCoins">
-1000
-</b>
-
-<span>
-كوينز
-</span>
-
-</div>
-
-
-<div class="stat">
-
-<b>
-0
-</b>
-
-<span>
-متابعون
-</span>
-
-</div>
-
-
-<div class="stat">
-
-<b>
-0
-</b>
-
-<span>
-هدايا
-</span>
-
-</div>
-
-</div>
-
-</div>
-
-
-<button
-class="create-room"
-onclick="goHome()">
-
-← العودة للرئيسية
-
-</button>
-
-</div>
-
-
-<!-- الشحن -->
-
-<div
-id="shopPage"
-class="hidden">
-
-<h2 class="section-title">
-🪙 شحن الكوينز
-</h2>
-
-<div class="card">
-
-<p style="color:#aaa;margin-bottom:15px">
-هذه واجهة تجريبية للشحن.
-</p>
-
-
-<button
-class="create-room"
-onclick="addCoins(1000)">
-
-🪙 1,000 كوينز
-
-</button>
-
-
-<button
-class="create-room"
-onclick="addCoins(5000)">
-
-🪙 5,000 كوينز
-
-</button>
-
-
-<button
-class="create-room"
-onclick="addCoins(10000)">
-
-🪙 10,000 كوينز
-
-</button>
-
-</div>
-
-
-<button
-class="back"
-onclick="goHome()">
-
-← رجوع
-
-</button>
-
-</div>
-
-
-<!-- الهدايا -->
-
-<div
-id="giftsPage"
-class="hidden">
-
-<h2 class="section-title">
-🎁 الهدايا
-</h2>
-
-<div class="card">
-
-<p>
-يمكنك إرسال الهدايا للمضيفين داخل الغرف.
-</p>
-
-<div class="gifts">
-
-<div class="gift">
-<div class="gift-icon">❤️</div>
-<div>50 كوينز</div>
-</div>
-
-<div class="gift">
-<div class="gift-icon">🌹</div>
-<div>100 كوينز</div>
-</div>
-
-<div class="gift">
-<div class="gift-icon">💎</div>
-<div>500 كوينز</div>
-</div>
-
-<div class="gift">
-<div class="gift-icon">👑</div>
-<div>1000 كوينز</div>
-</div>
-
-</div>
-
-</div>
-
-<button
-class="back"
-onclick="goHome()">
-
-← رجوع
-
-</button>
-
-</div>
-
-
-</div>
-
-
-<!-- شريط التنقل -->
-
-<div class="bottom-nav">
-
-<button
-class="nav-btn active"
-onclick="goHome()">
-
-<span class="nav-icon">
-🏠
-</span>
-
-الرئيسية
-
-</button>
-
-
-<button
-class="nav-btn"
-onclick="showGifts()">
-
-<span class="nav-icon">
-🎁
-</span>
-
-الهدايا
-
-</button>
-
-
-<button
-class="nav-btn"
-onclick="showShop()">
-
-<span class="nav-icon">
-🪙
-</span>
-
-الكوينز
-
-</button>
-
-
-<button
-class="nav-btn"
-onclick="showProfile()">
-
-<span class="nav-icon">
-👤
-</span>
-
-ملفي
-
-</button>
-
-</div>
+  </div>
 
 </div>
 
 
 <script>
 
-/* المتغيرات */
+/* =========================
+   DATA
+========================= */
 
-let currentRoomName="";
-let currentSeats=8;
-let currentIsAdmin=false;
+let username = localStorage.getItem("syriaLiveUsername") || "";
+let phone = localStorage.getItem("syriaLivePhone") || "";
 
-
-/* تسجيل الدخول */
-
-function login(){
-
-const username=
-document.getElementById("username").value.trim();
-
-const phone=
-document.getElementById("phone").value.trim();
-
-if(username===""){
-alert("اكتب اسم المستخدم");
-return;
-}
-
-if(phone===""){
-alert("اكتب رقم الهاتف");
-return;
-}
-
-localStorage.setItem(
-"syriaLiveUsername",
-username
+let coins = Number(
+  localStorage.getItem("syriaLiveCoins") || 1000
 );
 
-localStorage.setItem(
-"syriaLivePhone",
-phone
-);
+let currentRoomName = "";
+let currentSeats = 8;
+let currentIsAdmin = false;
 
-showApp();
-
-}
-
-
-/* التطبيق */
-
-function showApp(){
-
-const username=
-localStorage.getItem("syriaLiveUsername");
-
-if(!username){
-return;
-}
-
-document
-.getElementById("loginPage")
-.classList.add("hidden");
-
-document
-.getElementById("app")
-.classList.remove("hidden");
-
-document
-.getElementById("profileName")
-.textContent=username;
-
-document
-.getElementById("profilePageName")
-.textContent=username;
-
-}
+let rooms = [
+  {
+    name:"خدمة العملاء",
+    seats:8,
+    users:3,
+    admin:true
+  },
+  {
+    name:"سهرة سوريا",
+    seats:10,
+    users:6,
+    admin:false
+  },
+  {
+    name:"أغاني ودردشة",
+    seats:15,
+    users:8,
+    admin:false
+  },
+  {
+    name:"تعارف وأصدقاء",
+    seats:20,
+    users:12,
+    admin:false
+  }
+];
 
 
-/* الخروج */
+/* =========================
+   START
+========================= */
 
-function logout(){
+document.addEventListener("DOMContentLoaded",function(){
 
-localStorage.removeItem(
-"syriaLiveUsername"
-);
+  if(username){
+    showApp();
+  }
 
-localStorage.removeItem(
-"syriaLivePhone"
-);
-
-location.reload();
-
-}
-
-
-/* إخفاء الصفحات */
-
-function hideAllPages(){
-
-document
-.getElementById("homePage")
-.classList.add("hidden");
-
-document
-.getElementById("roomPage")
-.classList.add("hidden");
-
-document
-.getElementById("profilePage")
-.classList.add("hidden");
-
-document
-.getElementById("shopPage")
-.classList.add("hidden");
-
-document
-.getElementById("giftsPage")
-.classList.add("hidden");
-
-}
-
-
-/* دخول الغرفة */
-
-function joinRoom(name,seats,isAdmin){
-
-currentRoomName=name;
-
-currentSeats=seats;
-
-currentIsAdmin=isAdmin;
-
-hideAllPages();
-
-document
-.getElementById("roomPage")
-.classList.remove("hidden");
-
-document
-.getElementById("roomName")
-.textContent="🎤 "+name;
-
-
-/* إظهار لوحة المسؤول */
-
-if(isAdmin){
-
-document
-.getElementById("adminPanel")
-.classList.remove("hidden");
-
-}else{
-
-document
-.getElementById("adminPanel")
-.classList.add("hidden");
-
-}
-
-renderSeats();
-
-}
-
-
-/* تغيير المقاعد */
-
-function changeSeats(number){
-
-if(!currentIsAdmin){
-
-alert("هذه الخاصية لمسؤول الغرفة فقط");
-
-return;
-
-}
-
-currentSeats=number;
-
-renderSeats();
-
-updateSeatButtons();
-
-}
-
-
-/* تحديث أزرار المقاعد */
-
-function updateSeatButtons(){
-
-document
-.querySelectorAll(".seat-btn")
-.forEach(function(button){
-
-button.classList.remove("active");
+  renderRooms();
+  updateCoins();
 
 });
 
 
-const selected=
-document.getElementById(
-"seat"+currentSeats
-);
+/* =========================
+   LOGIN
+========================= */
 
-if(selected){
+function login(){
 
-selected.classList.add("active");
+  const name =
+    document.getElementById("usernameInput").value.trim();
 
-}
+  const userPhone =
+    document.getElementById("phoneInput").value.trim();
 
-}
+  if(!name){
+    alert("اكتب اسم المستخدم");
+    return;
+  }
 
+  username = name;
+  phone = userPhone;
 
-/* إنشاء المقاعد */
+  localStorage.setItem(
+    "syriaLiveUsername",
+    username
+  );
 
-function renderSeats(){
+  localStorage.setItem(
+    "syriaLivePhone",
+    phone
+  );
 
-const grid=
-document.getElementById("micGrid");
-
-grid.innerHTML="";
-
-
-for(let i=1;i<=currentSeats;i++){
-
-const mic=
-document.createElement("div");
-
-mic.className="mic";
-
-
-let avatar="➕";
-let name="مقعد "+i;
-let status="فارغ";
-
-
-if(i===1){
-
-avatar="👑";
-name="المضيف";
-status="🎤 مسؤول";
-
-}else if(i===2){
-
-avatar="👨";
-name="أحمد";
-status="🎤 متحدث";
-
-}else if(i===3){
-
-avatar="👩";
-name="سارة";
-status="🔇 صامت";
-
-}else if(i===4){
-
-avatar="👤";
-name="ضيف";
-status="🔇 صامت";
-
+  showApp();
 }
 
 
-mic.innerHTML=`
+function showApp(){
 
-<div class="mic-avatar">
-${avatar}
-</div>
+  document.getElementById("loginPage")
+    .classList.add("hidden");
 
-<div class="mic-name">
-${name}
-</div>
+  document.getElementById("app")
+    .classList.remove("hidden");
 
-<div class="mic-status">
-${status}
-</div>
+  document.getElementById("roomPage")
+    .classList.add("hidden");
 
-`;
+  document.getElementById("welcomeName")
+    .textContent = username;
 
+  document.getElementById("profileName")
+    .textContent = username;
 
-grid.appendChild(mic);
-
-}
-
-updateSeatButtons();
-
+  updateCoins();
+  renderRooms();
 }
 
 
-/* الرئيسية */
+function logout(){
 
-function goHome(){
+  localStorage.removeItem("syriaLiveUsername");
+  localStorage.removeItem("syriaLivePhone");
 
-hideAllPages();
+  username = "";
+  phone = "";
 
-document
-.getElementById("homePage")
-.classList.remove("hidden");
+  document.getElementById("app")
+    .classList.add("hidden");
 
+  document.getElementById("roomPage")
+    .classList.add("hidden");
+
+  document.getElementById("loginPage")
+    .classList.remove("hidden");
 }
 
 
-/* الملف */
+/* =========================
+   COINS
+========================= */
 
-function showProfile(){
+function updateCoins(){
 
-hideAllPages();
+  document.getElementById("coinBalance")
+    .textContent = coins;
 
-document
-.getElementById("profilePage")
-.classList.remove("hidden");
+  document.getElementById("profileCoins")
+    .textContent = coins;
 
-document
-.getElementById("profileCoins")
-.textContent=
-document.getElementById("coins").textContent;
+  document.getElementById("roomCoins")
+    .textContent = coins;
 
+  localStorage.setItem(
+    "syriaLiveCoins",
+    coins
+  );
 }
 
-
-/* الشحن */
-
-function showShop(){
-
-hideAllPages();
-
-document
-.getElementById("shopPage")
-.classList.remove("hidden");
-
-}
-
-
-/* الهدايا */
-
-function showGifts(){
-
-hideAllPages();
-
-document
-.getElementById("giftsPage")
-.classList.remove("hidden");
-
-}
-
-
-/* إضافة كوينز تجريبية */
 
 function addCoins(amount){
 
-let coins=
-parseInt(
-document.getElementById("coins").textContent
-);
+  coins += amount;
 
-coins+=amount;
+  updateCoins();
 
-document
-.getElementById("coins")
-.textContent=coins;
+  alert(
+    "تمت إضافة " +
+    amount.toLocaleString() +
+    " عملة تجريبية"
+  );
+}
 
-alert(
-"تمت إضافة "+
-amount+
-" كوينز تجريبية"
-);
 
-goHome();
+/* =========================
+   ROOMS
+========================= */
+
+function renderRooms(){
+
+  const list =
+    document.getElementById("roomsList");
+
+  if(!list) return;
+
+  list.innerHTML = "";
+
+  rooms.forEach((room,index)=>{
+
+    const card =
+      document.createElement("div");
+
+    card.className = "room-card";
+
+    card.innerHTML = `
+
+      <div class="room-top">
+
+        <div class="room-name">
+          🎙️ ${escapeHtml(room.name)}
+        </div>
+
+        <div class="live">
+          ● مباشر
+        </div>
+
+      </div>
+
+      <div class="room-info">
+        👥 ${room.users}/${room.seats}
+        &nbsp; • &nbsp;
+        🎤 ${room.seats} مقعد
+      </div>
+
+      <button class="join-btn"
+              onclick="joinRoomByIndex(${index})">
+        دخول الغرفة
+      </button>
+    `;
+
+    list.appendChild(card);
+
+  });
 
 }
 
 
-/* إرسال هدية */
+function joinRoomByIndex(index){
 
-function sendGift(icon,price){
+  const room = rooms[index];
 
-let coins=
-parseInt(
-document.getElementById("coins").textContent
-);
+  if(!room) return;
 
-if(coins<price){
-
-alert("رصيدك لا يكفي");
-
-return;
-
-}
-
-coins-=price;
-
-document
-.getElementById("coins")
-.textContent=coins;
-
-alert(
-"تم إرسال "+
-icon+
-" بقيمة "+
-price+
-" كوينز 🎁"
-);
-
+  joinRoom(
+    room.name,
+    room.seats,
+    room.admin
+  );
 }
 
 
-/* الدردشة */
+function joinRoom(name,seats,isAdmin){
 
-function sendMessage(){
+  currentRoomName = name;
+  currentSeats = seats;
+  currentIsAdmin = isAdmin;
 
-const input=
-document.getElementById("messageInput");
+  document.getElementById("app")
+    .classList.add("hidden");
 
-const text=
-input.value.trim();
+  document.getElementById("roomPage")
+    .classList.remove("hidden");
 
-if(text===""){
-return;
-}
+  document.getElementById("roomTitle")
+    .textContent = "🎙️ " + name;
 
-const name=
-localStorage.getItem(
-"syriaLiveUsername"
-)||"أنت";
+  document.getElementById("adminPanel")
+    .classList.toggle(
+      "hidden",
+      !currentIsAdmin
+    );
 
-const message=
-document.createElement("div");
-
-message.className="message";
-
-const bold=
-document.createElement("b");
-
-bold.textContent=name+": ";
-
-message.appendChild(bold);
-
-message.appendChild(
-document.createTextNode(text)
-);
-
-document
-.getElementById("messages")
-.appendChild(message);
-
-input.value="";
-
-const box=
-document.getElementById("messages");
-
-box.scrollTop=box.scrollHeight;
-
+  renderSeats();
+  updateSeatButtons();
+  updateCoins();
 }
 
 
-/* إنشاء غرفة */
+function leaveRoom(){
 
-function createRoom(){
+  document.getElementById("roomPage")
+    .classList.add("hidden");
 
-const name=
-prompt("اكتب اسم الغرفة:");
+  document.getElementById("app")
+    .classList.remove("hidden");
 
-if(!name||name.trim()===""){
-return;
+  goHome();
 }
 
-const room=
-document.createElement("div");
 
-room.className="room";
+/* =========================
+   ADMIN SEATS
+========================= */
 
-room.innerHTML=`
+function changeSeats(number){
 
-<div class="room-top">
+  if(!currentIsAdmin){
 
-<div class="room-title">
-🎤 ${name}
-</div>
+    alert(
+      "هذه الخاصية لمسؤول الغرفة فقط"
+    );
 
-<div class="live">
-LIVE
-</div>
+    return;
+  }
 
-</div>
+  if(
+    number !== 8 &&
+    number !== 10 &&
+    number !== 15 &&
+    number !== 20
+  ){
+    return;
+  }
 
-<div class="room-info">
-👥 1 شخص • 🎤 8 مقاعد
-</div>
+  currentSeats = number;
 
-<button class="join">
-دخول الغرفة
-</button>
-
-`;
-
-
-room
-.querySelector(".join")
-.onclick=function(){
-
-joinRoom(
-name,
-8,
-true
-);
-
-};
-
-
-document
-.getElementById("rooms")
-.prepend(room);
+  renderSeats();
+  updateSeatButtons();
 
 }
 
 
-/* التشغيل */
+function updateSeatButtons(){
 
-window.onload=function(){
+  [8,10,15,20].forEach(number=>{
 
-if(
-localStorage.getItem(
-"syriaLiveUsername"
-)
-){
+    const btn =
+      document.getElementById(
+        "seat" + number
+      );
 
-showApp();
+    if(!btn) return;
+
+    btn.classList.toggle(
+      "active",
+      currentSeats === number
+    );
+
+  });
 
 }
 
-};
 
-</script>
+/* =========================
+   SEATS
+========================= */
 
-</body>
-  </html>
+function renderSeats(){
+
+  const grid =
+    document.getElementById("micGrid");
+
+  grid.innerHTML = "";
+
+  for(let i=1;i<=currentSeats;i++){
+
+    const seat =
+      document.createElement("div");
+
+    seat.className = "seat";
+
+    let occupied = false;
+    let occupant = "";
+
+   
