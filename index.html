@@ -1,1 +1,154 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>سوريا لايف</title>
 
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #0d1117;
+      color: white;
+      min-height: 100vh;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #b30000, #650000);
+      padding: 20px;
+      text-align: center;
+      border-bottom: 2px solid #ffcc00;
+    }
+
+    .header h1 {
+      font-size: 30px;
+      margin-bottom: 8px;
+    }
+
+    .header p {
+      color: #eee;
+    }
+
+    .container {
+      padding: 18px;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .balance {
+      background: #171d26;
+      border: 1px solid #303846;
+      border-radius: 15px;
+      padding: 15px;
+      margin-bottom: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .coins {
+      color: #ffd700;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .create {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 14px;
+      background: #d40000;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      cursor: pointer;
+    }
+
+    .create:active {
+      transform: scale(.98);
+    }
+
+    h2 {
+      margin-bottom: 12px;
+    }
+
+    .room {
+      background: #171d26;
+      border: 1px solid #303846;
+      border-radius: 18px;
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+
+    .room-title {
+      font-size: 19px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .room-info {
+      color: #aaa;
+      margin-bottom: 12px;
+    }
+
+    .join {
+      background: #008f5a;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .mic-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .mic {
+      background: #222a35;
+      border-radius: 14px;
+      padding: 12px 5px;
+      text-align: center;
+      min-height: 90px;
+    }
+
+    .avatar {
+      width: 42px;
+      height: 42px;
+      background: #555;
+      border-radius: 50%;
+      margin: auto auto 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+
+    .chat {
+      margin-top: 20px;
+      background: #171d26;
+      border-radius: 15px;
+      padding: 15px;
+    }
+
+    .messages {
+      height: 160px;
+      overflow-y: auto;
+      margin-bottom: 10px;
+    }
+
+    .message {
+      background: #252e3a;
+      padding: 8px;
+      border-radius: 8px;
