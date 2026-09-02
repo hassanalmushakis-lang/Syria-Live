@@ -21,7 +21,7 @@
 
     .header {
       background: linear-gradient(135deg, #b30000, #650000);
-      padding: 20px;
+      padding: 22px 15px;
       text-align: center;
       border-bottom: 2px solid #ffcc00;
     }
@@ -33,6 +33,7 @@
 
     .header p {
       color: #eee;
+      font-size: 14px;
     }
 
     .container {
@@ -71,8 +72,11 @@
       cursor: pointer;
     }
 
-    .create:active {
-      transform: scale(.98);
+    .create:active,
+    .join:active,
+    .send:active,
+    .back:active {
+      transform: scale(.97);
     }
 
     h2 {
@@ -152,3 +156,277 @@
       background: #252e3a;
       padding: 8px;
       border-radius: 8px;
+      margin-bottom: 7px;
+      word-break: break-word;
+    }
+
+    .chat-input {
+      display: flex;
+      gap: 7px;
+    }
+
+    .chat-input input {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      background: #252e3a;
+      color: white;
+      outline: none;
+    }
+
+    .send {
+      border: none;
+      background: #d40000;
+      color: white;
+      border-radius: 10px;
+      padding: 10px 15px;
+      font-weight: bold;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .back {
+      background: #444;
+      border: none;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    @media (max-width: 400px) {
+      .mic-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="header">
+    <h1>🇸🇾 سوريا لايف</h1>
+    <p>غرف صوتية • تعارف • دردشة مباشرة</p>
+  </div>
+
+  <div class="container">
+
+    <div id="home">
+
+      <div class="balance">
+        <span>رصيدك</span>
+        <span class="coins">🪙 1,000 كوينز</span>
+      </div>
+
+      <button class="create" onclick="createRoom()">
+        ＋ إنشاء غرفة صوتية
+      </button>
+
+      <h2>🔥 الغرف المباشرة</h2>
+
+      <div id="rooms">
+
+        <div class="room">
+          <div class="room-title">🇸🇾 سهرة سوريا</div>
+          <div class="room-info">👥 5 أشخاص • 🎤 غرفة صوتية</div>
+          <button class="join" onclick="joinRoom('سهرة سوريا')">
+            دخول الغرفة
+          </button>
+        </div>
+
+        <div class="room">
+          <div class="room-title">🎵 أغاني ودردشة</div>
+          <div class="room-info">👥 3 أشخاص • 🎤 غرفة صوتية</div>
+          <button class="join" onclick="joinRoom('أغاني ودردشة')">
+            دخول الغرفة
+          </button>
+        </div>
+
+        <div class="room">
+          <div class="room-title">💬 تعارف وأصدقاء</div>
+          <div class="room-info">👥 7 أشخاص • 🎤 غرفة صوتية</div>
+          <button class="join" onclick="joinRoom('تعارف وأصدقاء')">
+            دخول الغرفة
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <div id="roomPage" class="hidden">
+
+      <button class="back" onclick="goHome()">← العودة</button>
+
+      <h2 id="roomName">الغرفة</h2>
+
+      <div class="mic-grid">
+
+        <div class="mic">
+          <div class="avatar">👑</div>
+          <div>المضيف</div>
+          <small>🎤</small>
+        </div>
+
+        <div class="mic">
+          <div class="avatar">👨</div>
+          <div>ضيف 1</div>
+          <small>🎤</small>
+        </div>
+
+        <div class="mic">
+          <div class="avatar">👩</div>
+          <div>ضيف 2</div>
+          <small>🔇</small>
+        </div>
+
+        <div class="mic">
+          <div class="avatar">👤</div>
+          <div>ضيف 3</div>
+          <small>🔇</small>
+        </div>
+
+        <div class="mic">
+          <div class="avatar">➕</div>
+          <div>مقعد 5</div>
+          <small>فارغ</small>
+        </div>
+
+        <div class="mic">
+          <div class="avatar">➕</div>
+          <div>مقعد 6</div>
+          <small>فارغ</small>
+        </div>
+
+        <div class="mic">
+          <div class="avatar">➕</div>
+          <div>مقعد 7</div>
+          <small>فارغ</small>
+        </div>
+
+        <div class="mic">
+          <div class="avatar">➕</div>
+          <div>مقعد 8</div>
+          <small>فارغ</small>
+        </div>
+
+      </div>
+
+      <div class="chat">
+
+        <h3>💬 الدردشة</h3>
+
+        <div class="messages" id="messages">
+
+          <div class="message">
+            <b>المضيف:</b> أهلاً وسهلاً بالجميع 👋
+          </div>
+
+          <div class="message">
+            <b>ضيف 1:</b> أهلاً ❤️
+          </div>
+
+        </div>
+
+        <div class="chat-input">
+
+          <input
+            id="messageInput"
+            type="text"
+            placeholder="اكتب رسالة..."
+            onkeydown="if(event.key==='Enter') sendMessage()"
+          >
+
+          <button class="send" onclick="sendMessage()">
+            إرسال
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+
+    function joinRoom(name) {
+      document.getElementById("home").classList.add("hidden");
+      document.getElementById("roomPage").classList.remove("hidden");
+      document.getElementById("roomName").innerText = "🎤 " + name;
+    }
+
+    function goHome() {
+      document.getElementById("roomPage").classList.add("hidden");
+      document.getElementById("home").classList.remove("hidden");
+    }
+
+    function createRoom() {
+
+      const name = prompt("اكتب اسم الغرفة:");
+
+      if (!name || name.trim() === "") {
+        return;
+      }
+
+      const safeName = name.trim();
+
+      const room = document.createElement("div");
+      room.className = "room";
+
+      const title = document.createElement("div");
+      title.className = "room-title";
+      title.textContent = "🎤 " + safeName;
+
+      const info = document.createElement("div");
+      info.className = "room-info";
+      info.textContent = "👥 1 شخص • 🎤 غرفة صوتية";
+
+      const button = document.createElement("button");
+      button.className = "join";
+      button.textContent = "دخول الغرفة";
+
+      button.onclick = function() {
+        joinRoom(safeName);
+      };
+
+      room.appendChild(title);
+      room.appendChild(info);
+      room.appendChild(button);
+
+      document.getElementById("rooms").prepend(room);
+    }
+
+    function sendMessage() {
+
+      const input = document.getElementById("messageInput");
+      const text = input.value.trim();
+
+      if (text === "") {
+        return;
+      }
+
+      const message = document.createElement("div");
+      message.className = "message";
+
+      const name = document.createElement("b");
+      name.textContent = "أنت: ";
+
+      message.appendChild(name);
+      message.appendChild(document.createTextNode(text));
+
+      document.getElementById("messages").appendChild(message);
+
+      input.value = "";
+
+      const box = document.getElementById("messages");
+      box.scrollTop = box.scrollHeight;
+    }
+
+  </script>
+
+</body>
+  </html>
