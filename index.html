@@ -14,82 +14,230 @@
 }
 
 body{
+  min-height:100vh;
   background:#080b12;
   color:#fff;
-  min-height:100vh;
-}
-
-button{
-  border:0;
-  cursor:pointer;
 }
 
 .hidden{
   display:none!important;
 }
 
-/* LOGIN */
+button,input{
+  font-family:inherit;
+}
+
+/* ================= LOGIN ================= */
+
 #loginPage{
   min-height:100vh;
   display:flex;
   align-items:center;
   justify-content:center;
   padding:20px;
+
   background:
-    linear-gradient(rgba(0,0,0,.68),rgba(0,0,0,.82)),
-    url("civilizations-syria.jpg") center/cover no-repeat;
+    linear-gradient(
+      rgba(0,0,0,.68),
+      rgba(0,0,0,.88)
+    ),
+    url("civilizations-syria.jpg")
+    center/cover no-repeat;
 }
 
 .login-box{
   width:100%;
-  max-width:420px;
-  padding:30px 22px;
+  max-width:410px;
+  padding:28px 22px;
   border-radius:25px;
-  background:rgba(15,18,27,.94);
+
+  background:rgba(15,18,27,.96);
+
   border:1px solid rgba(255,215,0,.35);
-  box-shadow:0 0 35px rgba(255,215,0,.12);
+
+  box-shadow:
+    0 0 35px rgba(255,215,0,.12);
+
   text-align:center;
 }
 
 .logo{
-  font-size:42px;
-  margin-bottom:8px;
+  width:82px;
+  height:82px;
+  margin:0 auto 12px;
+
+  border-radius:50%;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:#111722;
+
+  border:2px solid #ffd700;
+
+  font-size:40px;
 }
 
-.login-box h1{
+.login-title{
   color:#ffd700;
   font-size:30px;
-  margin-bottom:8px;
+  margin-bottom:7px;
 }
 
-.login-box p{
-  color:#bbb;
-  margin-bottom:25px;
+.login-subtitle{
+  color:#aaa;
+  margin-bottom:24px;
 }
 
-.input{
-  width:100%;
-  padding:15px;
-  margin-bottom:13px;
-  border-radius:13px;
-  border:1px solid #333;
-  background:#202531;
-  color:white;
-  font-size:16px;
+/* COUNTRY */
+
+.country-row{
+  display:flex;
+  gap:8px;
+  margin-bottom:12px;
+}
+
+.country-code{
+  width:105px;
+  background:#202632;
+  color:#fff;
+  border:1px solid #343c4c;
+  border-radius:12px;
+  padding:14px 8px;
+  font-size:15px;
+}
+
+.phone-input{
+  flex:1;
+  min-width:0;
+
+  background:#202632;
+  color:#fff;
+
+  border:1px solid #343c4c;
+  border-radius:12px;
+
+  padding:14px;
+
   outline:none;
+  font-size:16px;
 }
 
 .main-btn{
   width:100%;
   padding:15px;
+
   border-radius:13px;
-  background:linear-gradient(135deg,#ffd700,#b8860b);
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffd700,
+      #b8860b
+    );
+
   color:#111;
   font-weight:bold;
   font-size:17px;
+
+  margin-top:5px;
 }
 
-/* APP */
+.google-btn{
+  width:100%;
+  padding:14px;
+
+  margin-top:13px;
+
+  border-radius:13px;
+
+  background:#fff;
+  color:#222;
+
+  font-weight:bold;
+  font-size:16px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+}
+
+.google-icon{
+  font-size:21px;
+}
+
+.divider{
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  color:#777;
+
+  margin:20px 0;
+}
+
+.divider::before,
+.divider::after{
+  content:"";
+  height:1px;
+  background:#303644;
+  flex:1;
+}
+
+.terms{
+  color:#777;
+  font-size:12px;
+  line-height:1.7;
+  margin-top:18px;
+}
+
+/* OTP */
+
+#otpBox{
+  margin-top:15px;
+}
+
+.otp-title{
+  color:#ffd700;
+  margin-bottom:8px;
+}
+
+.otp-info{
+  color:#999;
+  font-size:13px;
+  margin-bottom:12px;
+}
+
+.otp-input{
+  width:100%;
+
+  background:#202632;
+  color:#fff;
+
+  border:1px solid #343c4c;
+
+  border-radius:12px;
+
+  padding:15px;
+
+  text-align:center;
+
+  font-size:23px;
+  letter-spacing:8px;
+
+  outline:none;
+}
+
+.resend{
+  background:none;
+  color:#ffd700;
+  margin-top:12px;
+}
+
+/* ================= APP ================= */
+
 #app{
   min-height:100vh;
   padding-bottom:75px;
@@ -99,12 +247,18 @@ button{
   position:sticky;
   top:0;
   z-index:10;
+
+  height:60px;
+
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  padding:13px 16px;
+  justify-content:space-between;
+
+  padding:0 16px;
+
   background:#10141e;
-  border-bottom:1px solid #252b38;
+
+  border-bottom:1px solid #292f3b;
 }
 
 .header-title{
@@ -118,24 +272,17 @@ button{
   color:#ffd700;
   padding:8px 12px;
   border-radius:20px;
-  font-weight:bold;
 }
 
-/* HOME */
 .page{
   padding:16px;
 }
 
 .welcome{
-  background:linear-gradient(135deg,#151c2a,#0d1119);
+  background:#151b26;
   border:1px solid #293243;
   border-radius:20px;
   padding:18px;
-  margin-bottom:15px;
-}
-
-.welcome h2{
-  margin-bottom:6px;
 }
 
 .gold{
@@ -143,18 +290,26 @@ button{
 }
 
 .banner{
-  min-height:145px;
+  margin-top:15px;
+  min-height:150px;
+
   border-radius:20px;
-  margin-bottom:18px;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   text-align:center;
-  padding:20px;
+
   background:
-    linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.7)),
-    url("civilizations-syria.jpg") center/cover no-repeat;
-  border:1px solid rgba(255,215,0,.35);
+    linear-gradient(
+      rgba(0,0,0,.5),
+      rgba(0,0,0,.75)
+    ),
+    url("civilizations-syria.jpg")
+    center/cover no-repeat;
+
+  border:1px solid rgba(255,215,0,.3);
 }
 
 .banner h2{
@@ -163,18 +318,16 @@ button{
 }
 
 .section-title{
-  margin:18px 0 12px;
-  font-size:20px;
+  margin:20px 0 12px;
 }
 
-/* ROOM CARDS */
 .rooms{
   display:grid;
   gap:12px;
 }
 
 .room-card{
-  background:#151a24;
+  background:#151b26;
   border:1px solid #293243;
   border-radius:18px;
   padding:15px;
@@ -183,33 +336,30 @@ button{
 .room-top{
   display:flex;
   justify-content:space-between;
-  align-items:center;
-  margin-bottom:12px;
+  margin-bottom:10px;
 }
 
 .room-name{
-  font-size:18px;
   font-weight:bold;
+  font-size:17px;
 }
 
 .live{
   color:#5cff8d;
-  font-size:13px;
+  font-size:12px;
 }
 
 .room-info{
-  color:#aaa;
-  margin-bottom:13px;
-  font-size:14px;
+  color:#999;
+  margin-bottom:12px;
 }
 
 .join-btn{
   width:100%;
   padding:12px;
-  border-radius:12px;
-  background:#242c3a;
+  border-radius:11px;
+  background:#252e3d;
   color:#fff;
-  font-weight:bold;
 }
 
 .create-btn{
@@ -217,103 +367,125 @@ button{
 }
 
 /* PROFILE */
+
 .profile-card{
-  background:#151a24;
-  border-radius:20px;
-  padding:22px;
-  text-align:center;
+  background:#151b26;
   border:1px solid #293243;
+  border-radius:20px;
+  padding:25px;
+  text-align:center;
 }
 
 .avatar{
   width:90px;
   height:90px;
-  margin:auto auto 12px;
   border-radius:50%;
-  background:linear-gradient(135deg,#ffd700,#8b6508);
+
+  margin:0 auto 12px;
+
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:40px;
+
+  background:linear-gradient(
+    135deg,
+    #ffd700,
+    #8b6508
+  );
+
   color:#111;
+  font-size:40px;
 }
 
 .profile-id{
-  color:#aaa;
+  color:#888;
   margin:8px 0 20px;
 }
 
 .menu-btn{
   width:100%;
-  padding:14px;
+  padding:13px;
   margin-top:10px;
-  border-radius:12px;
-  background:#222a37;
+
+  border-radius:11px;
+
+  background:#252e3d;
   color:#fff;
 }
 
-/* SHOP */
-.shop-card{
-  background:#151a24;
-  border:1px solid #293243;
-  padding:18px;
-  border-radius:18px;
-  margin-bottom:12px;
+/* NAV */
+
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+
+  height:65px;
+
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+
+  background:#10141e;
+
+  border-top:1px solid #293243;
 }
 
-.shop-card h3{
+.nav-btn{
+  background:none;
+  color:#888;
+  font-size:12px;
+}
+
+.nav-btn.active{
   color:#ffd700;
-  margin-bottom:7px;
 }
 
-.shop-card p{
-  color:#aaa;
-  margin-bottom:13px;
+.nav-icon{
+  display:block;
+  font-size:21px;
+  margin-bottom:3px;
 }
 
-.buy-btn{
-  background:#ffd700;
-  color:#111;
-  padding:11px 20px;
-  border-radius:10px;
-  font-weight:bold;
-}
+/* ================= ROOM ================= */
 
-/* ROOM */
 #roomPage{
   min-height:100vh;
-  padding-bottom:20px;
+  background:#080b12;
 }
 
 .room-header{
+  height:60px;
+
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  padding:14px 16px;
+  justify-content:space-between;
+
+  padding:0 12px;
+
   background:#10141e;
+
   border-bottom:1px solid #293243;
 }
 
 .back-btn{
-  background:#252d3a;
+  background:#252e3d;
   color:#fff;
-  padding:9px 13px;
-  border-radius:10px;
+  padding:9px 12px;
+  border-radius:9px;
 }
 
 .room-title{
   color:#ffd700;
   font-weight:bold;
-  font-size:19px;
 }
 
 .room-body{
   padding:15px;
 }
 
-/* ADMIN */
 .admin-panel{
-  background:#161c27;
+  background:#151b26;
   border:1px solid rgba(255,215,0,.35);
   border-radius:18px;
   padding:15px;
@@ -335,8 +507,8 @@ button{
 .seat-btn{
   padding:10px 3px;
   border-radius:9px;
-  background:#252d3a;
-  color:white;
+  background:#252e3d;
+  color:#fff;
 }
 
 .seat-btn.active{
@@ -344,54 +516,59 @@ button{
   color:#111;
 }
 
-/* SEATS */
 .mic-grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:10px;
-  margin-bottom:18px;
+  gap:9px;
+  margin-bottom:15px;
 }
 
 .seat{
-  min-height:92px;
-  background:#151b26;
-  border:1px solid #293243;
-  border-radius:15px;
+  min-height:88px;
+
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
-  text-align:center;
-  padding:7px;
+
+  background:#151b26;
+
+  border:1px solid #293243;
+
+  border-radius:15px;
 }
 
 .mic{
-  width:43px;
-  height:43px;
+  width:42px;
+  height:42px;
+
   border-radius:50%;
-  background:#252e3d;
+
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:21px;
-  margin-bottom:6px;
+
+  background:#252e3d;
+
+  margin-bottom:5px;
 }
 
 .seat-name{
+  color:#aaa;
   font-size:11px;
-  color:#bbb;
 }
 
 .seat.occupied .mic{
-  background:#403610;
   border:1px solid #ffd700;
+  background:#403610;
 }
 
 /* CHAT */
+
 .chat{
   background:#111620;
-  border-radius:18px;
   border:1px solid #293243;
+  border-radius:18px;
   padding:13px;
 }
 
@@ -403,7 +580,7 @@ button{
 
 .message{
   background:#202733;
-  padding:8px 11px;
+  padding:8px 10px;
   border-radius:10px;
   margin-bottom:7px;
   font-size:13px;
@@ -420,283 +597,357 @@ button{
 
 .chat-send input{
   flex:1;
+
   background:#202733;
   border:1px solid #303949;
+
   color:#fff;
+
   border-radius:10px;
+
   padding:11px;
 }
 
 .chat-send button{
   background:#ffd700;
-  padding:0 15px;
+  color:#111;
+
+  padding:0 14px;
+
   border-radius:10px;
-  font-weight:bold;
 }
 
 /* GIFTS */
+
 .gifts{
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:8px;
-  margin-top:15px;
+  margin-top:14px;
 }
 
 .gift{
   background:#202733;
-  border-radius:12px;
-  padding:10px 4px;
-  text-align:center;
   color:#fff;
+  border-radius:12px;
+  padding:9px 3px;
 }
 
 .gift span{
   display:block;
-  font-size:27px;
-  margin-bottom:4px;
+  font-size:26px;
 }
 
 .gift small{
   color:#ffd700;
-}
-
-/* NAV */
-.bottom-nav{
-  position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  z-index:20;
-  height:65px;
-  background:#10141e;
-  border-top:1px solid #293243;
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-}
-
-.nav-btn{
-  background:transparent;
-  color:#aaa;
-  font-size:12px;
-}
-
-.nav-btn.active{
-  color:#ffd700;
-}
-
-.nav-icon{
-  display:block;
-  font-size:21px;
-  margin-bottom:3px;
-}
-
-/* MODAL */
-.modal{
-  position:fixed;
-  inset:0;
-  z-index:50;
-  background:rgba(0,0,0,.75);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-}
-
-.modal-box{
-  width:100%;
-  max-width:390px;
-  background:#151a24;
-  border:1px solid #343d4e;
-  border-radius:20px;
-  padding:20px;
-}
-
-.modal-box h2{
-  color:#ffd700;
-  margin-bottom:15px;
-}
-
-.close-btn{
-  width:100%;
-  margin-top:10px;
-  padding:12px;
-  border-radius:10px;
-  background:#252d3a;
-  color:white;
-}
-
-@media(max-width:450px){
-  .mic-grid{
-    grid-template-columns:repeat(4,1fr);
-  }
-
-  .seat{
-    min-height:82px;
-  }
-
-  .gifts{
-    grid-template-columns:repeat(4,1fr);
-  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- LOGIN -->
+<!-- ================= LOGIN ================= -->
+
 <section id="loginPage">
+
   <div class="login-box">
+
     <div class="logo">🇸🇾</div>
-    <h1>سوريا لايف</h1>
-    <p>دردشة صوتية سورية</p>
 
-    <input id="usernameInput"
-           class="input"
-           type="text"
-           placeholder="اسم المستخدم">
+    <h1 class="login-title">
+      سوريا لايف
+    </h1>
 
-    <input id="phoneInput"
-           class="input"
-           type="tel"
-           placeholder="رقم الهاتف">
+    <p class="login-subtitle">
+      دردشة صوتية سورية
+    </p>
 
-    <button class="main-btn" onclick="login()">
-      دخول إلى سوريا لايف
-    </button>
+
+    <div id="phoneLogin">
+
+      <div class="country-row">
+
+        <select id="countryCode"
+                class="country-code">
+
+          <option value="+963">
+            🇸🇾 +963
+          </option>
+
+          <option value="+44">
+            🇬🇧 +44
+          </option>
+
+          <option value="+90">
+            🇹🇷 +90
+          </option>
+
+          <option value="+962">
+            🇯🇴 +962
+          </option>
+
+          <option value="+961">
+            🇱🇧 +961
+          </option>
+
+          <option value="+964">
+            🇮🇶 +964
+          </option>
+
+        </select>
+
+        <input
+          id="phoneInput"
+          class="phone-input"
+          type="tel"
+          placeholder="رقم الهاتف"
+        >
+
+      </div>
+
+
+      <button
+        class="main-btn"
+        onclick="sendOTP()">
+
+        متابعة برقم الهاتف
+
+      </button>
+
+
+      <div class="divider">
+        أو
+      </div>
+
+
+      <button
+        class="google-btn"
+        onclick="googleLogin()">
+
+        <span class="google-icon">G</span>
+
+        متابعة باستخدام Google
+
+      </button>
+
+    </div>
+
+
+    <!-- OTP -->
+
+    <div id="otpBox" class="hidden">
+
+      <div class="otp-title">
+        🔐 رمز التحقق
+      </div>
+
+      <p class="otp-info">
+        أدخل رمز التحقق المرسل إلى رقم هاتفك
+      </p>
+
+      <input
+        id="otpInput"
+        class="otp-input"
+        maxlength="6"
+        inputmode="numeric"
+        placeholder="••••••"
+      >
+
+      <button
+        class="main-btn"
+        onclick="verifyOTP()">
+
+        تأكيد الدخول
+
+      </button>
+
+      <button
+        class="resend"
+        onclick="sendOTP()">
+
+        إعادة إرسال الرمز
+
+      </button>
+
+    </div>
+
+
+    <div class="terms">
+      بمتابعة الدخول، أنت توافق على شروط
+      استخدام سوريا لايف وسياسة الخصوصية.
+    </div>
+
   </div>
+
 </section>
 
 
-<!-- APP -->
+<!-- ================= APP ================= -->
+
 <section id="app" class="hidden">
 
   <header class="header">
-    <div class="header-title">🇸🇾 سوريا لايف</div>
-    <div class="coins">🪙 <span id="coinBalance">1000</span></div>
+
+    <div class="header-title">
+      🇸🇾 سوريا لايف
+    </div>
+
+    <div class="coins">
+      🪙 <span id="coinBalance">1000</span>
+    </div>
+
   </header>
 
 
   <!-- HOME -->
+
   <main id="homePage" class="page">
 
     <div class="welcome">
-      <h2>أهلاً <span id="welcomeName" class="gold"></span> 👋</h2>
-      <p>مرحباً بك في سوريا لايف</p>
+
+      <h2>
+        أهلاً
+        <span id="welcomeName"
+              class="gold">
+        </span>
+        👋
+      </h2>
+
+      <p style="color:#aaa;margin-top:6px;">
+        أهلاً بك في سوريا لايف
+      </p>
+
     </div>
+
 
     <div class="banner">
+
       <div>
-        <h2>سوريا لايف</h2>
-        <p>غرف صوتية • دردشة • هدايا</p>
+
+        <h2>
+          سوريا لايف
+        </h2>
+
+        <p style="margin-top:7px;">
+          غرف صوتية • دردشة • هدايا
+        </p>
+
       </div>
+
     </div>
 
-    <h2 class="section-title">🎙️ الغرف الصوتية</h2>
 
-    <div id="roomsList" class="rooms"></div>
+    <h2 class="section-title">
+      🎙️ الغرف الصوتية
+    </h2>
 
-    <button class="main-btn create-btn" onclick="openCreateRoom()">
+
+    <div id="roomsList"
+         class="rooms">
+    </div>
+
+
+    <button
+      class="main-btn create-btn"
+      onclick="createRoom()">
+
       ➕ إنشاء غرفة جديدة
+
     </button>
 
   </main>
 
 
   <!-- PROFILE -->
-  <main id="profilePage" class="page hidden">
+
+  <main id="profilePage"
+        class="page hidden">
 
     <div class="profile-card">
-      <div class="avatar">👤</div>
 
-      <h2 id="profileName">مستخدم</h2>
+      <div class="avatar">
+        👤
+      </div>
+
+      <h2 id="profileName">
+        مستخدم
+      </h2>
 
       <div class="profile-id">
-        ID: <span id="profileId">100001</span>
+        ID:
+        <span id="profileId">
+          100001
+        </span>
       </div>
 
       <p>
         🪙 الرصيد:
         <strong class="gold">
-          <span id="profileCoins">1000</span>
+          <span id="profileCoins">
+            1000
+          </span>
         </strong>
       </p>
 
-      <button class="menu-btn" onclick="showShop()">
+
+      <button
+        class="menu-btn"
+        onclick="alert('سنضيف الشحن الحقيقي لاحقاً')">
+
         🪙 شحن العملات
+
       </button>
 
-      <button class="menu-btn" onclick="showGifts()">
+
+      <button
+        class="menu-btn"
+        onclick="alert('نظام الهدايا قادم')">
+
         🎁 الهدايا
+
       </button>
 
-      <button class="menu-btn" onclick="logout()">
+
+      <button
+        class="menu-btn"
+        onclick="logout()">
+
         🚪 تسجيل الخروج
+
       </button>
-    </div>
 
-  </main>
-
-
-  <!-- SHOP -->
-  <main id="shopPage" class="page hidden">
-
-    <h2 class="section-title">🪙 شحن العملات</h2>
-
-    <div class="shop-card">
-      <h3>1,000 عملة</h3>
-      <p>باقة تجريبية</p>
-      <button class="buy-btn" onclick="addCoins(1000)">
-        إضافة 1,000
-      </button>
-    </div>
-
-    <div class="shop-card">
-      <h3>5,000 عملة</h3>
-      <p>باقة تجريبية</p>
-      <button class="buy-btn" onclick="addCoins(5000)">
-        إضافة 5,000
-      </button>
-    </div>
-
-    <div class="shop-card">
-      <h3>10,000 عملة</h3>
-      <p>باقة تجريبية</p>
-      <button class="buy-btn" onclick="addCoins(10000)">
-        إضافة 10,000
-      </button>
     </div>
 
   </main>
 
 
   <!-- GIFTS -->
-  <main id="giftsPage" class="page hidden">
 
-    <h2 class="section-title">🎁 الهدايا</h2>
+  <main id="giftsPage"
+        class="page hidden">
 
-    <div class="shop-card">
-      <h3>هدايا سوريا لايف</h3>
-      <p>يمكن لاحقاً ربطها بنظام العملات الحقيقي.</p>
-    </div>
+    <h2 class="section-title">
+      🎁 الهدايا
+    </h2>
 
     <div class="gifts">
 
-      <button class="gift" onclick="sendGift('🌹',10)">
+      <button class="gift">
         <span>🌹</span>
         <small>10</small>
       </button>
 
-      <button class="gift" onclick="sendGift('❤️',50)">
+      <button class="gift">
         <span>❤️</span>
         <small>50</small>
       </button>
 
-      <button class="gift" onclick="sendGift('🎁',100)">
+      <button class="gift">
         <span>🎁</span>
         <small>100</small>
       </button>
 
-      <button class="gift" onclick="sendGift('👑',500)">
+      <button class="gift">
         <span>👑</span>
         <small>500</small>
       </button>
@@ -706,28 +957,49 @@ button{
   </main>
 
 
-  <!-- BOTTOM NAV -->
+  <!-- NAV -->
+
   <nav class="bottom-nav">
 
-    <button id="navHome"
-            class="nav-btn active"
-            onclick="goHome()">
-      <span class="nav-icon">🏠</span>
+    <button
+      id="navHome"
+      class="nav-btn active"
+      onclick="goHome()">
+
+      <span class="nav-icon">
+        🏠
+      </span>
+
       الرئيسية
+
     </button>
 
-    <button id="navGifts"
-            class="nav-btn"
-            onclick="showGifts()">
-      <span class="nav-icon">🎁</span>
+
+    <button
+      id="navGifts"
+      class="nav-btn"
+      onclick="showGifts()">
+
+      <span class="nav-icon">
+        🎁
+      </span>
+
       الهدايا
+
     </button>
 
-    <button id="navProfile"
-            class="nav-btn"
-            onclick="showProfile()">
-      <span class="nav-icon">👤</span>
+
+    <button
+      id="navProfile"
+      class="nav-btn"
+      onclick="showProfile()">
+
+      <span class="nav-icon">
+        👤
+      </span>
+
       حسابي
+
     </button>
 
   </nav>
@@ -735,17 +1007,26 @@ button{
 </section>
 
 
-<!-- ROOM PAGE -->
+<!-- ================= ROOM ================= -->
+
 <section id="roomPage" class="hidden">
 
   <header class="room-header">
 
-    <button class="back-btn" onclick="leaveRoom()">
+    <button
+      class="back-btn"
+      onclick="leaveRoom()">
+
       ← رجوع
+
     </button>
 
-    <div class="room-title" id="roomTitle">
+    <div
+      id="roomTitle"
+      class="room-title">
+
       غرفة صوتية
+
     </div>
 
     <div class="coins">
@@ -757,40 +1038,48 @@ button{
 
   <div class="room-body">
 
+
     <!-- ADMIN -->
-    <div id="adminPanel" class="admin-panel hidden">
+
+    <div
+      id="adminPanel"
+      class="admin-panel hidden">
 
       <div class="admin-title">
-        👑 لوحة مسؤول الغرفة
+        👑 مسؤول الغرفة
       </div>
 
-      <p style="color:#aaa;margin-bottom:12px;">
-        اختر عدد المقاعد:
+      <p style="color:#aaa;margin-bottom:10px;">
+        اختر عدد المقاعد
       </p>
 
       <div class="seat-buttons">
 
-        <button id="seat8"
-                class="seat-btn"
-                onclick="changeSeats(8)">
+        <button
+          id="seat8"
+          class="seat-btn"
+          onclick="changeSeats(8)">
           8
         </button>
 
-        <button id="seat10"
-                class="seat-btn"
-                onclick="changeSeats(10)">
+        <button
+          id="seat10"
+          class="seat-btn"
+          onclick="changeSeats(10)">
           10
         </button>
 
-        <button id="seat15"
-                class="seat-btn"
-                onclick="changeSeats(15)">
+        <button
+          id="seat15"
+          class="seat-btn"
+          onclick="changeSeats(15)">
           15
         </button>
 
-        <button id="seat20"
-                class="seat-btn"
-                onclick="changeSeats(20)">
+        <button
+          id="seat20"
+          class="seat-btn"
+          onclick="changeSeats(20)">
           20
         </button>
 
@@ -799,17 +1088,23 @@ button{
     </div>
 
 
-    <div id="micGrid" class="mic-grid"></div>
+    <div
+      id="micGrid"
+      class="mic-grid">
+    </div>
 
 
     <!-- CHAT -->
+
     <div class="chat">
 
-      <h3 style="margin-bottom:10px;color:#ffd700;">
+      <h3 style="color:#ffd700;margin-bottom:10px;">
         💬 الدردشة
       </h3>
 
-      <div id="chatMessages" class="chat-messages">
+      <div
+        id="chatMessages"
+        class="chat-messages">
 
         <div class="message">
           <strong>النظام:</strong>
@@ -818,11 +1113,14 @@ button{
 
       </div>
 
+
       <div class="chat-send">
 
-        <input id="chatInput"
-               type="text"
-               placeholder="اكتب رسالة...">
+        <input
+          id="chatInput"
+          type="text"
+          placeholder="اكتب رسالة..."
+        >
 
         <button onclick="sendMessage()">
           إرسال
@@ -834,24 +1132,33 @@ button{
 
 
     <!-- ROOM GIFTS -->
+
     <div class="gifts">
 
-      <button class="gift" onclick="sendGift('🌹',10)">
+      <button
+        class="gift"
+        onclick="sendGift('🌹',10)">
         <span>🌹</span>
         <small>10</small>
       </button>
 
-      <button class="gift" onclick="sendGift('❤️',50)">
+      <button
+        class="gift"
+        onclick="sendGift('❤️',50)">
         <span>❤️</span>
         <small>50</small>
       </button>
 
-      <button class="gift" onclick="sendGift('🎁',100)">
+      <button
+        class="gift"
+        onclick="sendGift('🎁',100)">
         <span>🎁</span>
         <small>100</small>
       </button>
 
-      <button class="gift" onclick="sendGift('👑',500)">
+      <button
+        class="gift"
+        onclick="sendGift('👑',500)">
         <span>👑</span>
         <small>500</small>
       </button>
@@ -863,122 +1170,154 @@ button{
 </section>
 
 
-<!-- CREATE ROOM MODAL -->
-<div id="createModal" class="modal hidden">
-
-  <div class="modal-box">
-
-    <h2>➕ إنشاء غرفة</h2>
-
-    <input id="newRoomName"
-           class="input"
-           type="text"
-           placeholder="اسم الغرفة">
-
-    <p style="color:#aaa;margin-bottom:10px;">
-      عدد المقاعد
-    </p>
-
-    <select id="newRoomSeats" class="input">
-      <option value="8">8 مقاعد</option>
-      <option value="10">10 مقاعد</option>
-      <option value="15">15 مقعد</option>
-      <option value="20">20 مقعد</option>
-    </select>
-
-    <button class="main-btn" onclick="createRoom()">
-      إنشاء الغرفة
-    </button>
-
-    <button class="close-btn" onclick="closeCreateRoom()">
-      إلغاء
-    </button>
-
-  </div>
-
-</div>
-
-
 <script>
 
-/* =========================
-   DATA
-========================= */
+/* ================= DATA ================= */
 
-let username = localStorage.getItem("syriaLiveUsername") || "";
-let phone = localStorage.getItem("syriaLivePhone") || "";
+let username =
+  localStorage.getItem("syriaLiveUsername") || "";
 
-let coins = Number(
-  localStorage.getItem("syriaLiveCoins") || 1000
+let phone =
+  localStorage.getItem("syriaLivePhone") || "";
+
+let coins =
+  Number(
+    localStorage.getItem("syriaLiveCoins") || 1000
+  );
+
+let userId =
+  localStorage.getItem("syriaLiveId") ||
+  String(
+    Math.floor(
+      100000 +
+      Math.random()*899999
+    )
+  );
+
+localStorage.setItem(
+  "syriaLiveId",
+  userId
 );
 
 let currentRoomName = "";
 let currentSeats = 8;
 let currentIsAdmin = false;
 
+let demoOTP = "123456";
+
+
 let rooms = [
+
   {
     name:"خدمة العملاء",
     seats:8,
     users:3,
     admin:true
   },
+
   {
     name:"سهرة سوريا",
     seats:10,
     users:6,
     admin:false
   },
+
   {
     name:"أغاني ودردشة",
     seats:15,
     users:8,
     admin:false
   },
+
   {
     name:"تعارف وأصدقاء",
     seats:20,
     users:12,
     admin:false
   }
+
 ];
 
 
-/* =========================
-   START
-========================= */
+/* ================= START ================= */
 
-document.addEventListener("DOMContentLoaded",function(){
+document.addEventListener(
+  "DOMContentLoaded",
+  function(){
 
-  if(username){
-    showApp();
+    if(username){
+      showApp();
+    }
+
+    renderRooms();
+    updateCoins();
+
   }
-
-  renderRooms();
-  updateCoins();
-
-});
+);
 
 
-/* =========================
-   LOGIN
-========================= */
+/* ================= OTP ================= */
 
-function login(){
+function sendOTP(){
 
-  const name =
-    document.getElementById("usernameInput").value.trim();
+  const phoneNumber =
+    document
+      .getElementById("phoneInput")
+      .value
+      .trim();
 
-  const userPhone =
-    document.getElementById("phoneInput").value.trim();
+  if(!phoneNumber){
 
-  if(!name){
-    alert("اكتب اسم المستخدم");
+    alert("أدخل رقم الهاتف أولاً");
+
     return;
   }
 
-  username = name;
-  phone = userPhone;
+  document
+    .getElementById("phoneLogin")
+    .classList.add("hidden");
+
+  document
+    .getElementById("otpBox")
+    .classList.remove("hidden");
+
+  /*
+    رمز تجريبي فقط.
+    في النسخة الحقيقية سيأتي SMS من الخادم.
+  */
+
+  alert(
+    "رمز التحقق التجريبي هو: 123456"
+  );
+}
+
+
+function verifyOTP(){
+
+  const otp =
+    document
+      .getElementById("otpInput")
+      .value
+      .trim();
+
+  if(otp !== demoOTP){
+
+    alert("رمز التحقق غير صحيح");
+
+    return;
+  }
+
+  const phoneNumber =
+    document
+      .getElementById("phoneInput")
+      .value
+      .trim();
+
+  username =
+    "مستخدم سوريا";
+
+  phone =
+    phoneNumber;
 
   localStorage.setItem(
     "syriaLiveUsername",
@@ -994,261 +1333,151 @@ function login(){
 }
 
 
+/* ================= GOOGLE ================= */
+
+function googleLogin(){
+
+  /*
+    هذا زر تجريبي.
+    Google الحقيقي يحتاج Firebase
+    أو نظام OAuth حقيقي.
+  */
+
+  username = "مستخدم Google";
+
+  localStorage.setItem(
+    "syriaLiveUsername",
+    username
+  );
+
+  showApp();
+
+  alert(
+    "تم الدخول تجريبياً باستخدام Google"
+  );
+}
+
+
+/* ================= APP ================= */
+
 function showApp(){
 
-  document.getElementById("loginPage")
+  document
+    .getElementById("loginPage")
     .classList.add("hidden");
 
-  document.getElementById("app")
+  document
+    .getElementById("roomPage")
+    .classList.add("hidden");
+
+  document
+    .getElementById("app")
     .classList.remove("hidden");
 
-  document.getElementById("roomPage")
-    .classList.add("hidden");
-
-  document.getElementById("welcomeName")
+  document
+    .getElementById("welcomeName")
     .textContent = username;
 
-  document.getElementById("profileName")
+  document
+    .getElementById("profileName")
     .textContent = username;
+
+  document
+    .getElementById("profileId")
+    .textContent = userId;
 
   updateCoins();
   renderRooms();
+
 }
 
 
 function logout(){
 
-  localStorage.removeItem("syriaLiveUsername");
-  localStorage.removeItem("syriaLivePhone");
+  localStorage.removeItem(
+    "syriaLiveUsername"
+  );
+
+  localStorage.removeItem(
+    "syriaLivePhone"
+  );
 
   username = "";
   phone = "";
 
-  document.getElementById("app")
+  document
+    .getElementById("app")
     .classList.add("hidden");
 
-  document.getElementById("roomPage")
+  document
+    .getElementById("roomPage")
     .classList.add("hidden");
 
-  document.getElementById("loginPage")
+  document
+    .getElementById("loginPage")
     .classList.remove("hidden");
+
+  document
+    .getElementById("phoneLogin")
+    .classList.remove("hidden");
+
+  document
+    .getElementById("otpBox")
+    .classList.add("hidden");
+
 }
 
 
-/* =========================
-   COINS
-========================= */
+/* ================= COINS ================= */
 
 function updateCoins(){
 
-  document.getElementById("coinBalance")
+  document
+    .getElementById("coinBalance")
     .textContent = coins;
 
-  document.getElementById("profileCoins")
+  document
+    .getElementById("profileCoins")
     .textContent = coins;
 
-  document.getElementById("roomCoins")
+  document
+    .getElementById("roomCoins")
     .textContent = coins;
 
   localStorage.setItem(
     "syriaLiveCoins",
     coins
   );
+
 }
 
 
-function addCoins(amount){
-
-  coins += amount;
-
-  updateCoins();
-
-  alert(
-    "تمت إضافة " +
-    amount.toLocaleString() +
-    " عملة تجريبية"
-  );
-}
-
-
-/* =========================
-   ROOMS
-========================= */
+/* ================= ROOMS ================= */
 
 function renderRooms(){
 
   const list =
-    document.getElementById("roomsList");
+    document.getElementById(
+      "roomsList"
+    );
 
   if(!list) return;
 
   list.innerHTML = "";
 
-  rooms.forEach((room,index)=>{
+  rooms.forEach(
+    function(room,index){
 
-    const card =
-      document.createElement("div");
+      const card =
+        document.createElement("div");
 
-    card.className = "room-card";
+      card.className =
+        "room-card";
 
-    card.innerHTML = `
+      card.innerHTML = `
 
-      <div class="room-top">
+        <div class="room-top">
 
-        <div class="room-name">
-          🎙️ ${escapeHtml(room.name)}
-        </div>
-
-        <div class="live">
-          ● مباشر
-        </div>
-
-      </div>
-
-      <div class="room-info">
-        👥 ${room.users}/${room.seats}
-        &nbsp; • &nbsp;
-        🎤 ${room.seats} مقعد
-      </div>
-
-      <button class="join-btn"
-              onclick="joinRoomByIndex(${index})">
-        دخول الغرفة
-      </button>
-    `;
-
-    list.appendChild(card);
-
-  });
-
-}
-
-
-function joinRoomByIndex(index){
-
-  const room = rooms[index];
-
-  if(!room) return;
-
-  joinRoom(
-    room.name,
-    room.seats,
-    room.admin
-  );
-}
-
-
-function joinRoom(name,seats,isAdmin){
-
-  currentRoomName = name;
-  currentSeats = seats;
-  currentIsAdmin = isAdmin;
-
-  document.getElementById("app")
-    .classList.add("hidden");
-
-  document.getElementById("roomPage")
-    .classList.remove("hidden");
-
-  document.getElementById("roomTitle")
-    .textContent = "🎙️ " + name;
-
-  document.getElementById("adminPanel")
-    .classList.toggle(
-      "hidden",
-      !currentIsAdmin
-    );
-
-  renderSeats();
-  updateSeatButtons();
-  updateCoins();
-}
-
-
-function leaveRoom(){
-
-  document.getElementById("roomPage")
-    .classList.add("hidden");
-
-  document.getElementById("app")
-    .classList.remove("hidden");
-
-  goHome();
-}
-
-
-/* =========================
-   ADMIN SEATS
-========================= */
-
-function changeSeats(number){
-
-  if(!currentIsAdmin){
-
-    alert(
-      "هذه الخاصية لمسؤول الغرفة فقط"
-    );
-
-    return;
-  }
-
-  if(
-    number !== 8 &&
-    number !== 10 &&
-    number !== 15 &&
-    number !== 20
-  ){
-    return;
-  }
-
-  currentSeats = number;
-
-  renderSeats();
-  updateSeatButtons();
-
-}
-
-
-function updateSeatButtons(){
-
-  [8,10,15,20].forEach(number=>{
-
-    const btn =
-      document.getElementById(
-        "seat" + number
-      );
-
-    if(!btn) return;
-
-    btn.classList.toggle(
-      "active",
-      currentSeats === number
-    );
-
-  });
-
-}
-
-
-/* =========================
-   SEATS
-========================= */
-
-function renderSeats(){
-
-  const grid =
-    document.getElementById("micGrid");
-
-  grid.innerHTML = "";
-
-  for(let i=1;i<=currentSeats;i++){
-
-    const seat =
-      document.createElement("div");
-
-    seat.className = "seat";
-
-    let occupied = false;
-    let occupant = "";
-
-   
+          <div class="room-name">
+            🎙️ ${escapeHtml(room.name)}
+          </di
