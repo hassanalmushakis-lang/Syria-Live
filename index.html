@@ -14,856 +14,542 @@
 }
 
 body{
+  background:#0d1117;
+  color:white;
   min-height:100vh;
-  background:#080b12;
-  color:#fff;
+}
+
+button{
+  border:0;
+  cursor:pointer;
 }
 
 .hidden{
   display:none!important;
 }
 
-button,input{
-  font-family:inherit;
-}
-
-/* ================= LOGIN ================= */
-
+/* LOGIN */
 #loginPage{
   min-height:100vh;
   display:flex;
-  align-items:center;
   justify-content:center;
+  align-items:center;
   padding:20px;
-
   background:
-    linear-gradient(
-      rgba(0,0,0,.68),
-      rgba(0,0,0,.88)
-    ),
-    url("civilizations-syria.jpg")
-    center/cover no-repeat;
+    radial-gradient(circle at top,#25384d,#0d1117 60%);
 }
 
-.login-box{
+.loginBox{
   width:100%;
-  max-width:410px;
+  max-width:430px;
+  background:#151c25;
+  border:1px solid #2b3948;
+  border-radius:24px;
   padding:28px 22px;
-  border-radius:25px;
-
-  background:rgba(15,18,27,.96);
-
-  border:1px solid rgba(255,215,0,.35);
-
-  box-shadow:
-    0 0 35px rgba(255,215,0,.12);
-
-  text-align:center;
+  box-shadow:0 20px 60px #0008;
 }
 
 .logo{
-  width:82px;
-  height:82px;
-  margin:0 auto 12px;
-
+  width:90px;
+  height:90px;
+  margin:0 auto 15px;
   border-radius:50%;
-
   display:flex;
   align-items:center;
   justify-content:center;
-
-  background:#111722;
-
-  border:2px solid #ffd700;
-
-  font-size:40px;
+  background:linear-gradient(135deg,#111,#304a60);
+  border:3px solid #d7b45a;
+  font-size:34px;
 }
 
-.login-title{
-  color:#ffd700;
-  font-size:30px;
-  margin-bottom:7px;
+.loginTitle{
+  text-align:center;
+  font-size:28px;
+  font-weight:bold;
+  margin-bottom:8px;
 }
 
-.login-subtitle{
-  color:#aaa;
-  margin-bottom:24px;
+.loginSub{
+  text-align:center;
+  color:#9ca9b8;
+  margin-bottom:25px;
 }
 
-/* COUNTRY */
-
-.country-row{
+.phoneRow{
   display:flex;
   gap:8px;
+}
+
+.country{
+  width:105px;
+  background:#202b37;
+  color:white;
+  border:1px solid #3a4857;
+  border-radius:12px;
+  padding:14px 8px;
+}
+
+.input{
+  width:100%;
+  padding:14px;
+  background:#202b37;
+  color:white;
+  border:1px solid #3a4857;
+  border-radius:12px;
+  outline:none;
   margin-bottom:12px;
 }
 
-.country-code{
-  width:105px;
-  background:#202632;
-  color:#fff;
-  border:1px solid #343c4c;
-  border-radius:12px;
-  padding:14px 8px;
-  font-size:15px;
+.input:focus{
+  border-color:#d7b45a;
 }
 
-.phone-input{
-  flex:1;
-  min-width:0;
-
-  background:#202632;
-  color:#fff;
-
-  border:1px solid #343c4c;
-  border-radius:12px;
-
-  padding:14px;
-
-  outline:none;
-  font-size:16px;
-}
-
-.main-btn{
+.primary{
   width:100%;
   padding:15px;
-
   border-radius:13px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #ffd700,
-      #b8860b
-    );
-
+  background:linear-gradient(135deg,#d9bd68,#9f7930);
   color:#111;
   font-weight:bold;
-  font-size:17px;
-
+  font-size:16px;
   margin-top:5px;
 }
 
-.google-btn{
+.google{
   width:100%;
-  padding:14px;
-
-  margin-top:13px;
-
+  padding:15px;
   border-radius:13px;
-
-  background:#fff;
+  background:white;
   color:#222;
-
   font-weight:bold;
   font-size:16px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-}
-
-.google-icon{
-  font-size:21px;
+  margin-top:12px;
 }
 
 .divider{
   display:flex;
   align-items:center;
   gap:10px;
-
-  color:#777;
-
+  color:#778493;
   margin:20px 0;
 }
 
-.divider::before,
-.divider::after{
-  content:"";
-  height:1px;
-  background:#303644;
+.divider span{
   flex:1;
+  height:1px;
+  background:#34404d;
 }
 
-.terms{
-  color:#777;
-  font-size:12px;
-  line-height:1.7;
-  margin-top:18px;
+#recaptcha-container{
+  margin:12px 0;
 }
 
-/* OTP */
-
-#otpBox{
-  margin-top:15px;
-}
-
-.otp-title{
-  color:#ffd700;
-  margin-bottom:8px;
-}
-
-.otp-info{
-  color:#999;
-  font-size:13px;
-  margin-bottom:12px;
-}
-
-.otp-input{
-  width:100%;
-
-  background:#202632;
-  color:#fff;
-
-  border:1px solid #343c4c;
-
-  border-radius:12px;
-
-  padding:15px;
-
-  text-align:center;
-
-  font-size:23px;
-  letter-spacing:8px;
-
-  outline:none;
-}
-
-.resend{
-  background:none;
-  color:#ffd700;
-  margin-top:12px;
-}
-
-/* ================= APP ================= */
-
+/* APP */
 #app{
   min-height:100vh;
   padding-bottom:75px;
 }
 
-.header{
-  position:sticky;
-  top:0;
-  z-index:10;
-
-  height:60px;
-
+.topbar{
+  height:65px;
+  background:#151c25;
+  border-bottom:1px solid #2b3948;
   display:flex;
   align-items:center;
   justify-content:space-between;
-
   padding:0 16px;
-
-  background:#10141e;
-
-  border-bottom:1px solid #292f3b;
+  position:sticky;
+  top:0;
+  z-index:10;
 }
 
-.header-title{
-  color:#ffd700;
+.brand{
   font-size:21px;
   font-weight:bold;
+  color:#e1c46e;
 }
 
 .coins{
-  background:#202632;
-  color:#ffd700;
+  background:#202b37;
+  border:1px solid #384858;
   padding:8px 12px;
   border-radius:20px;
 }
 
 .page{
-  padding:16px;
-}
-
-.welcome{
-  background:#151b26;
-  border:1px solid #293243;
-  border-radius:20px;
   padding:18px;
 }
 
-.gold{
-  color:#ffd700;
-}
-
-.banner{
-  margin-top:15px;
-  min-height:150px;
-
+.welcome{
+  background:linear-gradient(135deg,#172636,#111820);
+  border:1px solid #2b3948;
+  padding:20px;
   border-radius:20px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  text-align:center;
-
-  background:
-    linear-gradient(
-      rgba(0,0,0,.5),
-      rgba(0,0,0,.75)
-    ),
-    url("civilizations-syria.jpg")
-    center/cover no-repeat;
-
-  border:1px solid rgba(255,215,0,.3);
+  margin-bottom:18px;
 }
 
-.banner h2{
-  color:#ffd700;
-  font-size:28px;
+.welcome h2{
+  margin-bottom:7px;
 }
 
-.section-title{
+.muted{
+  color:#98a5b3;
+}
+
+.sectionTitle{
   margin:20px 0 12px;
+  font-size:20px;
 }
 
 .rooms{
   display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
   gap:12px;
 }
 
-.room-card{
-  background:#151b26;
-  border:1px solid #293243;
+.roomCard{
+  background:#151c25;
+  border:1px solid #2c3947;
   border-radius:18px;
-  padding:15px;
+  padding:16px;
 }
 
-.room-top{
-  display:flex;
-  justify-content:space-between;
-  margin-bottom:10px;
+.roomIcon{
+  font-size:32px;
+  margin-bottom:8px;
 }
 
-.room-name{
+.roomName{
   font-weight:bold;
-  font-size:17px;
+  margin-bottom:8px;
 }
 
-.live{
-  color:#5cff8d;
-  font-size:12px;
-}
-
-.room-info{
-  color:#999;
+.roomInfo{
+  color:#8f9dab;
+  font-size:13px;
   margin-bottom:12px;
 }
 
-.join-btn{
+.roomButton{
   width:100%;
-  padding:12px;
-  border-radius:11px;
-  background:#252e3d;
-  color:#fff;
-}
-
-.create-btn{
-  margin-top:15px;
+  padding:11px;
+  border-radius:10px;
+  background:#263746;
+  color:white;
 }
 
 /* PROFILE */
-
-.profile-card{
-  background:#151b26;
-  border:1px solid #293243;
+.profileCard{
+  background:#151c25;
+  border:1px solid #2c3947;
   border-radius:20px;
-  padding:25px;
+  padding:22px;
   text-align:center;
 }
 
 .avatar{
-  width:90px;
-  height:90px;
+  width:80px;
+  height:80px;
   border-radius:50%;
-
-  margin:0 auto 12px;
-
+  background:#263746;
   display:flex;
-  align-items:center;
   justify-content:center;
-
-  background:linear-gradient(
-    135deg,
-    #ffd700,
-    #8b6508
-  );
-
-  color:#111;
-  font-size:40px;
+  align-items:center;
+  margin:0 auto 12px;
+  font-size:32px;
 }
 
-.profile-id{
-  color:#888;
-  margin:8px 0 20px;
+.profileLine{
+  margin:10px 0;
+  color:#a7b2bf;
 }
 
-.menu-btn{
-  width:100%;
-  padding:13px;
-  margin-top:10px;
-
-  border-radius:11px;
-
-  background:#252e3d;
-  color:#fff;
-}
-
-/* NAV */
-
-.bottom-nav{
-  position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-
-  height:65px;
-
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-
-  background:#10141e;
-
-  border-top:1px solid #293243;
-}
-
-.nav-btn{
-  background:none;
-  color:#888;
-  font-size:12px;
-}
-
-.nav-btn.active{
-  color:#ffd700;
-}
-
-.nav-icon{
-  display:block;
-  font-size:21px;
-  margin-bottom:3px;
-}
-
-/* ================= ROOM ================= */
-
+/* ROOM */
 #roomPage{
   min-height:100vh;
-  background:#080b12;
+  background:#0c1117;
 }
 
-.room-header{
-  height:60px;
-
+.roomHeader{
+  height:65px;
+  background:#151c25;
   display:flex;
   align-items:center;
   justify-content:space-between;
-
   padding:0 12px;
-
-  background:#10141e;
-
-  border-bottom:1px solid #293243;
 }
 
-.back-btn{
-  background:#252e3d;
-  color:#fff;
-  padding:9px 12px;
-  border-radius:9px;
+.back{
+  background:#263746;
+  color:white;
+  padding:9px 13px;
+  border-radius:10px;
 }
 
-.room-title{
-  color:#ffd700;
-  font-weight:bold;
-}
-
-.room-body{
+.adminPanel{
+  background:#151c25;
+  margin:14px;
   padding:15px;
-}
-
-.admin-panel{
-  background:#151b26;
-  border:1px solid rgba(255,215,0,.35);
   border-radius:18px;
-  padding:15px;
-  margin-bottom:15px;
+  border:1px solid #2c3947;
 }
 
-.admin-title{
-  color:#ffd700;
-  font-weight:bold;
-  margin-bottom:12px;
+.adminPanel select{
+  margin-top:10px;
+  width:100%;
+  padding:12px;
+  border-radius:10px;
+  background:#202b37;
+  color:white;
+  border:1px solid #3a4857;
 }
 
-.seat-buttons{
+.seats{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:7px;
-}
-
-.seat-btn{
-  padding:10px 3px;
-  border-radius:9px;
-  background:#252e3d;
-  color:#fff;
-}
-
-.seat-btn.active{
-  background:#ffd700;
-  color:#111;
-}
-
-.mic-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:9px;
-  margin-bottom:15px;
+  gap:12px;
+  padding:18px;
 }
 
 .seat{
-  min-height:88px;
-
+  aspect-ratio:1;
+  border-radius:50%;
+  background:#202b37;
+  border:2px solid #394958;
   display:flex;
   flex-direction:column;
-  align-items:center;
   justify-content:center;
+  align-items:center;
+  font-size:13px;
+}
 
-  background:#151b26;
-
-  border:1px solid #293243;
-
-  border-radius:15px;
+.seat.active{
+  border-color:#d7b45a;
+  background:#473b22;
 }
 
 .mic{
-  width:42px;
-  height:42px;
-
-  border-radius:50%;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  background:#252e3d;
-
-  margin-bottom:5px;
+  font-size:25px;
+  margin-bottom:4px;
 }
-
-.seat-name{
-  color:#aaa;
-  font-size:11px;
-}
-
-.seat.occupied .mic{
-  border:1px solid #ffd700;
-  background:#403610;
-}
-
-/* CHAT */
 
 .chat{
-  background:#111620;
-  border:1px solid #293243;
+  margin:14px;
+  background:#151c25;
   border-radius:18px;
-  padding:13px;
+  border:1px solid #2c3947;
+  padding:14px;
 }
 
-.chat-messages{
-  height:180px;
-  overflow-y:auto;
+.messages{
+  min-height:160px;
+  max-height:260px;
+  overflow:auto;
   margin-bottom:10px;
 }
 
 .message{
-  background:#202733;
-  padding:8px 10px;
-  border-radius:10px;
-  margin-bottom:7px;
-  font-size:13px;
+  padding:7px 0;
+  color:#d4dbe2;
 }
 
-.message strong{
-  color:#ffd700;
-}
-
-.chat-send{
+.chatRow{
   display:flex;
-  gap:7px;
-}
-
-.chat-send input{
-  flex:1;
-
-  background:#202733;
-  border:1px solid #303949;
-
-  color:#fff;
-
-  border-radius:10px;
-
-  padding:11px;
-}
-
-.chat-send button{
-  background:#ffd700;
-  color:#111;
-
-  padding:0 14px;
-
-  border-radius:10px;
-}
-
-/* GIFTS */
-
-.gifts{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
   gap:8px;
-  margin-top:14px;
 }
 
-.gift{
-  background:#202733;
-  color:#fff;
-  border-radius:12px;
-  padding:9px 3px;
+.chatRow input{
+  flex:1;
+  padding:12px;
+  border-radius:10px;
+  border:1px solid #3a4857;
+  background:#202b37;
+  color:white;
 }
 
-.gift span{
+.chatRow button{
+  padding:12px 16px;
+  border-radius:10px;
+  background:#d7b45a;
+}
+
+/* NAV */
+.bottomNav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  height:68px;
+  background:#151c25;
+  border-top:1px solid #2b3948;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  z-index:20;
+}
+
+.navBtn{
+  background:none;
+  color:#8f9dab;
+  text-align:center;
+  font-size:12px;
+}
+
+.navBtn.active{
+  color:#e1c46e;
+}
+
+.navIcon{
   display:block;
-  font-size:26px;
+  font-size:22px;
+  margin-bottom:3px;
 }
 
-.gift small{
-  color:#ffd700;
+@media(max-width:400px){
+  .seats{
+    grid-template-columns:repeat(4,1fr);
+    gap:8px;
+    padding:12px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- ================= LOGIN ================= -->
-
+<!-- LOGIN -->
 <section id="loginPage">
 
-  <div class="login-box">
+  <div class="loginBox">
 
     <div class="logo">🇸🇾</div>
 
-    <h1 class="login-title">
-      سوريا لايف
-    </h1>
+    <div class="loginTitle">سوريا لايف</div>
 
-    <p class="login-subtitle">
+    <div class="loginSub">
       دردشة صوتية سورية
-    </p>
-
+    </div>
 
     <div id="phoneLogin">
 
-      <div class="country-row">
+      <div class="phoneRow">
 
-        <select id="countryCode"
-                class="country-code">
-
-          <option value="+963">
-            🇸🇾 +963
-          </option>
-
-          <option value="+44">
-            🇬🇧 +44
-          </option>
-
-          <option value="+90">
-            🇹🇷 +90
-          </option>
-
-          <option value="+962">
-            🇯🇴 +962
-          </option>
-
-          <option value="+961">
-            🇱🇧 +961
-          </option>
-
-          <option value="+964">
-            🇮🇶 +964
-          </option>
-
+        <select id="countryCode" class="country">
+          <option value="+963">🇸🇾 +963</option>
+          <option value="+44">🇬🇧 +44</option>
+          <option value="+90">🇹🇷 +90</option>
+          <option value="+962">🇯🇴 +962</option>
+          <option value="+961">🇱🇧 +961</option>
+          <option value="+964">🇮🇶 +964</option>
         </select>
 
         <input
           id="phoneInput"
-          class="phone-input"
+          class="input"
           type="tel"
           placeholder="رقم الهاتف"
+          autocomplete="tel"
         >
 
       </div>
 
+      <div id="recaptcha-container"></div>
 
       <button
-        class="main-btn"
+        class="primary"
         onclick="sendOTP()">
-
         متابعة برقم الهاتف
-
-      </button>
-
-
-      <div class="divider">
-        أو
-      </div>
-
-
-      <button
-        class="google-btn"
-        onclick="googleLogin()">
-
-        <span class="google-icon">G</span>
-
-        متابعة باستخدام Google
-
       </button>
 
     </div>
 
-
-    <!-- OTP -->
-
     <div id="otpBox" class="hidden">
 
-      <div class="otp-title">
-        🔐 رمز التحقق
-      </div>
-
-      <p class="otp-info">
-        أدخل رمز التحقق المرسل إلى رقم هاتفك
+      <p class="muted" style="margin-bottom:12px">
+        تم إرسال رمز التحقق إلى هاتفك
       </p>
 
       <input
         id="otpInput"
-        class="otp-input"
-        maxlength="6"
+        class="input"
+        type="number"
         inputmode="numeric"
-        placeholder="••••••"
+        placeholder="أدخل رمز التحقق"
       >
 
       <button
-        class="main-btn"
+        class="primary"
         onclick="verifyOTP()">
-
-        تأكيد الدخول
-
+        تأكيد الرمز والدخول
       </button>
 
       <button
-        class="resend"
-        onclick="sendOTP()">
-
-        إعادة إرسال الرمز
-
+        onclick="backToPhone()"
+        style="width:100%;margin-top:10px;padding:12px;border-radius:10px;background:#263746;color:white">
+        تغيير الرقم
       </button>
 
     </div>
 
-
-    <div class="terms">
-      بمتابعة الدخول، أنت توافق على شروط
-      استخدام سوريا لايف وسياسة الخصوصية.
+    <div class="divider">
+      <span></span>
+      أو
+      <span></span>
     </div>
+
+    <button
+      class="google"
+      onclick="googleLogin()">
+      🔵 الدخول باستخدام Google
+    </button>
 
   </div>
 
 </section>
 
 
-<!-- ================= APP ================= -->
-
+<!-- APP -->
 <section id="app" class="hidden">
 
-  <header class="header">
+  <div class="topbar">
 
-    <div class="header-title">
-      🇸🇾 سوريا لايف
+    <div class="brand">
+      سوريا لايف
     </div>
 
     <div class="coins">
-      🪙 <span id="coinBalance">1000</span>
+      🪙 <span id="coins">1000</span>
     </div>
 
-  </header>
+  </div>
 
 
   <!-- HOME -->
-
   <main id="homePage" class="page">
 
     <div class="welcome">
-
       <h2>
-        أهلاً
-        <span id="welcomeName"
-              class="gold">
-        </span>
-        👋
+        أهلاً <span id="welcomeName">مستخدم</span> 👋
       </h2>
 
-      <p style="color:#aaa;margin-top:6px;">
-        أهلاً بك في سوريا لايف
-      </p>
-
-    </div>
-
-
-    <div class="banner">
-
-      <div>
-
-        <h2>
-          سوريا لايف
-        </h2>
-
-        <p style="margin-top:7px;">
-          غرف صوتية • دردشة • هدايا
-        </p>
-
+      <div class="muted">
+        مرحباً بك في سوريا لايف
       </div>
-
     </div>
 
+    <h3 class="sectionTitle">
+      🔴 الغرف المباشرة
+    </h3>
 
-    <h2 class="section-title">
-      🎙️ الغرف الصوتية
-    </h2>
-
-
-    <div id="roomsList"
-         class="rooms">
-    </div>
-
-
-    <button
-      class="main-btn create-btn"
-      onclick="createRoom()">
-
-      ➕ إنشاء غرفة جديدة
-
-    </button>
+    <div id="rooms" class="rooms"></div>
 
   </main>
 
 
   <!-- PROFILE -->
+  <main id="profilePage" class="page hidden">
 
-  <main id="profilePage"
-        class="page hidden">
-
-    <div class="profile-card">
+    <div class="profileCard">
 
       <div class="avatar">
         👤
@@ -873,47 +559,23 @@ button,input{
         مستخدم
       </h2>
 
-      <div class="profile-id">
-        ID:
-        <span id="profileId">
-          100001
-        </span>
+      <div class="profileLine">
+        ID: <span id="profileId">-</span>
       </div>
 
-      <p>
-        🪙 الرصيد:
-        <strong class="gold">
-          <span id="profileCoins">
-            1000
-          </span>
-        </strong>
-      </p>
+      <div class="profileLine">
+        📱 <span id="profilePhone">-</span>
+      </div>
 
+      <div class="profileLine">
+        🪙 الرصيد: <span id="profileCoins">1000</span>
+      </div>
 
       <button
-        class="menu-btn"
-        onclick="alert('سنضيف الشحن الحقيقي لاحقاً')">
-
-        🪙 شحن العملات
-
-      </button>
-
-
-      <button
-        class="menu-btn"
-        onclick="alert('نظام الهدايا قادم')">
-
-        🎁 الهدايا
-
-      </button>
-
-
-      <button
-        class="menu-btn"
-        onclick="logout()">
-
-        🚪 تسجيل الخروج
-
+        class="primary"
+        onclick="logout()"
+        style="margin-top:20px">
+        تسجيل الخروج
       </button>
 
     </div>
@@ -922,35 +584,35 @@ button,input{
 
 
   <!-- GIFTS -->
+  <main id="giftsPage" class="page hidden">
 
-  <main id="giftsPage"
-        class="page hidden">
+    <h2>🎁 الهدايا</h2>
 
-    <h2 class="section-title">
-      🎁 الهدايا
-    </h2>
+    <div class="rooms" style="margin-top:20px">
 
-    <div class="gifts">
+      <div class="roomCard">
+        🌹 وردة
+        <br><br>
+        <button class="roomButton" onclick="sendGift(10)">
+          10 🪙
+        </button>
+      </div>
 
-      <button class="gift">
-        <span>🌹</span>
-        <small>10</small>
-      </button>
+      <div class="roomCard">
+        💎 ألماسة
+        <br><br>
+        <button class="roomButton" onclick="sendGift(100)">
+          100 🪙
+        </button>
+      </div>
 
-      <button class="gift">
-        <span>❤️</span>
-        <small>50</small>
-      </button>
-
-      <button class="gift">
-        <span>🎁</span>
-        <small>100</small>
-      </button>
-
-      <button class="gift">
-        <span>👑</span>
-        <small>500</small>
-      </button>
+      <div class="roomCard">
+        👑 تاج
+        <br><br>
+        <button class="roomButton" onclick="sendGift(500)">
+          500 🪙
+        </button>
+      </div>
 
     </div>
 
@@ -958,48 +620,27 @@ button,input{
 
 
   <!-- NAV -->
-
-  <nav class="bottom-nav">
+  <nav class="bottomNav">
 
     <button
-      id="navHome"
-      class="nav-btn active"
-      onclick="goHome()">
-
-      <span class="nav-icon">
-        🏠
-      </span>
-
+      class="navBtn active"
+      onclick="showPage('homePage',this)">
+      <span class="navIcon">🏠</span>
       الرئيسية
-
     </button>
 
-
     <button
-      id="navGifts"
-      class="nav-btn"
-      onclick="showGifts()">
-
-      <span class="nav-icon">
-        🎁
-      </span>
-
+      class="navBtn"
+      onclick="showPage('giftsPage',this)">
+      <span class="navIcon">🎁</span>
       الهدايا
-
     </button>
 
-
     <button
-      id="navProfile"
-      class="nav-btn"
-      onclick="showProfile()">
-
-      <span class="nav-icon">
-        👤
-      </span>
-
+      class="navBtn"
+      onclick="showPage('profilePage',this)">
+      <span class="navIcon">👤</span>
       حسابي
-
     </button>
 
   </nav>
@@ -1007,160 +648,65 @@ button,input{
 </section>
 
 
-<!-- ================= ROOM ================= -->
-
+<!-- ROOM -->
 <section id="roomPage" class="hidden">
 
-  <header class="room-header">
+  <div class="roomHeader">
 
     <button
-      class="back-btn"
+      class="back"
       onclick="leaveRoom()">
-
-      ← رجوع
-
+      ← خروج
     </button>
 
-    <div
-      id="roomTitle"
-      class="room-title">
+    <strong id="roomTitle">
+      الغرفة
+    </strong>
 
-      غرفة صوتية
+    <span>🔴 مباشر</span>
 
-    </div>
-
-    <div class="coins">
-      🪙 <span id="roomCoins">1000</span>
-    </div>
-
-  </header>
+  </div>
 
 
-  <div class="room-body">
+  <div class="adminPanel">
+
+    <strong>
+      ⚙️ إدارة الغرفة
+    </strong>
+
+    <select
+      id="seatCount"
+      onchange="changeSeats()">
+
+      <option value="8">8 مايكات</option>
+      <option value="10">10 مايكات</option>
+      <option value="15">15 مايكات</option>
+      <option value="20">20 مايكات</option>
+
+    </select>
+
+  </div>
 
 
-    <!-- ADMIN -->
-
-    <div
-      id="adminPanel"
-      class="admin-panel hidden">
-
-      <div class="admin-title">
-        👑 مسؤول الغرفة
-      </div>
-
-      <p style="color:#aaa;margin-bottom:10px;">
-        اختر عدد المقاعد
-      </p>
-
-      <div class="seat-buttons">
-
-        <button
-          id="seat8"
-          class="seat-btn"
-          onclick="changeSeats(8)">
-          8
-        </button>
-
-        <button
-          id="seat10"
-          class="seat-btn"
-          onclick="changeSeats(10)">
-          10
-        </button>
-
-        <button
-          id="seat15"
-          class="seat-btn"
-          onclick="changeSeats(15)">
-          15
-        </button>
-
-        <button
-          id="seat20"
-          class="seat-btn"
-          onclick="changeSeats(20)">
-          20
-        </button>
-
-      </div>
-
-    </div>
+  <div id="seats" class="seats"></div>
 
 
-    <div
-      id="micGrid"
-      class="mic-grid">
-    </div>
+  <div class="chat">
 
+    <h3 style="margin-bottom:12px">
+      💬 دردشة الغرفة
+    </h3>
 
-    <!-- CHAT -->
+    <div id="messages" class="messages"></div>
 
-    <div class="chat">
+    <div class="chatRow">
 
-      <h3 style="color:#ffd700;margin-bottom:10px;">
-        💬 الدردشة
-      </h3>
+      <input
+        id="messageInput"
+        placeholder="اكتب رسالة...">
 
-      <div
-        id="chatMessages"
-        class="chat-messages">
-
-        <div class="message">
-          <strong>النظام:</strong>
-          أهلاً بكم في الغرفة 🇸🇾
-        </div>
-
-      </div>
-
-
-      <div class="chat-send">
-
-        <input
-          id="chatInput"
-          type="text"
-          placeholder="اكتب رسالة..."
-        >
-
-        <button onclick="sendMessage()">
-          إرسال
-        </button>
-
-      </div>
-
-    </div>
-
-
-    <!-- ROOM GIFTS -->
-
-    <div class="gifts">
-
-      <button
-        class="gift"
-        onclick="sendGift('🌹',10)">
-        <span>🌹</span>
-        <small>10</small>
-      </button>
-
-      <button
-        class="gift"
-        onclick="sendGift('❤️',50)">
-        <span>❤️</span>
-        <small>50</small>
-      </button>
-
-      <button
-        class="gift"
-        onclick="sendGift('🎁',100)">
-        <span>🎁</span>
-        <small>100</small>
-      </button>
-
-      <button
-        class="gift"
-        onclick="sendGift('👑',500)">
-        <span>👑</span>
-        <small>500</small>
+      <button onclick="sendMessage()">
+        إرسال
       </button>
 
     </div>
@@ -1170,197 +716,227 @@ button,input{
 </section>
 
 
-<script>
+<!-- FIREBASE -->
+<script type="module">
 
-/* ================= DATA ================= */
+import { initializeApp } from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
 
-let username =
-  localStorage.getItem("syriaLiveUsername") || "";
-
-let phone =
-  localStorage.getItem("syriaLivePhone") || "";
-
-let coins =
-  Number(
-    localStorage.getItem("syriaLiveCoins") || 1000
-  );
-
-let userId =
-  localStorage.getItem("syriaLiveId") ||
-  String(
-    Math.floor(
-      100000 +
-      Math.random()*899999
-    )
-  );
-
-localStorage.setItem(
-  "syriaLiveId",
-  userId
-);
-
-let currentRoomName = "";
-let currentSeats = 8;
-let currentIsAdmin = false;
-
-let demoOTP = "123456";
+import {
+  getAuth,
+  RecaptchaVerifier,
+  signInWithPhoneNumber,
+  GoogleAuthProvider,
+  signInWithRedirect,
+  getRedirectResult,
+  onAuthStateChanged,
+  signOut
+} from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
 
-let rooms = [
-
-  {
-    name:"خدمة العملاء",
-    seats:8,
-    users:3,
-    admin:true
-  },
-
-  {
-    name:"سهرة سوريا",
-    seats:10,
-    users:6,
-    admin:false
-  },
-
-  {
-    name:"أغاني ودردشة",
-    seats:15,
-    users:8,
-    admin:false
-  },
-
-  {
-    name:"تعارف وأصدقاء",
-    seats:20,
-    users:12,
-    admin:false
-  }
-
-];
+const firebaseConfig = {
+  apiKey: "AIzaSyC_GWsU8ZqLjfYPVUJHlTe0UW_QIBzKCM",
+  authDomain: "syria-live.firebaseapp.com",
+  projectId: "syria-live",
+  storageBucket: "syria-live.firebasestorage.app",
+  messagingSenderId: "115020553046",
+  appId: "1:115020553046:web:aab4092300a793162014f7",
+  measurementId: "G-BZ5TDJMCW2"
+};
 
 
-/* ================= START ================= */
+const app = initializeApp(firebaseConfig);
 
-document.addEventListener(
-  "DOMContentLoaded",
-  function(){
+const auth = getAuth(app);
 
-    if(username){
-      showApp();
-    }
-
-    renderRooms();
-    updateCoins();
-
-  }
-);
+let confirmationResult = null;
+let recaptchaVerifier = null;
 
 
-/* ================= OTP ================= */
+/* RECAPTCHA */
 
-function sendOTP(){
+function setupRecaptcha(){
 
-  const phoneNumber =
-    document
-      .getElementById("phoneInput")
-      .value
-      .trim();
+  if(recaptchaVerifier) return;
 
-  if(!phoneNumber){
+  recaptchaVerifier =
+    new RecaptchaVerifier(
+      auth,
+      "recaptcha-container",
+      {
+        size:"normal"
+      }
+    );
 
-    alert("أدخل رقم الهاتف أولاً");
+}
+
+
+/* PHONE */
+
+window.sendOTP = async function(){
+
+  const code =
+    document.getElementById("countryCode").value;
+
+  let phone =
+    document.getElementById("phoneInput").value.trim();
+
+  phone = phone.replace(/\D/g,"");
+
+  if(!phone){
+
+    alert("أدخل رقم الهاتف");
 
     return;
   }
 
-  document
-    .getElementById("phoneLogin")
-    .classList.add("hidden");
+  if(phone.startsWith("0")){
+    phone = phone.substring(1);
+  }
 
-  document
-    .getElementById("otpBox")
-    .classList.remove("hidden");
+  const fullPhone = code + phone;
 
-  /*
-    رمز تجريبي فقط.
-    في النسخة الحقيقية سيأتي SMS من الخادم.
-  */
+  try{
 
-  alert(
-    "رمز التحقق التجريبي هو: 123456"
-  );
-}
+    setupRecaptcha();
+
+    confirmationResult =
+      await signInWithPhoneNumber(
+        auth,
+        fullPhone,
+        recaptchaVerifier
+      );
+
+    document
+      .getElementById("phoneLogin")
+      .classList.add("hidden");
+
+    document
+      .getElementById("otpBox")
+      .classList.remove("hidden");
+
+    alert("تم إرسال رمز التحقق إلى هاتفك");
+
+  }catch(error){
+
+    console.error(error);
+
+    alert(
+      "تعذر إرسال رمز التحقق: " +
+      error.message
+    );
+
+  }
+
+};
 
 
-function verifyOTP(){
+/* VERIFY OTP */
 
-  const otp =
+window.verifyOTP = async function(){
+
+  const code =
     document
       .getElementById("otpInput")
-      .value
-      .trim();
+      .value.trim();
 
-  if(otp !== demoOTP){
+  if(!code){
 
-    alert("رمز التحقق غير صحيح");
+    alert("أدخل رمز التحقق");
 
     return;
   }
 
-  const phoneNumber =
-    document
-      .getElementById("phoneInput")
-      .value
-      .trim();
+  if(!confirmationResult){
 
-  username =
-    "مستخدم سوريا";
+    alert("اطلب رمز التحقق أولاً");
 
-  phone =
-    phoneNumber;
+    return;
+  }
 
-  localStorage.setItem(
-    "syriaLiveUsername",
-    username
-  );
+  try{
 
-  localStorage.setItem(
-    "syriaLivePhone",
-    phone
-  );
+    await confirmationResult.confirm(code);
 
-  showApp();
-}
+  }catch(error){
+
+    console.error(error);
+
+    alert(
+      "رمز التحقق غير صحيح أو انتهت صلاحيته"
+    );
+
+  }
+
+};
 
 
-/* ================= GOOGLE ================= */
+/* GOOGLE */
 
-function googleLogin(){
+window.googleLogin = async function(){
 
-  /*
-    هذا زر تجريبي.
-    Google الحقيقي يحتاج Firebase
-    أو نظام OAuth حقيقي.
-  */
+  try{
 
-  username = "مستخدم Google";
+    const provider =
+      new GoogleAuthProvider();
 
-  localStorage.setItem(
-    "syriaLiveUsername",
-    username
-  );
+    await signInWithRedirect(
+      auth,
+      provider
+    );
 
-  showApp();
+  }catch(error){
 
-  alert(
-    "تم الدخول تجريبياً باستخدام Google"
-  );
-}
+    console.error(error);
+
+    alert(
+      "تعذر تسجيل الدخول باستخدام Google: " +
+      error.message
+    );
+
+  }
+
+};
 
 
-/* ================= APP ================= */
+/* GOOGLE REDIRECT RESULT */
 
-function showApp(){
+getRedirectResult(auth)
+.then(result => {
+
+  if(result && result.user){
+
+    showAppForUser(result.user);
+
+  }
+
+})
+.catch(error => {
+
+  console.error(error);
+
+});
+
+
+/* AUTH STATE */
+
+onAuthStateChanged(auth,user => {
+
+  if(user){
+
+    showAppForUser(user);
+
+  }
+
+});
+
+
+/* SHOW APP */
+
+function showAppForUser(user){
+
+  window.currentUser = user;
 
   document
     .getElementById("loginPage")
@@ -1374,110 +950,68 @@ function showApp(){
     .getElementById("app")
     .classList.remove("hidden");
 
+
+  const name =
+    user.displayName ||
+    "مستخدم سوريا";
+
+
   document
     .getElementById("welcomeName")
-    .textContent = username;
+    .textContent = name;
+
 
   document
     .getElementById("profileName")
-    .textContent = username;
+    .textContent = name;
+
 
   document
     .getElementById("profileId")
-    .textContent = userId;
+    .textContent =
+      user.uid;
 
-  updateCoins();
+
+  document
+    .getElementById("profilePhone")
+    .textContent =
+      user.phoneNumber ||
+      user.email ||
+      "-";
+
+
   renderRooms();
 
 }
 
 
-function logout(){
+/* LOGOUT */
 
-  localStorage.removeItem(
-    "syriaLiveUsername"
-  );
+window.logout = async function(){
 
-  localStorage.removeItem(
-    "syriaLivePhone"
-  );
+  await signOut(auth);
 
-  username = "";
-  phone = "";
+};
 
-  document
-    .getElementById("app")
-    .classList.add("hidden");
 
-  document
-    .getElementById("roomPage")
-    .classList.add("hidden");
+/* BACK TO PHONE */
 
-  document
-    .getElementById("loginPage")
-    .classList.remove("hidden");
-
-  document
-    .getElementById("phoneLogin")
-    .classList.remove("hidden");
+window.backToPhone = function(){
 
   document
     .getElementById("otpBox")
     .classList.add("hidden");
 
-}
+  document
+    .getElementById("phoneLogin")
+    .classList.remove("hidden");
+
+};
 
 
-/* ================= COINS ================= */
+/* NAVIGATION */
 
-function updateCoins(){
+window.showPage = function(pageId,button){
 
   document
-    .getElementById("coinBalance")
-    .textContent = coins;
-
-  document
-    .getElementById("profileCoins")
-    .textContent = coins;
-
-  document
-    .getElementById("roomCoins")
-    .textContent = coins;
-
-  localStorage.setItem(
-    "syriaLiveCoins",
-    coins
-  );
-
-}
-
-
-/* ================= ROOMS ================= */
-
-function renderRooms(){
-
-  const list =
-    document.getElementById(
-      "roomsList"
-    );
-
-  if(!list) return;
-
-  list.innerHTML = "";
-
-  rooms.forEach(
-    function(room,index){
-
-      const card =
-        document.createElement("div");
-
-      card.className =
-        "room-card";
-
-      card.innerHTML = `
-
-        <div class="room-top">
-
-          <div class="room-name">
-            🎙️ ${escapeHtml(room.name)}
-          </di
+    .querySelectorAll("#app
