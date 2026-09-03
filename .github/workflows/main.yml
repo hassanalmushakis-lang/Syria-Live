@@ -1,14 +1,14 @@
 name: Build Syria Live APK
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    permissions:
-      contents: write
 
     steps:
       - name: Checkout
@@ -22,8 +22,10 @@ jobs:
 
       - name: Create Flutter project
         run: |
-          rm -f pubspec.yaml
-          flutter create --org com.syrialive --platforms=android,ios .
+          rm -rf /tmp/syria_flutter
+          flutter create --org com.syrialive /tmp/syria_flutter
+          cp -r /tmp/syria_flutter/. .
+          rm -f index.html
 
       - name: Build APK
         run: |
