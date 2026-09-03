@@ -1,378 +1,370 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>سوريا لايف 🇸🇾</title>
+  <title>سوريا لايف 🇸🇾</title>
 
-<style>
-*{
-  box-sizing:border-box;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:
-    radial-gradient(circle at top,#172b4d,#07101f 65%);
-  color:#fff;
-  min-height:100vh;
-}
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background:
+        radial-gradient(circle at top, #17345a, #07101d 70%);
+      color: white;
+      min-height: 100vh;
+    }
 
-.container{
-  width:100%;
-  max-width:520px;
-  margin:auto;
-  padding:12px;
-}
+    .app {
+      width: 100%;
+      max-width: 520px;
+      margin: auto;
+      padding: 15px;
+    }
 
-header{
-  background:rgba(20,35,60,.95);
-  border:1px solid #c99b38;
-  border-radius:18px;
-  padding:15px;
-  margin-bottom:12px;
-  text-align:center;
-}
+    header {
+      text-align: center;
+      padding: 25px 15px;
+      border: 1px solid #d4a52c;
+      border-radius: 22px;
+      background: rgba(12, 27, 47, .95);
+      margin-bottom: 15px;
+    }
 
-.logo{
-  font-size:38px;
-}
+    .flag {
+      font-size: 55px;
+    }
 
-h1{
-  margin:5px 0;
-  color:#ffd45a;
-}
+    h1 {
+      margin: 5px 0;
+      color: #ffd85a;
+      font-size: 30px;
+    }
 
-.small{
-  color:#aaa;
-  font-size:13px;
-}
+    .subtitle {
+      color: #aaa;
+    }
 
-.card{
-  background:rgba(15,28,48,.95);
-  border:1px solid #29466d;
-  border-radius:18px;
-  padding:15px;
-  margin-bottom:12px;
-}
+    .card {
+      background: rgba(13, 29, 50, .96);
+      border: 1px solid #29466b;
+      border-radius: 18px;
+      padding: 18px;
+      margin-bottom: 15px;
+    }
 
-button{
-  border:0;
-  border-radius:12px;
-  padding:12px 16px;
-  margin:4px;
-  cursor:pointer;
-  font-weight:bold;
-}
+    button {
+      width: 100%;
+      border: 0;
+      border-radius: 13px;
+      padding: 14px;
+      margin-top: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
 
-.gold{
-  background:#d6a52e;
-  color:#111;
-}
+    .google {
+      background: white;
+      color: #222;
+    }
 
-.blue{
-  background:#28578e;
-  color:#fff;
-}
+    .gold {
+      background: #d6a52e;
+      color: #111;
+    }
 
-.red{
-  background:#a93636;
-  color:#fff;
-}
+    .blue {
+      background: #285a91;
+      color: white;
+    }
 
-.green{
-  background:#277a4b;
-  color:#fff;
-}
+    .red {
+      background: #9e3434;
+      color: white;
+    }
 
-input,select{
-  width:100%;
-  padding:12px;
-  margin:6px 0;
-  border-radius:10px;
-  border:1px solid #526987;
-  background:#0b1728;
-  color:white;
-}
+    .green {
+      background: #28794b;
+      color: white;
+    }
 
-.room-title{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
+    .hidden {
+      display: none;
+    }
 
-.room-id{
-  color:#ffd45a;
-  font-size:13px;
-}
+    .balance {
+      text-align: center;
+      color: #ffd85a;
+      font-size: 18px;
+      margin-top: 15px;
+    }
 
-.seats{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:9px;
-  margin-top:15px;
-}
+    .rooms {
+      display: grid;
+      gap: 10px;
+    }
 
-.seat{
-  background:#0b182a;
-  border:1px solid #314b6b;
-  border-radius:14px;
-  padding:10px 4px;
-  text-align:center;
-  min-height:85px;
-}
+    .room {
+      background: #10233b;
+      border: 1px solid #365779;
+      padding: 15px;
+      border-radius: 14px;
+    }
 
-.seat.empty{
-  color:#777;
-}
+    .room strong {
+      color: #ffd85a;
+    }
 
-.avatar{
-  width:42px;
-  height:42px;
-  border-radius:50%;
-  background:#263d5c;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  margin:auto;
-  font-size:22px;
-}
+    .target {
+      background: #0b1829;
+      padding: 15px;
+      border-radius: 14px;
+    }
 
-.vip{
-  border-color:#ffd45a;
-  box-shadow:0 0 12px rgba(255,212,90,.35);
-}
+    .progress {
+      height: 18px;
+      background: #050b13;
+      border-radius: 20px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
 
-.chat{
-  height:180px;
-  overflow-y:auto;
-  background:#081321;
-  border-radius:12px;
-  padding:10px;
-}
+    .progress-bar {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        #bd8a25,
+        #ffe27a
+      );
+    }
 
-.message{
-  padding:7px;
-  margin-bottom:5px;
-  background:#14253b;
-  border-radius:8px;
-}
-
-.gifts{
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:7px;
-}
-
-.gift{
-  background:#14253b;
-  border:1px solid #3c5777;
-  color:#fff;
-  padding:10px 3px;
-  border-radius:12px;
-  text-align:center;
-}
-
-.gift b{
-  display:block;
-  color:#ffd45a;
-  font-size:12px;
-}
-
-.progress{
-  height:20px;
-  background:#07101c;
-  border-radius:20px;
-  overflow:hidden;
-  border:1px solid #334d6d;
-}
-
-.progress-bar{
-  height:100%;
-  width:0%;
-  background:linear-gradient(90deg,#c38c24,#ffe27b);
-  transition:.4s;
-}
-
-.target-numbers{
-  display:flex;
-  justify-content:space-between;
-  margin:8px 0;
-}
-
-.stat{
-  text-align:center;
-  background:#101f34;
-  border-radius:12px;
-  padding:10px;
-  flex:1;
-  margin:3px;
-}
-
-.stat b{
-  color:#ffd45a;
-  font-size:18px;
-}
-
-.row{
-  display:flex;
-  gap:5px;
-}
-
-.row>*{
-  flex:1;
-}
-
-.hidden{
-  display:none;
-}
-
-.modal{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.8);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  padding:15px;
-  z-index:100;
-}
-
-.modal-box{
-  width:100%;
-  max-width:480px;
-  max-height:90vh;
-  overflow:auto;
-  background:#101e32;
-  border:1px solid #d4a536;
-  border-radius:20px;
-  padding:20px;
-}
-
-.close{
-  float:left;
-  background:#7b3030;
-  color:#fff;
-}
-
-#loginBox{
-  text-align:center;
-}
-
-footer{
-  text-align:center;
-  color:#777;
-  padding:20px;
-  font-size:12px;
-}
-</style>
+    footer {
+      text-align: center;
+      color: #777;
+      padding: 20px;
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="app">
 
-<header>
-  <div class="logo">🇸🇾</div>
-  <h1>سوريا لايف</h1>
-  <div class="small">دردشة صوتية سورية</div>
+  <header>
 
-  <div style="margin-top:12px">
-    <span>🪙 الرصيد: </span>
-    <strong id="coinBalance">0</strong>
+    <div class="flag">🇸🇾</div>
+
+    <h1>سوريا لايف</h1>
+
+    <div class="subtitle">
+      دردشة صوتية سورية
+    </div>
+
+    <div class="balance">
+      🪙 الرصيد:
+      <span id="coins">0</span>
+    </div>
+
+    <div id="userName" class="subtitle">
+      غير مسجل الدخول
+    </div>
+
+  </header>
+
+
+  <!-- تسجيل الدخول -->
+
+  <div id="loginCard" class="card">
+
+    <h2>🔐 تسجيل الدخول</h2>
+
+    <p>
+      سجّل الدخول للبدء باستخدام سوريا لايف
+    </p>
+
+    <button
+      class="google"
+      onclick="loginGoogle()"
+    >
+      🇬 تسجيل الدخول باستخدام Google
+    </button>
+
   </div>
 
-  <div id="userArea" class="small" style="margin-top:8px">
-    غير مسجل الدخول
-  </div>
-</header>
 
+  <!-- التطبيق -->
 
-<!-- LOGIN -->
-<div class="card" id="loginBox">
+  <div id="mainApp" class="hidden">
 
-  <h2>تسجيل الدخول</h2>
+    <div class="card">
 
-  <p class="small">
-    سجل دخولك لحفظ حسابك وبياناتك
-  </p>
+      <h2>🔥 الغرف الصوتية</h2>
 
-  <button class="gold" onclick="loginGoogle()">
-    🔐 تسجيل الدخول بواسطة Google
-  </button>
+      <div class="rooms">
 
-</div>
-
-
-<!-- APP -->
-<div id="app" class="hidden">
-
-  <!-- ROOM -->
-  <div class="card">
-
-    <div class="room-title">
-      <div>
-        <h2>🔥 سهرة سوريا لايف</h2>
-        <div class="room-id">
-          غرفة رقم: <span id="roomId">100001</span>
+        <div class="room">
+          <strong>🔥 سهرة سوريا لايف</strong>
+          <br>
+          👥 12 شخص
+          <br>
+          🎙️ 8 مايكات
+          <button
+            class="gold"
+            onclick="enterRoom()"
+          >
+            دخول الغرفة
+          </button>
         </div>
+
+        <div class="room">
+          <strong>🎵 أغاني ودردشة</strong>
+          <br>
+          👥 8 أشخاص
+          <br>
+          🎙️ 8 مايكات
+          <button
+            class="blue"
+            onclick="enterRoom()"
+          >
+            دخول الغرفة
+          </button>
+        </div>
+
       </div>
 
-      <div>
-        👥 <span id="peopleCount">1</span>
+    </div>
+
+
+    <!-- Target -->
+
+    <div class="card">
+
+      <h2>🎯 تارغت المضيف</h2>
+
+      <div class="target">
+
+        <p>
+          الهدف:
+          <strong>100,000</strong>
+        </p>
+
+        <p>
+          المنجز:
+          <strong id="achieved">0</strong>
+        </p>
+
+        <p>
+          المتبقي:
+          <strong id="remaining">
+            100,000
+          </strong>
+        </p>
+
+        <div class="progress">
+
+          <div
+            id="progressBar"
+            class="progress-bar"
+          ></div>
+
+        </div>
+
+        <p>
+          نسبة الإنجاز:
+          <strong id="percent">0%</strong>
+        </p>
+
       </div>
-    </div>
-
-    <div class="small">
-      👑 المالك: <span id="roomOwner">-</span>
-    </div>
-
-    <div class="seats" id="seats"></div>
-
-    <div style="margin-top:12px;text-align:center">
-
-      <button class="gold" onclick="requestSeat()">
-        🎙️ طلب مايك
-      </button>
-
-      <button class="blue" onclick="toggleMic()">
-        🎤 تشغيل المايك
-      </button>
-
-      <button class="red" onclick="openAdmin()">
-        🛡️ الإدارة
-      </button>
 
     </div>
 
-  </div>
 
+    <!-- الهدايا -->
 
-  <!-- CHAT -->
-  <div class="card">
+    <div class="card">
 
-    <h3>💬 الدردشة</h3>
-
-    <div id="chat" class="chat">
-      <div class="message">
-        👋 أهلاً بكم في سوريا لايف
-      </div>
-    </div>
-
-    <div class="row">
-
-      <input
-        id="messageInput"
-        placeholder="اكتب رسالتك..."
-      >
+      <h2>🎁 الهدايا</h2>
 
       <button
         class="gold"
-        onclick="sendMessage()"
+        onclick="sendGift(100,'🌹')"
       >
-        إرسال
+        🌹 وردة — 100
+      </button>
+
+      <button
+        class="gold"
+        onclick="sendGift(500,'❤️')"
+      >
+        ❤️ قلب — 500
+      </button>
+
+      <button
+        class="gold"
+        onclick="sendGift(2000,'👑')"
+      >
+        👑 تاج — 2,000
+      </button>
+
+      <button
+        class="gold"
+        onclick="sendGift(5000,'💎')"
+      >
+        💎 ألماسة — 5,000
+      </button>
+
+      <button
+        class="gold"
+        onclick="sendGift(10000,'🚀')"
+      >
+        🚀 صاروخ — 10,000
+      </button>
+
+    </div>
+
+
+    <!-- الوكالة -->
+
+    <div class="card">
+
+      <h2>🏢 الوكالات</h2>
+
+      <p>
+        إدارة المضيفين والتارغت والعمولات.
+      </p>
+
+      <button
+        class="blue"
+        onclick="agency()"
+      >
+        دخول نظام الوكالات
+      </button>
+
+    </div>
+
+
+    <!-- الحساب -->
+
+    <div class="card">
+
+      <h2>👤 حسابي</h2>
+
+      <p id="profile">
+        -
+      </p>
+
+      <button
+        class="red"
+        onclick="logout()"
+      >
+        تسجيل الخروج
       </button>
 
     </div>
@@ -380,249 +372,18 @@ footer{
   </div>
 
 
-  <!-- GIFTS -->
-  <div class="card">
-
-    <h3>🎁 الهدايا</h3>
-
-    <div class="gifts">
-
-      <button class="gift" onclick="sendGift('🌹',100)">
-        🌹
-        <b>100</b>
-      </button>
-
-      <button class="gift" onclick="sendGift('❤️',500)">
-        ❤️
-        <b>500</b>
-      </button>
-
-      <button class="gift" onclick="sendGift('👑',2000)">
-        👑
-        <b>2,000</b>
-      </button>
-
-      <button class="gift" onclick="sendGift('💎',5000)">
-        💎
-        <b>5,000</b>
-      </button>
-
-      <button class="gift" onclick="sendGift('🚀',10000)">
-        🚀
-        <b>10,000</b>
-      </button>
-
-    </div>
-
-    <p class="small">
-      الهدية الحالية سترسل إلى مضيف الغرفة.
-    </p>
-
-  </div>
-
-
-  <!-- TARGET -->
-  <div class="card">
-
-    <h2>🎯 تارغت المضيف</h2>
-
-    <div class="target-numbers">
-
-      <div class="stat">
-        الهدف
-        <br>
-        <b id="targetValue">100,000</b>
-      </div>
-
-      <div class="stat">
-        المنجز
-        <br>
-        <b id="achievedValue">0</b>
-      </div>
-
-      <div class="stat">
-        المتبقي
-        <br>
-        <b id="remainingValue">100,000</b>
-      </div>
-
-    </div>
-
-    <div class="progress">
-      <div
-        class="progress-bar"
-        id="targetProgress"
-      ></div>
-    </div>
-
-    <div style="text-align:center;margin-top:8px">
-      <strong id="targetPercent">0%</strong>
-    </div>
-
-    <div class="small" id="targetStatus">
-      تارغت نشط
-    </div>
-
-  </div>
-
-
-  <!-- AGENCY -->
-  <div class="card">
-
-    <h2>🏢 الوكالة</h2>
-
-    <div id="agencyInfo">
-      لا توجد وكالة مرتبطة بحسابك.
-    </div>
-
-    <button
-      class="blue"
-      onclick="openAgency()"
-    >
-      إدارة الوكالة
-    </button>
-
-  </div>
-
-
-  <!-- PROFILE -->
-  <div class="card">
-
-    <h2>👤 حسابي</h2>
-
-    <div id="profileInfo">
-      -
-    </div>
-
-    <button class="red" onclick="logout()">
-      تسجيل الخروج
-    </button>
-
-  </div>
-
-</div>
-
-
-<footer>
-  سوريا لايف 🇸🇾
-</footer>
-
-</div>
-
-
-<!-- ADMIN MODAL -->
-<div class="modal" id="adminModal">
-
-  <div class="modal-box">
-
-    <button
-      class="close"
-      onclick="closeModal('adminModal')"
-    >
-      إغلاق
-    </button>
-
-    <h2>🛡️ إدارة الغرفة</h2>
-
-    <button
-      class="red"
-      onclick="adminAction('كتم المايك')"
-    >
-      🔇 كتم
-    </button>
-
-    <button
-      class="red"
-      onclick="adminAction('طرد المستخدم')"
-    >
-      🚫 طرد
-    </button>
-
-    <button
-      class="blue"
-      onclick="adminAction('قفل المايكات')"
-    >
-      🔒 قفل المايكات
-    </button>
-
-    <button
-      class="gold"
-      onclick="adminAction('إدارة VIP')"
-    >
-      👑 إدارة VIP
-    </button>
-
-  </div>
-
-</div>
-
-
-<!-- AGENCY MODAL -->
-<div class="modal" id="agencyModal">
-
-  <div class="modal-box">
-
-    <button
-      class="close"
-      onclick="closeModal('agencyModal')"
-    >
-      إغلاق
-    </button>
-
-    <h2>🏢 الوكالة</h2>
-
-    <input
-      id="agencyName"
-      placeholder="اسم الوكالة"
-    >
-
-    <input
-      id="agencyTarget"
-      type="number"
-      placeholder="تارغت الوكالة"
-      value="1000000"
-    >
-
-    <button
-      class="gold"
-      onclick="createAgency()"
-    >
-      إنشاء وكالة
-    </button>
-
-    <hr>
-
-    <h3>🎯 إنشاء تارغت لمضيف</h3>
-
-    <input
-      id="hostUid"
-      placeholder="UID المضيف"
-    >
-
-    <input
-      id="hostTarget"
-      type="number"
-      placeholder="قيمة تارغت المضيف"
-      value="100000"
-    >
-
-    <button
-      class="green"
-      onclick="createTarget()"
-    >
-      إنشاء التارغت
-    </button>
-
-  </div>
+  <footer>
+    سوريا لايف 🇸🇾
+  </footer>
 
 </div>
 
 
 <script type="module">
 
-/* =====================================================
+/* ==============================
    FIREBASE
-===================================================== */
+============================== */
 
 import {
   initializeApp
@@ -641,16 +402,10 @@ import {
 import {
   getFirestore,
   doc,
-  getDoc,
   setDoc,
+  getDoc,
   updateDoc,
-  addDoc,
-  collection,
-  serverTimestamp,
-  increment,
-  query,
-  where,
-  getDocs
+  increment
 } from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
@@ -677,6 +432,7 @@ const firebaseConfig = {
 
   measurementId:
   "G-BZ5TDJMCW2"
+
 };
 
 
@@ -693,30 +449,22 @@ const provider =
 new GoogleAuthProvider();
 
 
-/* =====================================================
-   VARIABLES
-===================================================== */
-
 let currentUser = null;
 
-let microphoneOn = false;
+let coins = 0;
 
-let currentRoomId = "100001";
+let achieved = 0;
 
-let currentHostUid = null;
-
-let currentTarget = null;
-
-let coinBalance = 0;
+const TARGET = 100000;
 
 
-/* =====================================================
+/* ==============================
    GOOGLE LOGIN
-===================================================== */
+============================== */
 
 window.loginGoogle = async function(){
 
-  try{
+  try {
 
     const result =
       await signInWithPopup(
@@ -729,52 +477,46 @@ window.loginGoogle = async function(){
 
     currentUser = user;
 
-    await setDoc(
-      doc(db,"users",user.uid),
-      {
+    const userRef =
+      doc(
+        db,
+        "users",
+        user.uid
+      );
 
-        uid:user.uid,
+    const userData =
+      await getDoc(userRef);
 
-        name:
-          user.displayName ||
-          "مستخدم سوريا لايف",
+    if(!userData.exists()){
 
-        photo:
-          user.photoURL || "",
+      await setDoc(
+        userRef,
+        {
+          uid: user.uid,
+          name:
+            user.displayName || "مستخدم",
+          email:
+            user.email || "",
+          photo:
+            user.photoURL || "",
+          role: "user",
+          vipLevel: 1,
+          coinBalance: 0,
+          agencyId: null,
+          hostStatus: false
+        }
+      );
 
-        email:
-          user.email || "",
+    }
 
-        role:"user",
+    loadUser();
 
-        vipLevel:1,
-
-        coinBalance:0,
-
-        agencyId:null,
-
-        hostStatus:false,
-
-        updatedAt:
-          serverTimestamp(),
-
-        createdAt:
-          serverTimestamp()
-
-      },
-      {
-        merge:true
-      }
-    );
-
-    loadUser(user);
-
-  }catch(error){
+  } catch(error){
 
     console.error(error);
 
     alert(
-      "تعذر تسجيل الدخول:\n" +
+      "خطأ في تسجيل الدخول:\n" +
       error.message
     );
 
@@ -783,9 +525,9 @@ window.loginGoogle = async function(){
 };
 
 
-/* =====================================================
-   AUTH STATE
-===================================================== */
+/* ==============================
+   مراقبة تسجيل الدخول
+============================== */
 
 onAuthStateChanged(
   auth,
@@ -795,21 +537,7 @@ onAuthStateChanged(
 
       currentUser = user;
 
-      await loadUser(user);
-
-    }else{
-
-      currentUser = null;
-
-      document
-        .getElementById("loginBox")
-        .classList
-        .remove("hidden");
-
-      document
-        .getElementById("app")
-        .classList
-        .add("hidden");
+      loadUser();
 
     }
 
@@ -817,113 +545,217 @@ onAuthStateChanged(
 );
 
 
-/* =====================================================
-   LOAD USER
-===================================================== */
+/* ==============================
+   تحميل المستخدم
+============================== */
 
-async function loadUser(user){
+async function loadUser(){
 
-  const userRef =
-    doc(db,"users",user.uid);
+  if(!currentUser)
+    return;
+
+  const ref =
+    doc(
+      db,
+      "users",
+      currentUser.uid
+    );
 
   const snap =
-    await getDoc(userRef);
-
-  let data;
+    await getDoc(ref);
 
   if(snap.exists()){
 
-    data = snap.data();
+    const data =
+      snap.data();
 
-  }else{
-
-    data = {
-
-      uid:user.uid,
-
-      name:
-        user.displayName ||
-        "مستخدم",
-
-      photo:
-        user.photoURL || "",
-
-      coinBalance:0,
-
-      vipLevel:1,
-
-      role:"user",
-
-      agencyId:null,
-
-      hostStatus:false
-
-    };
-
-    await setDoc(
-      userRef,
-      data,
-      {merge:true}
-    );
+    coins =
+      Number(
+        data.coinBalance || 0
+      );
 
   }
 
-
-  coinBalance =
-    Number(data.coinBalance || 0);
-
   document
-    .getElementById("coinBalance")
-    .textContent =
-      coinBalance.toLocaleString();
-
-
-  document
-    .getElementById("userArea")
-    .textContent =
-      "👤 " +
-      data.name;
-
-
-  document
-    .getElementById("profileInfo")
-    .innerHTML =
-
-      "👤 الاسم: " +
-      escapeHtml(data.name) +
-      "<br><br>" +
-
-      "⭐ VIP: " +
-      Number(data.vipLevel || 1) +
-      "<br><br>" +
-
-      "🎭 الصلاحية: " +
-      escapeHtml(data.role || "user");
-
-
-  document
-    .getElementById("loginBox")
+    .getElementById("loginCard")
     .classList
     .add("hidden");
 
   document
-    .getElementById("app")
+    .getElementById("mainApp")
     .classList
     .remove("hidden");
 
+  document
+    .getElementById("userName")
+    .textContent =
+      "👤 " +
+      (
+        currentUser.displayName ||
+        "مستخدم"
+      );
 
-  await loadRoom();
+  document
+    .getElementById("profile")
+    .textContent =
+      currentUser.email || "";
 
-  await loadTarget();
+  updateCoins();
 
 }
 
 
-/* =====================================================
-   LOGOUT
-===================================================== */
+/* ==============================
+   تحديث الرصيد
+============================== */
 
-window.logout = async function(){
+function updateCoins(){
+
+  document
+    .getElementById("coins")
+    .textContent =
+      coins.toLocaleString();
+
+}
+
+
+/* ==============================
+   إرسال هدية
+============================== */
+
+window.sendGift =
+async function(price,gift){
+
+  if(!currentUser){
+
+    alert(
+      "سجل الدخول أولاً"
+    );
+
+    return;
+
+  }
+
+  if(coins < price){
+
+    alert(
+      "رصيد الكوينز غير كافٍ"
+    );
+
+    return;
+
+  }
+
+  coins -= price;
+
+  achieved += price;
+
+  const userRef =
+    doc(
+      db,
+      "users",
+      currentUser.uid
+    );
+
+  await updateDoc(
+    userRef,
+    {
+      coinBalance:
+        increment(-price)
+    }
+  );
+
+  updateCoins();
+
+  updateTarget();
+
+  alert(
+    "تم إرسال " +
+    gift +
+    " بقيمة " +
+    price.toLocaleString() +
+    " كوين 🎁"
+  );
+
+};
+
+
+/* ==============================
+   Target
+============================== */
+
+function updateTarget(){
+
+  const remaining =
+    Math.max(
+      TARGET - achieved,
+      0
+    );
+
+  const percent =
+    Math.min(
+      achieved / TARGET * 100,
+      100
+    );
+
+  document
+    .getElementById("achieved")
+    .textContent =
+      achieved.toLocaleString();
+
+  document
+    .getElementById("remaining")
+    .textContent =
+      remaining.toLocaleString();
+
+  document
+    .getElementById("percent")
+    .textContent =
+      percent.toFixed(1) + "%";
+
+  document
+    .getElementById("progressBar")
+    .style.width =
+      percent + "%";
+
+}
+
+
+/* ==============================
+   دخول الغرفة
+============================== */
+
+window.enterRoom =
+function(){
+
+  alert(
+    "تم دخول الغرفة 🎙️\n\n" +
+    "سيتم ربط الصوت المباشر والمقاعد الحقيقية في المرحلة التالية."
+  );
+
+};
+
+
+/* ==============================
+   الوكالة
+============================== */
+
+window.agency =
+function(){
+
+  alert(
+    "نظام الوكالات جاهز للربط بالمضيفين والتارغت."
+  );
+
+};
+
+
+/* ==============================
+   تسجيل الخروج
+============================== */
+
+window.logout =
+async function(){
 
   await signOut(auth);
 
@@ -931,545 +763,7 @@ window.logout = async function(){
 
 };
 
+</script>
 
-/* =====================================================
-   ROOM
-===================================================== */
-
-async function loadRoom(){
-
-  const roomRef =
-    doc(
-      db,
-      "rooms",
-      currentRoomId
-    );
-
-  const snap =
-    await getDoc(roomRef);
-
-
-  if(!snap.exists()){
-
-    await setDoc(
-      roomRef,
-      {
-
-        roomId:currentRoomId,
-
-        title:"🔥 سهرة سوريا لايف",
-
-        ownerUid:
-          currentUser.uid,
-
-        ownerName:
-          currentUser.displayName ||
-          "المالك",
-
-        locked:false,
-
-        createdAt:
-          serverTimestamp()
-
-      }
-    );
-
-    document
-      .getElementById("roomOwner")
-      .textContent =
-        currentUser.displayName ||
-        "المالك";
-
-  }else{
-
-    const room =
-      snap.data();
-
-    document
-      .getElementById("roomOwner")
-      .textContent =
-        room.ownerName || "-";
-
-  }
-
-
-  currentHostUid =
-    currentUser.uid;
-
-
-  renderSeats();
-
-}
-
-
-/* =====================================================
-   SEATS
-===================================================== */
-
-function renderSeats(){
-
-  const seats =
-    document.getElementById("seats");
-
-  seats.innerHTML = "";
-
-  for(
-    let i=1;
-    i<=20;
-    i++
-  ){
-
-    const seat =
-      document.createElement("div");
-
-    seat.className =
-      "seat empty";
-
-    seat.innerHTML =
-
-      "<div class='avatar'>🎙️</div>" +
-      "<div>مايك " +
-      i +
-      "</div>";
-
-    seats.appendChild(seat);
-
-  }
-
-}
-
-
-/* =====================================================
-   REQUEST SEAT
-===================================================== */
-
-window.requestSeat =
-async function(){
-
-  if(!currentUser){
-
-    alert("سجل الدخول أولاً");
-
-    return;
-  }
-
-
-  const seats =
-    document.querySelectorAll(
-      ".seat"
-    );
-
-
-  for(
-    let i=0;
-    i<seats.length;
-    i++
-  ){
-
-    if(
-      seats[i]
-      .classList
-      .contains("empty")
-    ){
-
-      seats[i]
-        .classList
-        .remove("empty");
-
-
-      seats[i]
-        .classList
-        .add("vip");
-
-
-      seats[i].innerHTML =
-
-        "<div class='avatar'>👤</div>" +
-
-        "<div>" +
-
-        escapeHtml(
-          currentUser.displayName ||
-          "أنت"
-        ) +
-
-        "</div>";
-
-
-      document
-        .getElementById("peopleCount")
-        .textContent =
-          "2";
-
-      alert(
-        "تم حجز المايك التجريبي"
-      );
-
-      return;
-
-    }
-
-  }
-
-  alert("الغرفة ممتلئة");
-
-};
-
-
-/* =====================================================
-   MICROPHONE
-===================================================== */
-
-window.toggleMic =
-function(){
-
-  microphoneOn =
-    !microphoneOn;
-
-  alert(
-    microphoneOn
-      ? "🎤 المايك يعمل"
-      : "🔇 المايك مغلق"
-  );
-
-};
-
-
-/* =====================================================
-   CHAT
-===================================================== */
-
-window.sendMessage =
-async function(){
-
-  if(!currentUser){
-
-    alert("سجل الدخول أولاً");
-
-    return;
-  }
-
-
-  const input =
-    document
-      .getElementById(
-        "messageInput"
-      );
-
-
-  const text =
-    input.value.trim();
-
-
-  if(!text) return;
-
-
-  await addDoc(
-    collection(
-      db,
-      "rooms",
-      currentRoomId,
-      "messages"
-    ),
-    {
-
-      uid:
-        currentUser.uid,
-
-      name:
-        currentUser.displayName ||
-        "مستخدم",
-
-      text:text,
-
-      createdAt:
-        serverTimestamp()
-
-    }
-  );
-
-
-  const chat =
-    document
-      .getElementById("chat");
-
-
-  const message =
-    document.createElement("div");
-
-  message.className =
-    "message";
-
-
-  message.innerHTML =
-
-    "<b>" +
-
-    escapeHtml(
-      currentUser.displayName ||
-      "مستخدم"
-    ) +
-
-    ":</b> " +
-
-    escapeHtml(text);
-
-
-  chat.appendChild(message);
-
-  chat.scrollTop =
-    chat.scrollHeight;
-
-
-  input.value = "";
-
-};
-
-
-/* =====================================================
-   SEND GIFT
-===================================================== */
-
-window.sendGift =
-async function(
-  gift,
-  price
-){
-
-  if(!currentUser){
-
-    alert("سجل الدخول أولاً");
-
-    return;
-
-  }
-
-
-  if(
-    coinBalance <
-    price
-  ){
-
-    alert(
-      "رصيدك غير كافٍ.\n" +
-      "السعر: " +
-      price.toLocaleString() +
-      "\n" +
-      "رصيدك: " +
-      coinBalance.toLocaleString()
-    );
-
-    return;
-
-  }
-
-
-  try{
-
-    /*
-      تسجيل الهدية
-    */
-
-    await addDoc(
-      collection(
-        db,
-        "giftTransactions"
-      ),
-      {
-
-        senderUid:
-          currentUser.uid,
-
-        senderName:
-          currentUser.displayName ||
-          "مستخدم",
-
-        receiverUid:
-          currentHostUid,
-
-        roomId:
-          currentRoomId,
-
-        gift:
-          gift,
-
-        coins:
-          Number(price),
-
-        createdAt:
-          serverTimestamp()
-
-      }
-    );
-
-
-    /*
-      خصم الكوينز
-    */
-
-    await updateDoc(
-      doc(
-        db,
-        "users",
-        currentUser.uid
-      ),
-      {
-
-        coinBalance:
-          increment(-price)
-
-      }
-    );
-
-
-    coinBalance -= price;
-
-
-    document
-      .getElementById(
-        "coinBalance"
-      )
-      .textContent =
-        coinBalance.toLocaleString();
-
-
-    /*
-      تحديث Target
-    */
-
-    await updateTarget(price);
-
-
-    /*
-      عرض الهدية
-    */
-
-    addChatMessage(
-
-      "🎁 " +
-
-      (currentUser.displayName ||
-       "مستخدم") +
-
-      " أرسل " +
-
-      gift +
-
-      " بقيمة " +
-
-      price.toLocaleString() +
-
-      " كوين"
-
-    );
-
-
-    alert(
-      "تم إرسال " +
-      gift +
-      " بنجاح 🎁"
-    );
-
-
-  }catch(error){
-
-    console.error(error);
-
-    alert(
-      "حدث خطأ أثناء إرسال الهدية"
-    );
-
-  }
-
-};
-
-
-/* =====================================================
-   TARGET
-===================================================== */
-
-async function loadTarget(){
-
-  if(!currentHostUid)
-    return;
-
-
-  const targets =
-    collection(
-      db,
-      "targets"
-    );
-
-
-  const q =
-    query(
-      targets,
-      where(
-        "hostUid",
-        "==",
-        currentHostUid
-      )
-    );
-
-
-  const snapshot =
-    await getDocs(q);
-
-
-  if(
-    snapshot.empty
-  ){
-
-    currentTarget = {
-
-      targetValue:100000,
-
-      achievedValue:0,
-
-      status:"active"
-
-    };
-
-
-    /*
-      إنشاء Target تجريبي
-    */
-
-    const ref =
-      doc(
-        collection(
-          db,
-          "targets"
-        )
-      );
-
-
-    await setDoc(
-      ref,
-      {
-
-        targetId:
-          ref.id,
-
-        hostUid:
-          currentHostUid,
-
-        agencyId:null,
-
-        targetValue:100000,
-
-        achievedValue:0,
-
-        status:"active",
-
-        createdAt:
-          serverTimestamp()
-
-      }
-    );
-
-
-  }else{
-
-    const d =
-      sna
+</body>
+  </html>
