@@ -1,477 +1,1084 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>سوريا لايف</title>
 
-  <title>سوريا لايف 🇸🇾</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Tajawal:wght@400;500;700&display=swap');
 
-  <style>
-    *{box-sizing:border-box}
+:root{
+  --purple:#8A2BE2;
+  --pink:#FF69B4;
+  --gold:#FFD700;
+  --green:#20d67b;
+  --bg:#0A0A0A;
+  --card:#17131c;
+  --text:#fff;
+  --muted:#aaa;
+  --border:#30243b;
+}
 
-    body{
-      margin:0;
-      font-family:Arial,Tahoma,sans-serif;
-      background:
-        radial-gradient(circle at top,#142b55 0%,#071225 45%,#030914 100%);
-      color:#fff;
-      min-height:100vh;
-    }
+*{box-sizing:border-box}
 
-    button,input{font-family:inherit}
-    button{border:0;cursor:pointer}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Tajawal,Arial,sans-serif;
+}
 
-    .header{
-      position:sticky;
-      top:0;
-      z-index:50;
-      padding:12px;
-      background:rgba(3,9,20,.95);
-      border-bottom:1px solid rgba(255,215,80,.25);
-      backdrop-filter:blur(10px);
-    }
+button,input{
+  font-family:inherit;
+}
 
-    .header-row{
-      max-width:900px;
-      margin:auto;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-    }
+button{
+  border:0;
+  cursor:pointer;
+}
 
-    .logo{
-      font-size:21px;
-      font-weight:bold;
-      color:#ffd84d;
-    }
+.app{
+  max-width:500px;
+  min-height:100vh;
+  margin:auto;
+  padding-bottom:78px;
+}
 
-    .coins{
-      background:linear-gradient(135deg,#8c6500,#ffd84d);
-      color:#171000;
-      padding:8px 12px;
-      border-radius:20px;
-      font-weight:bold;
-    }
+/* HEADER */
 
-    .container{
-      width:min(900px,94%);
-      margin:18px auto 40px;
-    }
+.header{
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:rgba(10,10,10,.95);
+  backdrop-filter:blur(12px);
+  padding:14px;
+  border-bottom:1px solid #211a27;
+}
 
-    .notice{
-      background:rgba(255,215,80,.08);
-      border:1px solid rgba(255,215,80,.2);
-      color:#ffe889;
-      padding:10px 13px;
-      border-radius:14px;
-      text-align:center;
-      font-size:13px;
-      margin-bottom:14px;
-    }
+.header-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
 
-    .room-card{
-      background:rgba(11,25,48,.92);
-      border:1px solid rgba(255,215,80,.18);
-      border-radius:20px;
-      overflow:hidden;
-      box-shadow:0 15px 50px rgba(0,0,0,.35);
-    }
+.logo{
+  font-family:Cairo;
+  font-size:22px;
+  font-weight:800;
+}
 
-    .room-cover{
-      padding:18px;
-      background:linear-gradient(
-        135deg,
-        rgba(13,44,88,.9),
-        rgba(9,18,37,.95)
-      );
-    }
+.logo span{
+  color:var(--pink);
+}
 
-    .room-title{
-      font-size:22px;
-      font-weight:bold;
-      margin-bottom:6px;
-    }
+.balance{
+  background:linear-gradient(90deg,#251337,#3b1855);
+  border:1px solid #63358c;
+  padding:7px 12px;
+  border-radius:30px;
+  color:#ffd95a;
+  font-weight:700;
+}
 
-    .room-info{
-      color:#aebbd0;
-      font-size:13px;
-    }
+/* PAGES */
 
-    .room-actions{
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-      margin-top:14px;
-    }
+.page{
+  display:none;
+  padding:14px;
+}
 
-    .btn{
-      padding:10px 14px;
-      border-radius:12px;
-      color:#fff;
-      background:#172a4b;
-      border:1px solid rgba(255,255,255,.08);
-      font-weight:bold;
-    }
+.page.active{
+  display:block;
+}
 
-    .btn-gold{
-      color:#171000;
-      background:linear-gradient(135deg,#b98700,#ffe16a);
-    }
+/* HOME */
 
-    .btn-red{background:#6e202a}
-    .btn-green{background:#175c45}
+.story-row{
+  display:flex;
+  gap:12px;
+  overflow-x:auto;
+  padding:8px 0 15px;
+}
 
-    .section{padding:15px}
+.story{
+  min-width:66px;
+  text-align:center;
+  font-size:11px;
+}
 
-    .section-title{
-      color:#ffd84d;
-      font-size:16px;
-      font-weight:bold;
-      margin-bottom:12px;
-    }
+.story-avatar{
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:27px;
+  background:linear-gradient(135deg,var(--purple),var(--pink));
+  border:3px solid #6c2a91;
+}
 
-    .seats{
-      display:grid;
-      grid-template-columns:repeat(5,1fr);
-      gap:10px;
-    }
+.section-title{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin:10px 0;
+  font-family:Cairo;
+}
 
-    .seat{
-      min-height:92px;
-      padding:8px 5px;
-      border-radius:14px;
-      background:#0d1d37;
-      border:1px solid rgba(255,255,255,.07);
-      text-align:center;
-    }
+.live-card{
+  position:relative;
+  height:260px;
+  border-radius:18px;
+  overflow:hidden;
+  margin-bottom:14px;
+  background:linear-gradient(145deg,#32145c,#171017);
+  border:1px solid var(--border);
+}
 
-    .seat.active{
-      border-color:#ffd84d;
-      box-shadow:0 0 15px rgba(255,216,77,.15);
-    }
+.live-bg{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:90px;
+  opacity:.8;
+}
 
-    .avatar{
-      width:42px;
-      height:42px;
-      margin:0 auto 6px;
-      border-radius:50%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:linear-gradient(135deg,#214b83,#13223c);
-      border:2px solid #36547d;
-      font-size:20px;
-    }
+.live-info{
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  padding:14px;
+  background:linear-gradient(transparent,rgba(0,0,0,.95));
+}
 
-    .seat-number{
-      color:#7185a4;
-      font-size:11px;
-    }
+.live-user{
+  display:flex;
+  align-items:center;
+  gap:9px;
+}
 
-    .seat-name{
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-      font-size:11px;
-      margin-top:3px;
-    }
+.avatar{
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--purple),var(--pink));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:22px;
+}
 
-    .mic-status{
-      font-size:11px;
-      color:#8e9eb6;
-      margin-top:4px;
-    }
+.user-name{
+  font-weight:700;
+}
 
-    .chat-box{
-      height:260px;
-      overflow-y:auto;
-      background:#071326;
-      border-radius:14px;
-      padding:12px;
-      border:1px solid rgba(255,255,255,.06);
-    }
+.level{
+  font-size:10px;
+  background:var(--purple);
+  border-radius:8px;
+  padding:2px 6px;
+  margin-right:4px;
+}
 
-    .message{
-      padding:8px 10px;
-      margin-bottom:7px;
-      background:#102442;
-      border-radius:11px;
-      font-size:13px;
-    }
+.live-meta{
+  color:#ddd;
+  font-size:12px;
+  margin-top:5px;
+}
 
-    .message strong{color:#ffd84d}
+.enter-btn{
+  background:linear-gradient(90deg,var(--purple),var(--pink));
+  color:white;
+  padding:8px 17px;
+  border-radius:20px;
+  float:left;
+  margin-top:-34px;
+  font-weight:bold;
+}
 
-    .chat-input{
-      display:flex;
-      gap:8px;
-      margin-top:10px;
-    }
+/* DISCOVER */
 
-    .chat-input input{
-      flex:1;
-      min-width:0;
-      background:#09172b;
-      color:#fff;
-      border:1px solid #263c5d;
-      border-radius:12px;
-      padding:12px;
-      outline:none;
-    }
+.tabs{
+  display:flex;
+  background:#151117;
+  padding:4px;
+  border-radius:14px;
+  margin-bottom:15px;
+}
 
-    .gifts{
-      display:grid;
-      grid-template-columns:repeat(5,1fr);
-      gap:8px;
-    }
+.tab{
+  flex:1;
+  padding:10px;
+  background:none;
+  color:#aaa;
+  border-radius:10px;
+}
 
-    .gift{
-      background:#102442;
-      border:1px solid rgba(255,255,255,.07);
-      color:#fff;
-      border-radius:14px;
-      padding:10px 5px;
-      text-align:center;
-    }
+.tab.active{
+  color:white;
+  background:linear-gradient(90deg,var(--purple),#6322a2);
+}
 
-    .gift .emoji{
-      font-size:28px;
-      display:block;
-      margin-bottom:5px;
-    }
+.person-card{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:12px;
+  margin-bottom:10px;
+}
 
-    .gift .price{
-      color:#ffd84d;
-      font-size:11px;
-      margin-top:4px;
-    }
+.person-card .avatar{
+  width:58px;
+  height:58px;
+}
 
-    .target-box{
-      background:#09172b;
-      padding:13px;
-      border-radius:15px;
-      border:1px solid rgba(255,255,255,.06);
-    }
+.follow{
+  margin-right:auto;
+  background:var(--purple);
+  color:white;
+  padding:7px 13px;
+  border-radius:18px;
+}
 
-    .target-head{
-      display:flex;
-      justify-content:space-between;
-      gap:10px;
-      margin-bottom:8px;
-      font-size:13px;
-    }
+/* PROFILE */
 
-    .progress{
-      height:12px;
-      background:#15243a;
-      border-radius:20px;
-      overflow:hidden;
-    }
+.profile-cover{
+  height:145px;
+  border-radius:20px;
+  background:linear-gradient(135deg,#381064,#a32173);
+  position:relative;
+}
 
-    .progress-bar{
-      height:100%;
-      width:0%;
-      background:linear-gradient(90deg,#a87600,#ffe16a);
-      border-radius:20px;
-      transition:width .3s;
-    }
+.profile-photo{
+  position:absolute;
+  bottom:-38px;
+  right:20px;
+  width:82px;
+  height:82px;
+  border-radius:50%;
+  border:4px solid var(--bg);
+  background:linear-gradient(135deg,var(--purple),var(--pink));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:38px;
+}
 
-    .menu-grid{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:9px;
-    }
+.profile-name{
+  margin-top:50px;
+  font-family:Cairo;
+  font-size:21px;
+  font-weight:bold;
+}
 
-    .menu-btn{
-      background:#0d1d37;
-      color:#fff;
-      border:1px solid rgba(255,255,255,.07);
-      border-radius:14px;
-      padding:13px 5px;
-    }
+.profile-id{
+  color:#999;
+  font-size:12px;
+}
 
-    .menu-btn .big{
-      font-size:23px;
-      display:block;
-      margin-bottom:5px;
-    }
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  margin:18px 0;
+}
 
-    .profile{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      background:#0d1d37;
-      padding:12px;
-      border-radius:15px;
-      margin-bottom:12px;
-    }
+.stat{
+  text-align:center;
+  background:var(--card);
+  padding:12px 5px;
+  border-radius:14px;
+}
 
-    .profile-avatar{
-      width:55px;
-      height:55px;
-      border-radius:50%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:linear-gradient(135deg,#234e86,#10233e);
-      font-size:26px;
-      border:2px solid #ffd84d;
-    }
+.stat strong{
+  display:block;
+  font-size:18px;
+}
 
-    .profile-name{
-      font-weight:bold;
-      font-size:16px;
-    }
+.stat span{
+  color:#999;
+  font-size:11px;
+}
 
-    .vip{
-      display:inline-block;
-      margin-top:4px;
-      padding:3px 7px;
-      border-radius:8px;
-      background:#5b4200;
-      color:#ffd84d;
-      font-size:10px;
-    }
+.menu{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
 
-    .modal{
-      display:none;
-      position:fixed;
-      inset:0;
-      z-index:100;
-      background:rgba(0,0,0,.75);
-      align-items:center;
-      justify-content:center;
-      padding:18px;
-    }
+.menu-item{
+  background:var(--card);
+  color:white;
+  padding:16px 8px;
+  border-radius:15px;
+  border:1px solid var(--border);
+  text-align:center;
+}
 
-    .modal.show{display:flex}
+/* BOTTOM NAV */
 
-    .modal-card{
-      width:min(500px,100%);
-      max-height:90vh;
-      overflow-y:auto;
-      background:#0b1930;
-      border:1px solid rgba(255,216,77,.25);
-      border-radius:20px;
-      padding:18px;
-    }
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:min(500px,100%);
+  height:70px;
+  background:#111;
+  border-top:1px solid #302536;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  z-index:50;
+}
 
-    .modal-head{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      margin-bottom:15px;
-    }
+.nav-btn{
+  background:none;
+  color:#777;
+  font-size:11px;
+}
 
-    .modal-title{
-      color:#ffd84d;
-      font-size:19px;
-      font-weight:bold;
-    }
+.nav-btn div{
+  font-size:23px;
+  margin-bottom:2px;
+}
 
-    .close{
-      width:35px;
-      height:35px;
-      border-radius:50%;
-      background:#172a4b;
-      color:#fff;
-      font-size:18px;
-    }
+.nav-btn.active{
+  color:var(--pink);
+}
 
-    .form-input{
-      width:100%;
-      background:#071326;
-      color:#fff;
-      border:1px solid #263c5d;
-      border-radius:12px;
-      padding:12px;
-      margin:7px 0 12px;
-      outline:none;
-    }
+/* GENERAL CARDS */
 
-    .stat-grid{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:10px;
-    }
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:17px;
+  padding:15px;
+  margin-bottom:12px;
+}
 
-    .stat{
-      background:#102442;
-      border-radius:14px;
-      padding:15px;
-      text-align:center;
-    }
+.primary{
+  width:100%;
+  background:linear-gradient(90deg,var(--purple),var(--pink));
+  color:white;
+  padding:13px;
+  border-radius:14px;
+  font-weight:bold;
+}
 
-    .stat-number{
-      font-size:22px;
-      color:#ffd84d;
-      font-weight:bold;
-    }
+.gold{
+  color:var(--gold);
+}
 
-    .footer{
-      text-align:center;
-      color:#5f708c;
-      font-size:11px;
-      margin-top:25px;
-    }
+.green{
+  color:var(--green);
+}
 
-    .toast{
-      position:fixed;
-      bottom:20px;
-      left:50%;
-      transform:translateX(-50%) translateY(100px);
-      background:#152a49;
-      color:#fff;
-      border:1px solid rgba(255,216,77,.3);
-      padding:12px 18px;
-      border-radius:14px;
-      z-index:200;
-      opacity:0;
-      transition:.3s;
-      pointer-events:none;
-      max-width:90%;
-      text-align:center;
-    }
+/* SHOP */
 
-    .toast.show{
-      opacity:1;
-      transform:translateX(-50%) translateY(0);
-    }
+.packages{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
 
-    @media(max-width:650px){
-      .seats{grid-template-columns:repeat(4,1fr)}
-      .gifts{grid-template-columns:repeat(3,1fr)}
-      .menu-grid{grid-template-columns:repeat(2,1fr)}
-    }
+.package{
+  background:#1a1420;
+  border:1px solid #4d2764;
+  border-radius:16px;
+  padding:18px 8px;
+  text-align:center;
+}
 
-    @media(max-width:420px){
-      .seats{grid-template-columns:repeat(3,1fr)}
-    }
-  </style>
+.package .diamonds{
+  color:#ffd700;
+  font-size:19px;
+  font-weight:bold;
+}
+
+.package button{
+  margin-top:10px;
+  background:var(--purple);
+  color:white;
+  padding:8px 18px;
+  border-radius:18px;
+}
+
+/* GIFTS */
+
+.gifts{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:9px;
+}
+
+.gift{
+  background:#1a141e;
+  border-radius:14px;
+  padding:13px 5px;
+  text-align:center;
+  border:1px solid #322239;
+}
+
+.gift-icon{
+  font-size:38px;
+}
+
+.gift-price{
+  color:#ffd700;
+  font-size:12px;
+}
+
+/* TASKS */
+
+.progress{
+  height:8px;
+  background:#29232d;
+  border-radius:10px;
+  overflow:hidden;
+  margin-top:8px;
+}
+
+.progress div{
+  height:100%;
+  background:linear-gradient(90deg,#18d67a,#64ffae);
+}
+
+/* ROOM */
+
+.room{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  background:#050505;
+  display:none;
+  overflow:auto;
+}
+
+.room.active{
+  display:block;
+}
+
+.room-header{
+  padding:14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.close{
+  background:#222;
+  color:white;
+  border-radius:50%;
+  width:38px;
+  height:38px;
+}
+
+.room-screen{
+  height:260px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:radial-gradient(circle,#321450,#050505);
+  font-size:80px;
+}
+
+.mics{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  padding:15px;
+}
+
+.mic{
+  aspect-ratio:1;
+  background:#161218;
+  border:1px solid #33263b;
+  border-radius:17px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+
+.mic-avatar{
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:#332044;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:25px;
+}
+
+.mic small{
+  margin-top:5px;
+  color:#aaa;
+}
+
+/* CHAT */
+
+.chat{
+  padding:12px;
+  max-height:190px;
+  overflow:auto;
+}
+
+.msg{
+  margin:6px 0;
+  background:rgba(255,255,255,.08);
+  padding:6px 10px;
+  border-radius:12px;
+  display:inline-block;
+}
+
+.chat-input{
+  display:flex;
+  gap:7px;
+  padding:10px;
+  position:sticky;
+  bottom:0;
+  background:#080808;
+}
+
+.chat-input input{
+  flex:1;
+  background:#1c1820;
+  color:white;
+  border:1px solid #33263b;
+  border-radius:22px;
+  padding:10px 13px;
+  outline:none;
+}
+
+.chat-input button{
+  width:45px;
+  border-radius:50%;
+  background:var(--purple);
+  color:white;
+}
+
+/* GIFT ANIMATION */
+
+.gift-animation{
+  position:fixed;
+  inset:0;
+  z-index:200;
+  background:rgba(0,0,0,.8);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+.gift-animation.active{
+  display:flex;
+}
+
+.gift-big{
+  animation:pop .7s ease;
+}
+
+.gift-big .icon{
+  font-size:130px;
+}
+
+.gift-big .gift-text{
+  font-family:Cairo;
+  font-size:24px;
+  font-weight:bold;
+}
+
+@keyframes pop{
+  0%{transform:scale(.1);opacity:0}
+  70%{transform:scale(1.15)}
+  100%{transform:scale(1);opacity:1}
+}
+
+/* MODAL */
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.8);
+  z-index:300;
+  display:none;
+  align-items:flex-end;
+  justify-content:center;
+}
+
+.modal.active{
+  display:flex;
+}
+
+.modal-box{
+  width:min(500px,100%);
+  background:#17131c;
+  border-radius:25px 25px 0 0;
+  padding:22px;
+  border:1px solid #3a2944;
+}
+
+.modal-box h2{
+  font-family:Cairo;
+}
+
+.modal-box input{
+  width:100%;
+  padding:13px;
+  border-radius:12px;
+  background:#0e0d0f;
+  color:white;
+  border:1px solid #392c40;
+  margin:7px 0;
+  outline:none;
+}
+
+/* NOTIFICATION */
+
+.toast{
+  position:fixed;
+  top:75px;
+  left:50%;
+  transform:translateX(-50%) translateY(-20px);
+  background:#25202a;
+  border:1px solid #58396a;
+  padding:11px 18px;
+  border-radius:25px;
+  z-index:500;
+  opacity:0;
+  pointer-events:none;
+  transition:.3s;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translateX(-50%) translateY(0);
+}
+
+/* MANAGER */
+
+.table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:11px;
+}
+
+.table th,.table td{
+  padding:9px 4px;
+  border-bottom:1px solid #302536;
+  text-align:center;
+}
+
+@media(max-width:360px){
+  .mics{
+    gap:7px;
+  }
+  .mic small{
+    font-size:9px;
+  }
+}
+</style>
 </head>
 
 <body>
 
+<div class="app">
+
 <header class="header">
   <div class="header-row">
-    <div class="logo">🇸🇾 سوريا لايف</div>
-    <div class="coins" id="coinsDisplay">🪙 100,000</div>
+    <div class="logo">🇸🇾 سوريا <span>لايف</span></div>
+    <div class="balance">💎 <span id="balance">100000</span></div>
   </div>
 </header>
 
-<main class="container">
+<!-- الرئيسية -->
 
-  <div class="notice">
-    🚀 سوريا لايف — النسخة التجريبية بدون تسجيل دخول
+<section id="home" class="page active">
+
+  <div class="story-row">
+    <div class="story">
+      <div class="story-avatar">➕</div>
+      قصتي
+    </div>
+    <div class="story"><div class="story-avatar">👩🏻</div>سارة</div>
+    <div class="story"><div class="story-avatar">👩🏼</div>نور</div>
+    <div class="story"><div class="story-avatar">👨🏻</div>أحمد</div>
+    <div class="story"><div class="story-avatar">👩🏻‍🦱</div>ليان</div>
+    <div class="story"><div class="story-avatar">👨🏻‍🦰</div>محمد</div>
   </div>
 
-  <div class="profile">
+  <div class="section-title">
+    <span>🔴 بث مباشر</span>
+    <small>مشاهدة الكل</small>
+  </div>
 
-    <div class="profile-avatar">👤</div>
-
-    <div style="flex:1">
-      <div class="profile-name" id="profileName">
-        مستخدم سوريا
+  <div class="live-card">
+    <div class="live-bg">👩🏻‍🎤</div>
+    <div class="live-info">
+      <div class="live-user">
+        <div class="avatar">👩🏻</div>
+        <div>
+          <div class="user-name">سارة السورية <span class="level">LV.25</span></div>
+          <div class="live-meta">🇸🇾 سوريا • 👁️ 1,245 مشاهد</div>
+        </div>
       </div>
+      <button class="enter-btn" onclick="openRoom('سارة السورية')">دخول</button>
+    </div>
+  </div>
 
-      <span class="
+  <div class="live-card">
+    <div class="live-bg">👨🏻‍🎤</div>
+    <div class="live-info">
+      <div class="live-user">
+        <div class="avatar">👨🏻</div>
+        <div>
+          <div class="user-name">أبو العز <span class="level">LV.18</span></div>
+          <div class="live-meta">🇸🇾 سوريا • 👁️ 827 مشاهد</div>
+        </div>
+      </div>
+      <button class="enter-btn" onclick="openRoom('أبو العز')">دخول</button>
+    </div>
+  </div>
+
+  <div class="live-card">
+    <div class="live-bg">👩🏼‍🎤</div>
+    <div class="live-info">
+      <div class="live-user">
+        <div class="avatar">👩🏼</div>
+        <div>
+          <div class="user-name">ليان <span class="level">LV.32</span></div>
+          <div class="live-meta">🇸🇾 سوريا • 👁️ 562 مشاهد</div>
+        </div>
+      </div>
+      <button class="enter-btn" onclick="openRoom('ليان')">دخول</button>
+    </div>
+  </div>
+
+</section>
+
+<!-- الاكتشاف -->
+
+<section id="discover" class="page">
+
+  <h2>🔎 الاكتشاف</h2>
+
+  <div class="tabs">
+    <button class="tab active" onclick="discoverTab(this)">قريب مني</button>
+    <button class="tab" onclick="discoverTab(this)">بنات</button>
+    <button class="tab" onclick="discoverTab(this)">أولاد</button>
+  </div>
+
+  <div class="person-card">
+    <div class="avatar">👩🏻</div>
+    <div>
+      <b>ريم</b>
+      <div class="live-meta">🇸🇾 دمشق • 22 سنة</div>
+    </div>
+    <button class="follow" onclick="follow(this)">متابعة</button>
+  </div>
+
+  <div class="person-card">
+    <div class="avatar">👨🏻</div>
+    <div>
+      <b>عمر</b>
+      <div class="live-meta">🇸🇾 حلب • 27 سنة</div>
+    </div>
+    <button class="follow" onclick="follow(this)">متابعة</button>
+  </div>
+
+  <div class="person-card">
+    <div class="avatar">👩🏼</div>
+    <div>
+      <b>جودي</b>
+      <div class="live-meta">🇸🇾 حمص • 21 سنة</div>
+    </div>
+    <button class="follow" onclick="follow(this)">متابعة</button>
+  </div>
+
+  <div class="person-card">
+    <div class="avatar">👨🏻‍🦱</div>
+    <div>
+      <b>محمد</b>
+      <div class="live-meta">🇸🇾 اللاذقية • 29 سنة</div>
+    </div>
+    <button class="follow" onclick="follow(this)">متابعة</button>
+  </div>
+
+</section>
+
+<!-- الرسائل -->
+
+<section id="messages" class="page">
+
+  <h2>💬 الرسائل</h2>
+
+  <div class="card">
+    <b>👩🏻 سارة السورية</b>
+    <p class="live-meta">أهلاً وسهلاً 👋</p>
+  </div>
+
+  <div class="card">
+    <b>👨🏻 أبو العز</b>
+    <p class="live-meta">شكراً على الهدية 🎁</p>
+  </div>
+
+  <div class="card">
+    <b>🔔 الإشعارات</b>
+    <p class="live-meta">لديك 3 إشعارات جديدة</p>
+  </div>
+
+  <div class="card">
+    <b>🎁 الهدايا المستلمة</b>
+    <p class="live-meta">وصلتك هدية بقيمة 500 💎</p>
+  </div>
+
+</section>
+
+<!-- انا -->
+
+<section id="me" class="page">
+
+  <div class="profile-cover">
+    <div class="profile-photo">👤</div>
+  </div>
+
+  <div class="profile-name" id="profileName">مستخدم سوريا</div>
+  <div class="profile-id">ID: <span id="profileId">963100001</span> 🇸🇾</div>
+
+  <div class="stats">
+    <div class="stat">
+      <strong id="followers">0</strong>
+      <span>المتابعون</span>
+    </div>
+    <div class="stat">
+      <strong>0</strong>
+      <span>المتابَعون</span>
+    </div>
+    <div class="stat">
+      <strong>0</strong>
+      <span>الإعجابات</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <b>⭐ المستوى 1</b>
+    <div class="progress">
+      <div style="width:15%"></div>
+    </div>
+    <small class="live-meta">تقدم المستوى 15%</small>
+  </div>
+
+  <div class="menu">
+    <button class="menu-item" onclick="openShop()">💎<br>شحن الماسات</button>
+    <button class="menu-item" onclick="openGifts()">🎁<br>الهدايا</button>
+    <button class="menu-item" onclick="openTasks()">📋<br>المهام</button>
+    <button class="menu-item" onclick="openManager()">🏢<br>الوكالة</button>
+    <button class="menu-item" onclick="editProfile()">✏️<br>تعديل الحساب</button>
+    <button class="menu-item" onclick="login()">🔐<br>تسجيل الدخول</button>
+  </div>
+
+</section>
+
+<!-- المتجر -->
+
+<section id="shop" class="page">
+
+  <div class="section-title">
+    <span>💎 شحن الماسات</span>
+    <button onclick="go('me')">✕</button>
+  </div>
+
+  <div class="card">
+    <div>رصيدك الحالي</div>
+    <h2 class="gold">💎 <span id="shopBalance">100000</span></h2>
+    <small>هذه نسخة تجريبية — الدفع الحقيقي غير مفعل بعد.</small>
+  </div>
+
+  <div class="packages">
+
+    <div class="package">
+      <div class="diamonds">💎 100</div>
+      <small>$1</small>
+      <button onclick="recharge(100)">شحن</button>
+    </div>
+
+    <div class="package">
+      <div class="diamonds">💎 500</div>
+      <small>$5</small>
+      <button onclick="recharge(500)">شحن</button>
+    </div>
+
+    <div class="package">
+      <div class="diamonds">💎 1000</div>
+      <small>$10</small>
+      <button onclick="recharge(1000)">شحن</button>
+    </div>
+
+    <div class="package">
+      <div class="diamonds">💎 5000</div>
+      <small>$50</small>
+      <button onclick="recharge(5000)">شحن</button>
+    </div>
+
+    <div class="package">
+      <div class="diamonds">💎 10000</div>
+      <small>$100</small>
+      <button onclick="recharge(10000)">شحن</button>
+    </div>
+
+    <div class="package">
+      <div class="diamonds">💎 50000</div>
+      <small>$500</small>
+      <button onclick="recharge(50000)">شحن</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- الهدايا -->
+
+<section id="gifts" class="page">
+
+  <div class="section-title">
+    <span>🎁 الهدايا</span>
+    <button onclick="go('me')">✕</button>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active">عادية</button>
+    <button class="tab">فاخرة</button>
+    <button class="tab">خاصة</button>
+  </div>
+
+  <div class="gifts">
+
+    <div class="gift">
+      <div class="gift-icon">🌹</div>
+      <b>وردة</b>
+      <div class="gift-price">💎 10</div>
+      <button onclick="sendGift('🌹','وردة',10)">إرسال</button>
+    </div>
+
+    <div class="gift">
+      <div class="gift-icon">❤️</div>
+      <b>قلب</b>
+      <div class="gift-price">💎 50</div>
+      <button onclick="sendGift('❤️','قلب',50)">إرسال</button>
+    </div>
+
+    <div class="gift">
+      <div class="gift-icon">💎</div>
+      <b>ماسة</b>
+      <div class="gift-price">💎 100</div>
+      <button onclick="sendGift('💎','ماسة',100)">إرسال</button>
+    </div>
+
+    <div class="gift">
+      <div class="gift-icon">👑</div>
+      <b>تاج</b>
+      <div class="gift-price">💎 500</div>
+      <button onclick="sendGift('👑','تاج',500)">إرسال</button>
+    </div>
+
+    <div class="gift">
+      <div class="gift-icon">🚗</div>
+      <b>سيارة</b>
+      <div class="gift-price">💎 1000</div>
+      <button onclick="sendGift('🚗','سيارة',1000)">إرسال</button>
+    </div>
+
+    <div class="gift">
+      <div class="gift-icon">🏰</div>
+      <b>قصر</b>
+      <div class="gift-price">💎 5000</div>
+      <button onclick="sendGift('🏰','قصر',5000)">إرسال</button>
+    </div>
+
+    <div class="gift">
+      <div class="gift-icon">🚀</div>
+      <b>صاروخ</b>
+      <div class="gift-price">💎 10000</div>
+      <button onclick="sendGift('🚀','صاروخ',10000)">إرسال</button>
+    </div>
+
+    <div class="gift">
+      <div class="gift-icon">🌌</div>
+      <b>مجرة</b>
+      <div class="gift-price">💎 50000</div>
+      <button onclick="sendGift('🌌','مجرة',50000)">إرسال</button>
+    </div>
+
+    <div class="gift">
+      <div class="gift-icon">🐉</div>
+      <b>التنين</b>
+      <div class="gift-price">💎 100000</div>
+      <button onclick="sendGift('🐉','التنين',100000)">إرسال</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- المهام -->
+
+<section id="tasks" class="page">
+
+  <div class="section-title">
+    <span>📋 المهام اليومية</span>
+    <button onclick="go('me')">✕</button>
+  </div>
+
+  <div class="card">
+    <b>🎁 تسجيل الدخول لمدة 7 أيام</b>
+    <p>المكافأة: 💎 50</p>
+    <div class="progress"><div style="width:43%"></div></div>
+    <small>3 / 7 أيام</small>
+  </div>
+
+  <div class="card">
+    <b>🎙️ البث لمدة 30 دقيقة</b>
+    <p>المكافأة: 💎 100</p>
+    <div class="progress"><div style="width:60%"></div></div>
+    <small>18 / 30 دقيقة</small>
+  </div>
+
+  <div class="card">
+    <b>🎁 إرسال 10 هدايا</b>
+    <p>المكافأة: 💎 50</p>
+    <div class="progress"><div style="width:30%"></div></div>
+    <small>3 / 10 هدايا</small>
+  </div>
+
+</section>
+
+<!-- الوكالة -->
+
+<section id="manager" class="page">
+
+  <div class="section-title">
+    <span>🏢 الوكالة والمدير</span>
+    <button onclick="go('me')">✕</button>
+  </div>
+
+  <div class="card">
+    <h3>💰 إجمالي أرباح الوكالة</h3>
+    <h2 class="gold">$0.00</h2>
+    <button class="primary" onclick="toast('السحب سيتوفر بعد تفعيل النظام الحقيقي')">
+      طلب سحب
+    </button>
+  </div>
+
+  <div class="card">
+    <b>شرط المدير</b>
+    <p>الوصول إلى شحن فريق بقيمة <span class="gold">$10,000</span></p>
+    <div class="progress"><div style="width:5%
