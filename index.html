@@ -14,7 +14,7 @@
     body {
       margin: 0;
       min-height: 100vh;
-      background: linear-gradient(135deg, #061826, #07506b);
+      background: linear-gradient(135deg, #111827, #1e3a8a);
       color: white;
       display: flex;
       justify-content: center;
@@ -23,574 +23,396 @@
 
     .box {
       width: 92%;
-      max-width: 430px;
+      max-width: 420px;
+      background: rgba(255,255,255,.08);
       padding: 25px;
-      border-radius: 24px;
-      background: rgba(255,255,255,0.09);
-      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+      border-radius: 22px;
+      box-shadow: 0 10px 40px rgba(0,0,0,.4);
       text-align: center;
       backdrop-filter: blur(12px);
     }
 
-    .logo {
-      font-size: 60px;
-    }
-
     h1 {
-      margin: 5px 0;
-      font-size: 30px;
+      margin-bottom: 5px;
+      font-size: 32px;
     }
 
     .subtitle {
-      color: #d4e7ed;
+      color: #d1d5db;
       margin-bottom: 25px;
     }
 
-    .phone-row {
-      display: flex;
-      gap: 8px;
-      direction: ltr;
-    }
-
-    select,
-    input {
-      border: none;
-      outline: none;
-      border-radius: 12px;
+    select, input, button {
+      width: 100%;
       padding: 14px;
+      margin-top: 12px;
+      border: 0;
+      border-radius: 12px;
       font-size: 16px;
     }
 
-    select {
-      width: 130px;
-    }
-
-    #phone {
-      flex: 1;
+    select, input {
+      background: white;
+      color: #111;
     }
 
     button {
-      width: 100%;
-      border: none;
-      border-radius: 12px;
-      padding: 14px;
-      margin-top: 15px;
-      font-size: 17px;
+      background: #2563eb;
+      color: white;
       font-weight: bold;
       cursor: pointer;
     }
 
-    #phoneBtn {
-      background: #12b875;
-      color: white;
-    }
-
-    #googleBtn {
+    button.google {
       background: white;
-      color: #222;
-    }
-
-    #verifyBtn {
-      background: #2196f3;
-      color: white;
-    }
-
-    #logoutBtn {
-      background: #d9534f;
-      color: white;
+      color: #111;
     }
 
     button:disabled {
-      opacity: 0.6;
+      opacity: .6;
     }
 
-    .or {
-      margin: 20px 0;
-      color: #c8dce3;
-    }
-
-    #recaptcha-container {
-      margin-top: 15px;
-      display: flex;
-      justify-content: center;
-    }
-
-    #otpBox {
-      display: none;
-      margin-top: 15px;
-    }
-
-    #otp {
-      width: 100%;
-      text-align: center;
-      direction: ltr;
-      letter-spacing: 5px;
-    }
-
-    #message {
-      margin-top: 15px;
-      min-height: 25px;
-      color: #ffe082;
-      font-size: 14px;
-      line-height: 1.6;
-    }
-
+    #otpBox,
     #home {
       display: none;
     }
 
+    #message {
+      margin-top: 15px;
+      min-height: 24px;
+      color: #fde68a;
+    }
+
+    .logo {
+      font-size: 55px;
+      margin-bottom: 5px;
+    }
+
     .home-title {
-      font-size: 27px;
-      margin: 15px 0;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .logout {
+      background: #dc2626;
+      margin-top: 25px;
+    }
+
+    #recaptcha-container {
+      margin-top: 12px;
+      display: flex;
+      justify-content: center;
     }
   </style>
 </head>
 
 <body>
 
-  <div class="box">
+<div class="box" id="login">
 
-    <div id="login">
+  <div class="logo">🇸🇾</div>
 
-      <div class="logo">🇸🇾</div>
+  <h1>سوريا لايف</h1>
 
-      <h1>سوريا لايف</h1>
+  <div class="subtitle">
+    دردشة صوتية سورية
+  </div>
 
-      <div class="subtitle">
-        دردشة صوتية سورية
-      </div>
+  <select id="country">
+    <option value="+963">🇸🇾 +963 سوريا</option>
+    <option value="+967">🇾🇪 +967 اليمن</option>
+    <option value="+20">🇪🇬 +20 مصر</option>
+    <option value="+962">🇯🇴 +962 الأردن</option>
+    <option value="+961">🇱🇧 +961 لبنان</option>
+    <option value="+964">🇮🇶 +964 العراق</option>
+    <option value="+90">🇹🇷 +90 تركيا</option>
+    <option value="+44">🇬🇧 +44 بريطانيا</option>
+  </select>
 
-      <div class="phone-row">
+  <input
+    id="phone"
+    type="tel"
+    placeholder="رقم الهاتف بدون رمز الدولة"
+  >
 
-        <select id="country">
-          <option value="+963">🇸🇾 +963 سوريا</option>
-          <option value="+967">🇾🇪 +967 اليمن</option>
-          <option value="+20">🇪🇬 +20 مصر</option>
-          <option value="+962">🇯🇴 +962 الأردن</option>
-          <option value="+961">🇱🇧 +961 لبنان</option>
-          <option value="+964">🇮🇶 +964 العراق</option>
-          <option value="+90">🇹🇷 +90 تركيا</option>
-          <option value="+44">🇬🇧 +44 بريطانيا</option>
-        </select>
+  <button id="sendBtn">
+    📱 متابعة برقم الهاتف
+  </button>
 
-        <input
-          id="phone"
-          type="tel"
-          placeholder="رقم الهاتف"
-        >
+  <div id="recaptcha-container"></div>
 
-      </div>
+  <div id="otpBox">
 
-      <button id="phoneBtn">
-        📱 متابعة برقم الهاتف
-      </button>
+    <input
+      id="otp"
+      type="number"
+      placeholder="أدخل رمز التحقق"
+    >
 
-      <div id="recaptcha-container"></div>
-
-      <div class="or">
-        أو
-      </div>
-
-      <button id="googleBtn">
-        🔵 تسجيل الدخول باستخدام Google
-      </button>
-
-      <div id="otpBox">
-
-        <input
-          id="otp"
-          type="number"
-          placeholder="أدخل رمز التحقق"
-        >
-
-        <button id="verifyBtn">
-          🔐 تأكيد الرمز
-        </button>
-
-      </div>
-
-      <div id="message"></div>
-
-    </div>
-
-
-    <div id="home">
-
-      <div class="logo">🇸🇾</div>
-
-      <div class="home-title">
-        أهلاً بك في سوريا لايف
-      </div>
-
-      <p id="userInfo">
-        تم تسجيل الدخول بنجاح
-      </p>
-
-      <button id="logoutBtn">
-        تسجيل الخروج
-      </button>
-
-    </div>
+    <button id="verifyBtn">
+      تأكيد رمز التحقق
+    </button>
 
   </div>
 
+  <button class="google" id="googleBtn">
+    🔵 تسجيل الدخول بواسطة Google
+  </button>
 
-  <script type="module">
+  <div id="message"></div>
 
-    import {
-      initializeApp
-    } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
-
-    import {
-      getAuth,
-      RecaptchaVerifier,
-      signInWithPhoneNumber,
-      GoogleAuthProvider,
-      signInWithRedirect,
-      getRedirectResult,
-      onAuthStateChanged,
-      signOut
-    } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+</div>
 
 
-    const firebaseConfig = {
+<div class="box" id="home">
 
-      apiKey: "AIzaSyC_GWsU8ZqLjfYPVUJHlTe0UW_QIBzKCM",
+  <div class="logo">🇸🇾</div>
 
-      authDomain: "syria-live.firebaseapp.com",
+  <div class="home-title">
+    أهلاً بك في سوريا لايف
+  </div>
 
-      projectId: "syria-live",
+  <p id="userInfo"></p>
 
-      storageBucket: "syria-live.firebasestorage.app",
+  <button>
+    🎙️ الغرف الصوتية
+  </button>
 
-      messagingSenderId: "115020553046",
+  <button>
+    👥 الأصدقاء
+  </button>
 
-      appId: "1:115020553046:web:aab4092300a793162014f7",
+  <button>
+    🎁 الهدايا
+  </button>
 
-      measurementId: "G-BZ5TDJMCW2"
+  <button>
+    🪙 العملات
+  </button>
 
-    };
+  <button class="logout" id="logoutBtn">
+    تسجيل الخروج
+  </button>
 
-
-    const app = initializeApp(firebaseConfig);
-
-    const auth = getAuth(app);
-
-
-    let recaptchaVerifier = null;
-
-    let confirmationResult = null;
-
-
-    const login = document.getElementById("login");
-    const home = document.getElementById("home");
-    const phoneBtn = document.getElementById("phoneBtn");
-    const googleBtn = document.getElementById("googleBtn");
-    const verifyBtn = document.getElementById("verifyBtn");
-    const logoutBtn = document.getElementById("logoutBtn");
-    const otpBox = document.getElementById("otpBox");
-    const message = document.getElementById("message");
-    const userInfo = document.getElementById("userInfo");
+</div>
 
 
-    function showMessage(text) {
-      message.textContent = text;
-    }
+<script type="module">
+
+  import {
+    initializeApp
+  } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+
+  import {
+    getAuth,
+    RecaptchaVerifier,
+    signInWithPhoneNumber,
+    GoogleAuthProvider,
+    signInWithRedirect,
+    getRedirectResult,
+    onAuthStateChanged,
+    signOut
+  } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
 
-    function createRecaptcha() {
+  const firebaseConfig = {
+    apiKey: "AIzaSyC_GWsU8ZqLjfYPVUJHlte0UW_QIBzKCM",
+    authDomain: "syria-live.firebaseapp.com",
+    projectId: "syria-live",
+    storageBucket: "syria-live.firebasestorage.app",
+    messagingSenderId: "115020553046",
+    appId: "1:115020553046:web:aab4092300a793162014f7",
+    measurementId: "G-BZ5TDJMCW2"
+  };
 
-      if (recaptchaVerifier) {
+
+  const app = initializeApp(firebaseConfig);
+
+  const auth = getAuth(app);
+
+  const loginBox = document.getElementById("login");
+  const homeBox = document.getElementById("home");
+  const message = document.getElementById("message");
+
+  const sendBtn = document.getElementById("sendBtn");
+  const verifyBtn = document.getElementById("verifyBtn");
+  const googleBtn = document.getElementById("googleBtn");
+  const logoutBtn = document.getElementById("logoutBtn");
+
+  const otpBox = document.getElementById("otpBox");
+
+  let confirmationResult = null;
+  let recaptchaVerifier = null;
+
+
+  function showMessage(text) {
+    message.textContent = text;
+  }
+
+
+  async function setupRecaptcha() {
+
+    if (recaptchaVerifier) return;
+
+    recaptchaVerifier = new RecaptchaVerifier(
+      auth,
+      "recaptcha-container",
+      {
+        size: "normal"
+      }
+    );
+
+    await recaptchaVerifier.render();
+  }
+
+
+  sendBtn.addEventListener("click", async () => {
+
+    try {
+
+      const country = document.getElementById("country").value;
+      const phone = document.getElementById("phone").value.trim();
+
+      if (!phone) {
+        showMessage("اكتب رقم الهاتف أولاً");
         return;
       }
 
-      recaptchaVerifier = new RecaptchaVerifier(
-        auth,
-        "recaptcha-container",
-        {
-          size: "normal",
+      const fullPhone = country + phone;
 
-          callback: function() {
-            showMessage(
-              "تم التحقق، جاري إرسال الرمز..."
-            );
-          },
+      sendBtn.disabled = true;
 
-          "expired-callback": function() {
-            showMessage(
-              "انتهى التحقق، حاول مرة أخرى."
-            );
-          }
-        }
+      showMessage("جاري إرسال رمز التحقق...");
+
+      await setupRecaptcha();
+
+      confirmationResult =
+        await signInWithPhoneNumber(
+          auth,
+          fullPhone,
+          recaptchaVerifier
+        );
+
+      otpBox.style.display = "block";
+
+      showMessage("تم إرسال رمز التحقق إلى هاتفك");
+
+      sendBtn.disabled = false;
+
+    } catch (error) {
+
+      console.error(error);
+
+      sendBtn.disabled = false;
+
+      showMessage(
+        "حدث خطأ: " +
+        (error.code || error.message)
       );
 
     }
 
+  });
 
-    phoneBtn.addEventListener(
-      "click",
-      async function() {
 
-        phoneBtn.disabled = true;
+  verifyBtn.addEventListener("click", async () => {
 
-        showMessage(
-          "جاري تجهيز التحقق..."
-        );
+    try {
 
-        try {
+      const otp =
+        document.getElementById("otp").value.trim();
 
-          createRecaptcha();
-
-          const country =
-            document.getElementById("country").value;
-
-          let phone =
-            document.getElementById("phone").value.trim();
-
-          phone =
-            phone.replace(/\D/g, "");
-
-          phone =
-            phone.replace(/^0+/, "");
-
-          if (!phone) {
-
-            throw new Error(
-              "يرجى كتابة رقم الهاتف."
-            );
-
-          }
-
-          const fullPhone =
-            country + phone;
-
-          showMessage(
-            "جاري إرسال رمز التحقق..."
-          );
-
-          confirmationResult =
-            await signInWithPhoneNumber(
-              auth,
-              fullPhone,
-              recaptchaVerifier
-            );
-
-          otpBox.style.display = "block";
-
-          showMessage(
-            "تم إرسال رمز التحقق إلى هاتفك."
-          );
-
-        } catch (error) {
-
-          console.error(error);
-
-          showMessage(
-            "حدث خطأ: " +
-            (error.code || error.message)
-          );
-
-          if (recaptchaVerifier) {
-
-            recaptchaVerifier.clear();
-
-            recaptchaVerifier = null;
-
-          }
-
-        } finally {
-
-          phoneBtn.disabled = false;
-
-        }
-
+      if (!otp) {
+        showMessage("أدخل رمز التحقق");
+        return;
       }
-    );
 
+      showMessage("جاري التحقق...");
 
-    verifyBtn.addEventListener(
-      "click",
-      async function() {
+      await confirmationResult.confirm(otp);
 
-        const otp =
-          document.getElementById("otp").value.trim();
+    } catch (error) {
 
-        if (!confirmationResult) {
+      console.error(error);
 
-          showMessage(
-            "اطلب رمز التحقق أولاً."
-          );
+      showMessage(
+        "رمز التحقق غير صحيح أو انتهت صلاحيته"
+      );
 
-          return;
-        }
+    }
 
-        if (!otp) {
+  });
 
-          showMessage(
-            "اكتب رمز التحقق."
-          );
 
-          return;
-        }
+  googleBtn.addEventListener("click", async () => {
 
-        verifyBtn.disabled = true;
+    try {
 
-        showMessage(
-          "جاري التحقق..."
-        );
+      const provider = new GoogleAuthProvider();
 
-        try {
+      await signInWithRedirect(
+        auth,
+        provider
+      );
 
-          await confirmationResult.confirm(otp);
+    } catch (error) {
 
-          showMessage(
-            "تم تسجيل الدخول بنجاح."
-          );
+      console.error(error);
 
-        } catch (error) {
+      showMessage(
+        "حدث خطأ في تسجيل Google: " +
+        (error.code || error.message)
+      );
 
-          console.error(error);
+    }
 
-          showMessage(
-            "رمز التحقق غير صحيح."
-          );
+  });
 
-        } finally {
 
-          verifyBtn.disabled = false;
+  try {
 
-        }
+    await getRedirectResult(auth);
 
-      }
-    );
+  } catch (error) {
 
+    console.error(error);
 
-    googleBtn.addEventListener(
-      "click",
-      async function() {
+  }
 
-        googleBtn.disabled = true;
 
-        showMessage(
-          "جاري فتح Google..."
-        );
+  onAuthStateChanged(auth, (user) => {
 
-        try {
+    if (user) {
 
-          const provider =
-            new GoogleAuthProvider();
+      loginBox.style.display = "none";
 
-          await signInWithRedirect(
-            auth,
-            provider
-          );
+      homeBox.style.display = "block";
 
-        } catch (error) {
+      document.getElementById("userInfo").textContent =
+        user.phoneNumber ||
+        user.email ||
+        "تم تسجيل الدخول بنجاح";
 
-          console.error(error);
+    } else {
 
-          showMessage(
-            "خطأ Google: " +
-            (error.code || error.message)
-          );
+      loginBox.style.display = "block";
 
-          googleBtn.disabled = false;
+      homeBox.style.display = "none";
 
-        }
+    }
 
-      }
-    );
+  });
 
 
-    getRedirectResult(auth)
-      .then(function(result) {
+  logoutBtn.addEventListener("click", async () => {
 
-        if (result && result.user) {
+    await signOut(auth);
 
-          showMessage(
-            "تم تسجيل الدخول باستخدام Google."
-          );
+    location.reload();
 
-        }
+  });
 
-      })
-      .catch(function(error) {
-
-        console.error(error);
-
-        showMessage(
-          "خطأ Google: " +
-          (error.code || error.message)
-        );
-
-      });
-
-
-    onAuthStateChanged(
-      auth,
-      function(user) {
-
-        if (user) {
-
-          login.style.display = "none";
-
-          home.style.display = "block";
-
-          if (user.phoneNumber) {
-
-            userInfo.textContent =
-              "رقم الهاتف: " +
-              user.phoneNumber;
-
-          } else if (user.email) {
-
-            userInfo.textContent =
-              "حساب Google: " +
-              user.email;
-
-          } else {
-
-            userInfo.textContent =
-              "تم تسجيل الدخول بنجاح";
-
-          }
-
-        } else {
-
-          login.style.display = "block";
-
-          home.style.display = "none";
-
-        }
-
-      }
-    );
-
-
-    logoutBtn.addEventListener(
-      "click",
-      async function() {
-
-        try {
-
-          await signOut(auth);
-
-          showMessage(
-            "تم تسجيل الخروج."
-          );
-
-        } catch (error) {
-
-          showMessage(
-            "حدث خطأ أثناء تسجيل الخروج."
-          );
-
-        }
-
-      }
-    );
-
-  </script>
+</script>
 
 </body>
-  </html>
+</html>
