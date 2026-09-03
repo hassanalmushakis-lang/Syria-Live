@@ -1,17 +1,17 @@
-name: Build Syria Live APK
+name: Setup Syria Live Flutter
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
-  build:
+  setup:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Setup Flutter
@@ -23,17 +23,26 @@ jobs:
       - name: Create Flutter project
         run: |
           rm -rf /tmp/syria_flutter
-          flutter create --org com.syrialive /tmp/syria_flutter
+
+          flutter create \
+            --org com.syrialive \
+            --platforms=android,ios \
+            /tmp/syria_flutter
+
           cp -r /tmp/syria_flutter/. .
+
           rm -f index.html
 
-      - name: Build APK
+      - name: Save Flutter project to GitHub
         run: |
-          flutter pub get
-          flutter build apk --release
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      - name: Upload APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: Syria-Live-APK
-          path: build/app/outputs/flutter-apk/app-release.apk
+          git add .
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Create Flutter project structure"
+            git push
+          fi
