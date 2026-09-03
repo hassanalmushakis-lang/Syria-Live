@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>سوريا لايف</title>
 
   <style>
@@ -99,7 +100,6 @@
 
 <body>
 
-  <!-- تسجيل الدخول -->
   <div class="box" id="login">
 
     <div class="logo">🇸🇾</div>
@@ -119,7 +119,6 @@
   </div>
 
 
-  <!-- الصفحة الرئيسية -->
   <div class="box" id="home">
 
     <div class="logo">🇸🇾</div>
@@ -168,9 +167,8 @@
     } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
 
-    // Firebase
     const firebaseConfig = {
-      apiKey: "AIzaSyC_GWsU8ZqLjfYPVUJHlte0UW_QIBzKCM",
+      apiKey: "AIzaSyC_GWsU8ZqLjfYPVUJHlTEt0UW_QIBzKCM",
       authDomain: "syria-live.firebaseapp.com",
       projectId: "syria-live",
       storageBucket: "syria-live.firebasestorage.app",
@@ -203,7 +201,6 @@
     }
 
 
-    // تسجيل الدخول بواسطة Google
     googleBtn.addEventListener("click", async () => {
 
       try {
@@ -257,7 +254,6 @@
     });
 
 
-    // مراقبة حالة تسجيل الدخول
     onAuthStateChanged(auth, (user) => {
 
       if (user) {
@@ -280,7 +276,6 @@
     });
 
 
-    // تسجيل الخروج
     logoutBtn.addEventListener("click", async () => {
 
       try {
@@ -300,4 +295,4 @@
   </script>
 
 </body>
-</html>
+      </html>
