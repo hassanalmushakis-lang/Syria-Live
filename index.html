@@ -1,10 +1,706 @@
-<select id="country">
-  <option value="+963">🇸🇾 +963 سوريا</option>
-  <option value="+967">🇾🇪 +967 اليمن</option>
-  <option value="+20">🇪🇬 +20 مصر</option>
-  <option value="+962">🇯🇴 +962 الأردن</option>
-  <option value="+961">🇱🇧 +961 لبنان</option>
-  <option value="+964">🇮🇶 +964 العراق</option>
-  <option value="+90">🇹🇷 +90 تركيا</option>
-  <option value="+44">🇬🇧 +44 بريطانيا</option>
-</select>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>سوريا لايف</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #071b2b, #0d3b4f);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+    }
+
+    .box {
+      width: 92%;
+      max-width: 430px;
+      background: rgba(255,255,255,0.09);
+      padding: 25px;
+      border-radius: 22px;
+      text-align: center;
+      box-shadow: 0 10px 40px rgba(0,0,0,.4);
+      backdrop-filter: blur(10px);
+    }
+
+    .logo {
+      font-size: 60px;
+      margin-bottom: 5px;
+    }
+
+    h1 {
+      margin: 5px 0;
+      font-size: 30px;
+    }
+
+    .sub {
+      color: #c9dce5;
+      margin-bottom: 25px;
+    }
+
+    .phone-row {
+      display: flex;
+      gap: 8px;
+      direction: ltr;
+    }
+
+    select,
+    input {
+      border: none;
+      outline: none;
+      border-radius: 12px;
+      padding: 14px;
+      font-size: 16px;
+    }
+
+    select {
+      width: 125px;
+    }
+
+    #phone {
+      flex: 1;
+    }
+
+    button {
+      width: 100%;
+      border: none;
+      border-radius: 12px;
+      padding: 14px;
+      margin-top: 15px;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    #phoneBtn {
+      background: #18b875;
+      color: white;
+    }
+
+    #googleBtn {
+      background: white;
+      color: #222;
+    }
+
+    #verifyBtn {
+      background: #2196f3;
+      color: white;
+    }
+
+    #logoutBtn {
+      background: #d9534f;
+      color: white;
+    }
+
+    button:disabled {
+      opacity: .6;
+    }
+
+    .or {
+      margin: 20px 0;
+      color: #bdd0d8;
+    }
+
+    #recaptcha-container {
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+    }
+
+    #otpBox {
+      display: none;
+      margin-top: 15px;
+    }
+
+    #otp {
+      width: 100%;
+      text-align: center;
+      direction: ltr;
+      letter-spacing: 5px;
+    }
+
+    #message {
+      margin-top: 15px;
+      min-height: 25px;
+      color: #ffe082;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    #home {
+      display: none;
+    }
+
+    .home-title {
+      font-size: 27px;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+
+    <!-- تسجيل الدخول -->
+    <div id="login">
+
+      <div class="logo">🇸🇾</div>
+
+      <h1>سوريا لايف</h1>
+
+      <div class="sub">
+        دردشة صوتية سورية
+      </div>
+
+      <div class="phone-row">
+
+        <select id="country">
+
+          <option value="+963">🇸🇾 +963 سوريا</option>
+
+          <option value="+967">🇾🇪 +967 اليمن</option>
+
+          <option value="+20">🇪🇬 +20 مصر</option>
+
+          <option value="+962">🇯🇴 +962 الأردن</option>
+
+          <option value="+961">🇱🇧 +961 لبنان</option>
+
+          <option value="+964">🇮🇶 +964 العراق</option>
+
+          <option value="+90">🇹🇷 +90 تركيا</option>
+
+          <option value="+44">🇬🇧 +44 بريطانيا</option>
+
+        </select>
+
+        <input
+          id="phone"
+          type="tel"
+          placeholder="رقم الهاتف"
+        >
+
+      </div>
+
+      <button id="phoneBtn">
+        📱 متابعة برقم الهاتف
+      </button>
+
+      <div id="recaptcha-container"></div>
+
+      <div class="or">
+        أو
+      </div>
+
+      <button id="googleBtn">
+        🔵 تسجيل الدخول باستخدام Google
+      </button>
+
+      <div id="otpBox">
+
+        <input
+          id="otp"
+          type="number"
+          placeholder="أدخل رمز التحقق"
+        >
+
+        <button id="verifyBtn">
+          🔐 تأكيد الرمز
+        </button>
+
+      </div>
+
+      <div id="message"></div>
+
+    </div>
+
+
+    <!-- الصفحة الرئيسية -->
+    <div id="home">
+
+      <div class="logo">🇸🇾</div>
+
+      <div class="home-title">
+        أهلاً بك في سوريا لايف
+      </div>
+
+      <p id="userInfo">
+        تم تسجيل الدخول بنجاح
+      </p>
+
+      <button id="logoutBtn">
+        تسجيل الخروج
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <script type="module">
+
+    import {
+      initializeApp
+    } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+
+    import {
+      getAuth,
+      RecaptchaVerifier,
+      signInWithPhoneNumber,
+      GoogleAuthProvider,
+      signInWithRedirect,
+      getRedirectResult,
+      onAuthStateChanged,
+      signOut
+    } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+
+
+    /* إعداد Firebase */
+
+    const firebaseConfig = {
+
+      apiKey: "AIzaSyC_GWsU8ZqLjfYPVUJHlTe0UW_QIBzKCM",
+
+      authDomain: "syria-live.firebaseapp.com",
+
+      projectId: "syria-live",
+
+      storageBucket: "syria-live.firebasestorage.app",
+
+      messagingSenderId: "115020553046",
+
+      appId: "1:115020553046:web:aab4092300a793162014f7",
+
+      measurementId: "G-BZ5TDJMCW2"
+
+    };
+
+
+    const app = initializeApp(firebaseConfig);
+
+    const auth = getAuth(app);
+
+
+    let recaptchaVerifier = null;
+
+    let confirmationResult = null;
+
+
+    const login =
+      document.getElementById("login");
+
+    const home =
+      document.getElementById("home");
+
+    const phoneBtn =
+      document.getElementById("phoneBtn");
+
+    const googleBtn =
+      document.getElementById("googleBtn");
+
+    const verifyBtn =
+      document.getElementById("verifyBtn");
+
+    const logoutBtn =
+      document.getElementById("logoutBtn");
+
+    const otpBox =
+      document.getElementById("otpBox");
+
+    const message =
+      document.getElementById("message");
+
+    const userInfo =
+      document.getElementById("userInfo");
+
+
+    function showMessage(text) {
+
+      message.textContent = text;
+
+    }
+
+
+    /* إنشاء التحقق */
+
+    function createRecaptcha() {
+
+      if (recaptchaVerifier) {
+        return;
+      }
+
+      recaptchaVerifier = new RecaptchaVerifier(
+        auth,
+        "recaptcha-container",
+        {
+
+          size: "normal",
+
+          callback: function() {
+
+            showMessage(
+              "تم التحقق، جاري إرسال الرمز..."
+            );
+
+          },
+
+          "expired-callback": function() {
+
+            showMessage(
+              "انتهى التحقق، حاول مرة أخرى."
+            );
+
+          }
+
+        }
+      );
+
+    }
+
+
+    /* تسجيل الدخول برقم الهاتف */
+
+    phoneBtn.addEventListener(
+      "click",
+      async function() {
+
+        phoneBtn.disabled = true;
+
+        showMessage(
+          "جاري تجهيز التحقق..."
+        );
+
+        try {
+
+          createRecaptcha();
+
+          const country =
+            document.getElementById(
+              "country"
+            ).value;
+
+          let phone =
+            document.getElementById(
+              "phone"
+            ).value.trim();
+
+
+          phone =
+            phone.replace(/\D/g, "");
+
+
+          phone =
+            phone.replace(/^0+/, "");
+
+
+          if (!phone) {
+
+            throw new Error(
+              "يرجى كتابة رقم الهاتف."
+            );
+
+          }
+
+
+          const fullPhone =
+            country + phone;
+
+
+          showMessage(
+            "جاري إرسال رمز التحقق..."
+          );
+
+
+          confirmationResult =
+            await signInWithPhoneNumber(
+              auth,
+              fullPhone,
+              recaptchaVerifier
+            );
+
+
+          otpBox.style.display =
+            "block";
+
+
+          showMessage(
+            "تم إرسال رمز التحقق إلى هاتفك."
+          );
+
+        }
+
+        catch (error) {
+
+          console.error(error);
+
+          showMessage(
+            "حدث خطأ: " +
+            (error.code ||
+             error.message)
+          );
+
+
+          if (recaptchaVerifier) {
+
+            recaptchaVerifier.clear();
+
+            recaptchaVerifier = null;
+
+          }
+
+        }
+
+        finally {
+
+          phoneBtn.disabled = false;
+
+        }
+
+      }
+    );
+
+
+    /* تأكيد رمز OTP */
+
+    verifyBtn.addEventListener(
+      "click",
+      async function() {
+
+        const otp =
+          document.getElementById(
+            "otp"
+          ).value.trim();
+
+
+        if (!confirmationResult) {
+
+          showMessage(
+            "اطلب رمز التحقق أولاً."
+          );
+
+          return;
+
+        }
+
+
+        if (!otp) {
+
+          showMessage(
+            "اكتب رمز التحقق."
+          );
+
+          return;
+
+        }
+
+
+        verifyBtn.disabled = true;
+
+
+        showMessage(
+          "جاري التحقق..."
+        );
+
+
+        try {
+
+          await confirmationResult.confirm(
+            otp
+          );
+
+          showMessage(
+            "تم تسجيل الدخول بنجاح."
+          );
+
+        }
+
+        catch (error) {
+
+          console.error(error);
+
+          showMessage(
+            "رمز التحقق غير صحيح."
+          );
+
+        }
+
+        finally {
+
+          verifyBtn.disabled = false;
+
+        }
+
+      }
+    );
+
+
+    /* تسجيل الدخول Google */
+
+    googleBtn.addEventListener(
+      "click",
+      async function() {
+
+        googleBtn.disabled = true;
+
+        showMessage(
+          "جاري فتح Google..."
+        );
+
+
+        try {
+
+          const provider =
+            new GoogleAuthProvider();
+
+
+          await signInWithRedirect(
+            auth,
+            provider
+          );
+
+        }
+
+        catch (error) {
+
+          console.error(error);
+
+          showMessage(
+            "خطأ Google: " +
+            (error.code ||
+             error.message)
+          );
+
+          googleBtn.disabled = false;
+
+        }
+
+      }
+    );
+
+
+    /* استقبال نتيجة Google */
+
+    getRedirectResult(auth)
+      .then(function(result) {
+
+        if (
+          result &&
+          result.user
+        ) {
+
+          showMessage(
+            "تم تسجيل الدخول باستخدام Google."
+          );
+
+        }
+
+      })
+
+      .catch(function(error) {
+
+        console.error(error);
+
+        showMessage(
+          "خطأ Google: " +
+          (error.code ||
+           error.message)
+        );
+
+      });
+
+
+    /* مراقبة حالة الحساب */
+
+    onAuthStateChanged(
+      auth,
+      function(user) {
+
+        if (user) {
+
+          login.style.display =
+            "none";
+
+          home.style.display =
+            "block";
+
+
+          if (user.phoneNumber) {
+
+            userInfo.textContent =
+              "رقم الهاتف: " +
+              user.phoneNumber;
+
+          }
+
+          else if (user.email) {
+
+            userInfo.textContent =
+              "الحساب: " +
+              user.email;
+
+          }
+
+          else {
+
+            userInfo.textContent =
+              "تم تسجيل الدخول بنجاح";
+
+          }
+
+        }
+
+        else {
+
+          login.style.display =
+            "block";
+
+          home.style.display =
+            "none";
+
+        }
+
+      }
+    );
+
+
+    /* تسجيل الخروج */
+
+    logoutBtn.addEventListener(
+      "click",
+      async function() {
+
+        try {
+
+          await signOut(auth);
+
+          showMessage(
+            "تم تسجيل الخروج."
+          );
+
+        }
+
+        catch (error) {
+
+          showMessage(
+            "حدث خطأ أثناء تسجيل الخروج."
+          );
+
+        }
+
+      }
+    );
+
+  </script>
+
+</body>
+  </html>
