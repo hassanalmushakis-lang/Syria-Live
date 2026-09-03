@@ -1,48 +1,356 @@
-name: Setup Syria Live Flutter
+name: Build Syria Live APK
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
 
 permissions:
   contents: write
 
 jobs:
-  setup:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: تحميل المستودع
         uses: actions/checkout@v4
+        with:
+          persist-credentials: true
 
-      - name: Setup Flutter
+      - name: تثبيت Flutter
         uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.22.3'
           channel: stable
 
-      - name: Create Flutter project
+      - name: إنشاء مشروع Flutter
         run: |
-          rm -rf /tmp/syria_flutter
+          if [ ! -f pubspec.yaml ] || [ ! -d lib ]; then
+            rm -rf /tmp/syria_flutter
 
-          flutter create \
-            --org com.syrialive \
-            --platforms=android,ios \
-            /tmp/syria_flutter
+            flutter create \
+              --org com.syrialive \
+              --platforms=android,ios \
+              /tmp/syria_flutter
 
-          cp -r /tmp/syria_flutter/. .
-
-          rm -f index.html
-
-      - name: Save Flutter project to GitHub
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          git add .
-
-          if git diff --cached --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "Create Flutter project structure"
-            git push
+            cp -r /tmp/syria_flutter/. .
           fi
+
+      - name: إنشاء واجهة سوريا لايف
+        run: |
+          mkdir -p lib
+
+          cat > lib/main.dart <<'DART'
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const SyriaLiveApp());
+}
+
+const green = Color(0xFF00A651);
+const black = Color(0xFF080808);
+const red = Color(0xFFFF0000);
+
+class SyriaLiveApp extends StatelessWidget {
+  const SyriaLiveApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'سوريا لايف',
+      theme: ThemeData(
+        brightness: Brightness.dark,
+        scaffoldBackgroundColor: black,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: green,
+          brightness: Brightness.dark,
+        ),
+      ),
+      home: const HomePage(),
+    );
+  }
+}
+
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int index = 0;
+
+  final pages = const [
+    HomeContent(),
+    RoomsPage(),
+    LivePage(),
+    GiftsPage(),
+    ProfilePage(),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: pages[index],
+      bottomNavigationBar: NavigationBar(
+        backgroundColor: const Color(0xFF111111),
+        selectedIndex: index,
+        indicatorColor: green.withOpacity(.25),
+        onDestinationSelected: (value) {
+          setState(() => index = value);
+        },
+        destinations: const [
+          NavigationDestination(
+            icon: Icon(Icons.home_outlined),
+            selectedIcon: Icon(Icons.home),
+            label: 'الرئيسية',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.mic_none),
+            selectedIcon: Icon(Icons.mic),
+            label: 'الغرف',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.live_tv),
+            selectedIcon: Icon(Icons.live_tv),
+            label: 'مباشر',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.card_giftcard),
+            selectedIcon: Icon(Icons.card_giftcard),
+            label: 'الهدايا',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.person_outline),
+            selectedIcon: Icon(Icons.person),
+            label: 'حسابي',
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class HomeContent extends StatelessWidget {
+  const HomeContent({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: ListView(
+        padding: const EdgeInsets.all(16),
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text(
+                '🇸🇾 سوريا لايف',
+                style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 14,
+                  vertical: 8,
+                ),
+                decoration: BoxDecoration(
+                  color: const Color(0xFF151515),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: const Text('🪙 100,000'),
+              ),
+            ],
+          ),
+          const SizedBox(height: 20),
+          Container(
+            height: 150,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(22),
+              gradient: const LinearGradient(
+                colors: [green, Color(0xFF006B35)],
+              ),
+            ),
+            child: const Center(
+              child: Text(
+                '🇸🇾\nسوريا لايف\nدردشة صوتية سورية',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(height: 20),
+          const Text(
+            'الغرف الصوتية',
+            style: TextStyle(
+              fontSize: 21,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 12),
+          for (int i = 1; i <= 6; i++)
+            Card(
+              color: const Color(0xFF141414),
+              child: ListTile(
+                leading: CircleAvatar(
+                  backgroundColor: green,
+                  child: Text('$i'),
+                ),
+                title: Text('غرفة سوريا $i'),
+                subtitle: const Text('🎙️ 8 مقاعد • دردشة مباشرة'),
+                trailing: const Text('🟢 مباشر'),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => VoiceRoomPage(
+                        roomName: 'غرفة سوريا $i',
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+}
+
+class VoiceRoomPage extends StatelessWidget {
+  final String roomName;
+
+  const VoiceRoomPage({
+    super.key,
+    required this.roomName,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(roomName),
+        backgroundColor: black,
+      ),
+      body: Column(
+        children: [
+          const SizedBox(height: 20),
+          const Text(
+            '🇸🇾 سوريا لايف',
+            style: TextStyle(
+              fontSize: 22,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 25),
+          Expanded(
+            child: GridView.builder(
+              padding: const EdgeInsets.all(20),
+              itemCount: 8,
+              gridDelegate:
+                  const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 20,
+                crossAxisSpacing: 20,
+              ),
+              itemBuilder: (_, i) {
+                return Column(
+                  children: [
+                    CircleAvatar(
+                      radius: 38,
+                      backgroundColor:
+                          i == 0 ? green : const Color(0xFF222222),
+                      child: Icon(
+                        i == 0 ? Icons.mic : Icons.person,
+                        size: 32,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Text(i == 0 ? 'المضيف' : 'مقعد ${i + 1}'),
+                  ],
+                );
+              },
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                _button(Icons.mic, 'المايك'),
+                _button(Icons.card_giftcard, 'هدية'),
+                _button(Icons.chat, 'الدردشة'),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _button(IconData icon, String text) {
+    return Column(
+      children: [
+        CircleAvatar(
+          radius: 27,
+          backgroundColor: green,
+          child: Icon(icon),
+        ),
+        const SizedBox(height: 5),
+        Text(text),
+      ],
+    );
+  }
+}
+
+class RoomsPage extends StatelessWidget {
+  const RoomsPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Center(
+      child: Text(
+        '🎙️ الغرف الصوتية\n\n8 مقاعد في كل غرفة',
+        textAlign: TextAlign.center,
+        style: TextStyle(fontSize: 24),
+      ),
+    );
+  }
+}
+
+class LivePage extends StatelessWidget {
+  const LivePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Center(
+      child: Text(
+        '🔴 البث المباشر\n\nسوريا فقط 🇸🇾',
+        textAlign: TextAlign.center,
+        style: TextStyle(fontSize: 24),
+      ),
+    );
+  }
+}
+
+class GiftsPage extends StatelessWidget {
+  const GiftsPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final gifts = [
+      '🌹 وردة — 10 ليرة',
+      '🌯 شاورما — 50 ليرة',
+      '🫖 أركيلة — 200 ليرة',
+      '🇸🇾 علم سوريا — 500 ليرة',
+      '🚗 سيارة — 1000 ليرة',
+      '🌸 ياسمين — 5000 ليرة',
+      '🛥️ يخت — 20000 ل
