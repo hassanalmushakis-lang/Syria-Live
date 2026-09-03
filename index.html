@@ -4,153 +4,245 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>سوريا لايف</title>
+  <title>سوريا لايف 🇸🇾</title>
 
   <style>
     * {
       box-sizing: border-box;
-      font-family: Arial, sans-serif;
     }
 
     body {
       margin: 0;
-      min-height: 100vh;
-      background: linear-gradient(135deg, #111827, #1e3a8a);
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #07111f, #102b46, #07111f);
       color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      min-height: 100vh;
     }
 
-    .box {
-      width: 92%;
-      max-width: 420px;
-      background: rgba(255,255,255,.08);
-      padding: 25px;
-      border-radius: 22px;
-      box-shadow: 0 10px 40px rgba(0,0,0,.4);
-      text-align: center;
-      backdrop-filter: blur(12px);
+    .container {
+      width: 100%;
+      max-width: 500px;
+      margin: auto;
+      padding: 20px;
     }
 
     .logo {
-      font-size: 55px;
-      margin-bottom: 5px;
+      width: 100px;
+      height: 100px;
+      margin: 30px auto 15px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #d4af37, #fff1a8, #a67c00);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      box-shadow: 0 0 30px rgba(255, 215, 0, .35);
     }
 
     h1 {
-      margin-bottom: 5px;
+      text-align: center;
+      margin: 10px 0 5px;
       font-size: 32px;
     }
 
     .subtitle {
-      color: #d1d5db;
-      margin-bottom: 25px;
+      text-align: center;
+      color: #c8d5e3;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 20px;
+      padding: 22px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
     }
 
     button {
       width: 100%;
-      padding: 15px;
-      margin-top: 12px;
       border: 0;
-      border-radius: 12px;
+      border-radius: 14px;
+      padding: 15px;
       font-size: 17px;
       font-weight: bold;
       cursor: pointer;
+      margin-top: 12px;
     }
 
-    .google {
+    #googleLogin {
       background: white;
-      color: #111827;
+      color: #222;
     }
 
-    .google:disabled {
+    #logoutBtn {
+      background: #b42318;
+      color: white;
+    }
+
+    #enterBtn {
+      background: linear-gradient(135deg, #d4af37, #f4d66d);
+      color: #111;
+    }
+
+    button:disabled {
       opacity: .6;
-      cursor: wait;
+      cursor: not-allowed;
     }
 
-    #message {
-      margin-top: 18px;
+    .user-box {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .user-photo {
+      width: 75px;
+      height: 75px;
+      border-radius: 50%;
+      display: block;
+      margin: 0 auto 10px;
+      object-fit: cover;
+      border: 3px solid #d4af37;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .status {
+      text-align: center;
+      margin-top: 15px;
       min-height: 24px;
-      color: #fde68a;
+      color: #ffd86b;
       line-height: 1.6;
     }
 
-    #home {
-      display: none;
+    .room {
+      margin-top: 20px;
+      padding: 20px;
+      border-radius: 18px;
+      background: rgba(0,0,0,.2);
+      text-align: center;
     }
 
-    .home-title {
+    .mic-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .mic {
+      aspect-ratio: 1;
+      border-radius: 14px;
+      background: rgba(255,255,255,.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 28px;
-      margin-bottom: 15px;
+      border: 1px solid rgba(255,255,255,.1);
     }
 
-    #userInfo {
-      color: #d1d5db;
-      word-break: break-word;
-    }
-
-    .logout {
-      background: #dc2626;
-      color: white;
+    .footer {
+      text-align: center;
+      color: #8798aa;
       margin-top: 25px;
+      font-size: 13px;
     }
   </style>
 </head>
 
 <body>
 
-  <div class="box" id="login">
+  <div class="container">
 
     <div class="logo">🇸🇾</div>
 
     <h1>سوريا لايف</h1>
+    <div class="subtitle">دردشة صوتية سورية</div>
 
-    <div class="subtitle">
-      دردشة صوتية سورية
+    <!-- LOGIN -->
+    <div id="loginCard" class="card">
+
+      <h2 style="text-align:center;">تسجيل الدخول</h2>
+
+      <p style="text-align:center;color:#c8d5e3;">
+        سجّل الدخول باستخدام حساب Google
+      </p>
+
+      <button id="googleLogin">
+        🔵 تسجيل الدخول باستخدام Google
+      </button>
+
+      <div id="loginStatus" class="status"></div>
+
     </div>
 
-    <button class="google" id="googleBtn">
-      🔵 تسجيل الدخول بواسطة Google
-    </button>
+    <!-- HOME -->
+    <div id="homeCard" class="card hidden">
 
-    <div id="message"></div>
+      <div class="user-box">
 
-  </div>
+        <img
+          id="userPhoto"
+          class="user-photo"
+          src=""
+          alt="صورة المستخدم"
+        >
 
+        <h2 id="userName">مرحباً</h2>
 
-  <div class="box" id="home">
+        <div id="userEmail" style="color:#b9c7d5;"></div>
 
-    <div class="logo">🇸🇾</div>
+      </div>
 
-    <div class="home-title">
-      أهلاً بك في سوريا لايف
+      <button id="enterBtn">
+        🎙️ دخول الدردشة الصوتية
+      </button>
+
+      <button id="logoutBtn">
+        تسجيل الخروج
+      </button>
+
+      <div id="homeStatus" class="status"></div>
+
     </div>
 
-    <p id="userInfo"></p>
+    <!-- ROOM -->
+    <div id="roomCard" class="card hidden">
 
-    <button>
-      🎙️ الغرف الصوتية
-    </button>
+      <div class="room">
 
-    <button>
-      👥 الأصدقاء
-    </button>
+        <h2>🎙️ الغرفة الصوتية</h2>
 
-    <button>
-      🎁 الهدايا
-    </button>
+        <p style="color:#c8d5e3;">
+          سوريا لايف 🇸🇾
+        </p>
 
-    <button>
-      🪙 العملات
-    </button>
+        <div class="mic-grid">
 
-    <button class="logout" id="logoutBtn">
-      تسجيل الخروج
-    </button>
+          <div class="mic">🎤</div>
+          <div class="mic">🎤</div>
+          <div class="mic">🎤</div>
+          <div class="mic">🎤</div>
+
+          <div class="mic">🎤</div>
+          <div class="mic">🎤</div>
+          <div class="mic">🎤</div>
+          <div class="mic">🎤</div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="footer">
+      سوريا لايف 🇸🇾 — دردشة صوتية سورية
+    </div>
 
   </div>
-
 
   <script type="module">
 
@@ -162,11 +254,13 @@
       getAuth,
       GoogleAuthProvider,
       signInWithPopup,
+      browserPopupRedirectResolver,
       onAuthStateChanged,
       signOut
     } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
 
+    // Firebase configuration
     const firebaseConfig = {
       apiKey: "AIzaSyC_GWsU8ZqLjfYPVUJHlTEt0UW_QIBzKCM",
       authDomain: "syria-live.firebaseapp.com",
@@ -178,7 +272,9 @@
     };
 
 
+    // Start Firebase
     const app = initializeApp(firebaseConfig);
+
     const auth = getAuth(app);
 
     const provider = new GoogleAuthProvider();
@@ -188,105 +284,157 @@
     });
 
 
-    const loginBox = document.getElementById("login");
-    const homeBox = document.getElementById("home");
-    const googleBtn = document.getElementById("googleBtn");
+    // Elements
+    const loginCard = document.getElementById("loginCard");
+    const homeCard = document.getElementById("homeCard");
+    const roomCard = document.getElementById("roomCard");
+
+    const googleLogin = document.getElementById("googleLogin");
     const logoutBtn = document.getElementById("logoutBtn");
-    const message = document.getElementById("message");
-    const userInfo = document.getElementById("userInfo");
+    const enterBtn = document.getElementById("enterBtn");
+
+    const loginStatus = document.getElementById("loginStatus");
+    const homeStatus = document.getElementById("homeStatus");
+
+    const userPhoto = document.getElementById("userPhoto");
+    const userName = document.getElementById("userName");
+    const userEmail = document.getElementById("userEmail");
 
 
-    function showMessage(text) {
-      message.textContent = text;
-    }
+    // Google Login
+    googleLogin.addEventListener("click", async () => {
 
-
-    googleBtn.addEventListener("click", async () => {
+      loginStatus.textContent = "جاري فتح تسجيل الدخول بواسطة Google...";
+      googleLogin.disabled = true;
 
       try {
 
-        googleBtn.disabled = true;
-
-        showMessage("جاري فتح تسجيل الدخول بواسطة Google...");
-
         const result = await signInWithPopup(
           auth,
-          provider
+          provider,
+          browserPopupRedirectResolver
         );
 
         const user = result.user;
 
-        showMessage("تم تسجيل الدخول بنجاح");
+        loginStatus.textContent =
+          "تم تسجيل الدخول بنجاح.";
 
-        console.log("Google user:", user);
+        console.log("Google login successful:", user);
 
       } catch (error) {
 
-        console.error("Google Login Error:", error);
+        console.error("Firebase Auth Error:", error);
 
-        let text = "تعذر تسجيل الدخول بواسطة Google.";
+        googleLogin.disabled = false;
 
         if (error.code === "auth/popup-closed-by-user") {
-          text = "تم إغلاق نافذة Google قبل إكمال تسجيل الدخول.";
+
+          loginStatus.textContent =
+            "تم إغلاق نافذة Google قبل إكمال تسجيل الدخول.";
+
+        } else if (error.code === "auth/popup-blocked") {
+
+          loginStatus.textContent =
+            "المتصفح منع نافذة Google. اسمح بالنوافذ المنبثقة.";
+
+        } else if (error.code === "auth/unauthorized-domain") {
+
+          loginStatus.textContent =
+            "هذا النطاق غير مصرح به في Firebase Authentication.";
+
+        } else if (error.code === "auth/operation-not-allowed") {
+
+          loginStatus.textContent =
+            "تسجيل الدخول بواسطة Google غير مفعّل في Firebase.";
+
+        } else if (error.code === "auth/invalid-api-key") {
+
+          loginStatus.textContent =
+            "مفتاح Firebase API غير صالح.";
+
+        } else {
+
+          loginStatus.textContent =
+            "خطأ Google: " +
+            (error.code || error.message);
+
         }
-
-        else if (error.code === "auth/popup-blocked") {
-          text = "المتصفح منع نافذة Google. اسمح بالنوافذ المنبثقة ثم حاول مرة أخرى.";
-        }
-
-        else if (error.code === "auth/unauthorized-domain") {
-          text = "نطاق الموقع غير مضاف إلى Authorized domains في Firebase.";
-        }
-
-        else if (error.code === "auth/operation-not-allowed") {
-          text = "تسجيل Google غير مفعّل في Firebase.";
-        }
-
-        else if (error.code) {
-          text = "خطأ Google: " + error.code;
-        }
-
-        showMessage(text);
-
-        googleBtn.disabled = false;
-      }
-
-    });
-
-
-    onAuthStateChanged(auth, (user) => {
-
-      if (user) {
-
-        loginBox.style.display = "none";
-        homeBox.style.display = "block";
-
-        userInfo.textContent =
-          user.displayName ||
-          user.email ||
-          "تم تسجيل الدخول بنجاح";
-
-      } else {
-
-        loginBox.style.display = "block";
-        homeBox.style.display = "none";
 
       }
 
     });
 
 
+    // Logout
     logoutBtn.addEventListener("click", async () => {
 
       try {
 
         await signOut(auth);
 
-        showMessage("تم تسجيل الخروج");
+        roomCard.classList.add("hidden");
 
       } catch (error) {
 
         console.error(error);
+
+        homeStatus.textContent =
+          "حدث خطأ أثناء تسجيل الخروج.";
+
+      }
+
+    });
+
+
+    // Enter room
+    enterBtn.addEventListener("click", () => {
+
+      roomCard.classList.remove("hidden");
+
+      roomCard.scrollIntoView({
+        behavior: "smooth"
+      });
+
+    });
+
+
+    // Auth state
+    onAuthStateChanged(auth, (user) => {
+
+      if (user) {
+
+        loginCard.classList.add("hidden");
+
+        homeCard.classList.remove("hidden");
+
+        userName.textContent =
+          user.displayName || "مستخدم سوريا لايف";
+
+        userEmail.textContent =
+          user.email || "";
+
+        if (user.photoURL) {
+
+          userPhoto.src = user.photoURL;
+
+        } else {
+
+          userPhoto.src =
+            "https://ui-avatars.com/api/?name=" +
+            encodeURIComponent(
+              user.displayName || "Syria Live"
+            );
+
+        }
+
+      } else {
+
+        loginCard.classList.remove("hidden");
+
+        homeCard.classList.add("hidden");
+
+        roomCard.classList.add("hidden");
 
       }
 
@@ -295,4 +443,4 @@
   </script>
 
 </body>
-      </html>
+</html>
