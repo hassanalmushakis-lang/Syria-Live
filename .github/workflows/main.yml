@@ -16,19 +16,47 @@ jobs:
         with:
           flutter-version: '3.22.3'
           channel: stable
+          cache: true
 
       - name: Create Flutter project
         run: |
           flutter create --project-name syria_live .
-          
+
+      - name: Prepare Syria Live HTML
+        run: |
           mkdir -p assets
-          cp index.html assets/index.html
-          
+
+          if [ -f index.html ]; then
+            cp index.html assets/index.html
+          else
+            echo "ERROR: index.html not found!"
+            exit 1
+          fi
+
+      - name: Add WebView
+        run: |
           flutter pub add webview_flutter
-          
+
+      - name: Configure assets
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          p = Path("pubspec.yaml")
+          text = p.read_text()
+
+          if "  assets:" not in text:
+              text = text.replace(
+                  "flutter:\n",
+                  "flutter:\n  assets:\n    - assets/index.html\n"
+              )
+
+          p.write_text(text)
+          PY
+
           flutter pub get
 
-      - name: Create Syria Live Flutter App
+      - name: Create Syria Live App
         run: |
           cat > lib/main.dart <<'EOF'
           import 'package:flutter/material.dart';
@@ -97,8 +125,15 @@ jobs:
         run: |
           flutter build apk --release
 
+      - name: Check APK
+        run: |
+          ls -lh build/app/outputs/flutter-apk/
+          test -f build/app/outputs/flutter-apk/app-release.apk
+
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: Syria-Live-APK
           path: build/app/outputs/flutter-apk/app-release.apk
+          if-no-files-found: error
+          retention-days: 7
