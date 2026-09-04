@@ -22,7 +22,7 @@ jobs:
         run: |
           flutter create --project-name syria_live --platforms=android .
 
-      - name: Fix Android configuration
+      - name: Configure Android
         run: |
           python3 - <<'PY'
           from pathlib import Path
@@ -30,7 +30,6 @@ jobs:
           p = Path("android/app/build.gradle")
           text = p.read_text()
 
-          # Fix minimum Android SDK
           text = text.replace(
               "minSdkVersion flutter.minSdkVersion",
               "minSdkVersion 23"
@@ -41,7 +40,6 @@ jobs:
               "minSdkVersion 23"
           )
 
-          # Add required NDK version
           if 'ndkVersion "25.1.8937393"' not in text:
               text = text.replace(
                   "android {",
@@ -52,7 +50,7 @@ jobs:
           p.write_text(text)
           PY
 
-      - name: Prepare Syria Live HTML
+      - name: Prepare Syria Live
         run: |
           mkdir -p assets
 
@@ -67,7 +65,7 @@ jobs:
         run: |
           flutter pub add webview_flutter
 
-      - name: Configure assets
+      - name: Configure Pubspec
         run: |
           python3 - <<'PY'
           from pathlib import Path
@@ -75,20 +73,39 @@ jobs:
           p = Path("pubspec.yaml")
           text = p.read_text()
 
-          # Remove old missing asset directories if they exist
-          text = text.replace("  assets:\n    - assets/images/\n    - assets/animations/\n", "")
+          # إزالة قسم assets القديم إن وجد
+          lines = text.splitlines()
+          new_lines = []
+          skip = False
 
-          # Add the actual HTML asset
+          for line in lines:
+              if line == "  assets:":
+                  skip = True
+                  continue
+
+              if skip:
+                  if line.startswith("    - "):
+                      continue
+                  else:
+                      skip = False
+
+              new_lines.append(line)
+
+          text = "\n".join(new_lines).rstrip() + "\n"
+
+          # إضافة assets بطريقة صحيحة
           if "    - assets/index.html" not in text:
-              if "flutter:\n" in text:
-                  text = text.replace(
-                      "flutter:\n",
-                      "flutter:\n  assets:\n    - assets/index.html\n",
-                      1
-                  )
+              text = text.replace(
+                  "flutter:\n",
+                  "flutter:\n  assets:\n    - assets/index.html\n",
+                  1
+              )
 
           p.write_text(text)
           PY
+
+          echo "===== pubspec.yaml ====="
+          cat pubspec.yaml
 
           flutter pub get
 
