@@ -20,7 +20,37 @@ jobs:
 
       - name: Create Flutter project
         run: |
-          flutter create --project-name syria_live .
+          flutter create --project-name syria_live --platforms=android .
+
+      - name: Fix Android configuration
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          p = Path("android/app/build.gradle")
+          text = p.read_text()
+
+          # Fix minimum Android SDK
+          text = text.replace(
+              "minSdkVersion flutter.minSdkVersion",
+              "minSdkVersion 23"
+          )
+
+          text = text.replace(
+              "minSdkVersion 21",
+              "minSdkVersion 23"
+          )
+
+          # Add required NDK version
+          if 'ndkVersion "25.1.8937393"' not in text:
+              text = text.replace(
+                  "android {",
+                  'android {\n    ndkVersion "25.1.8937393"',
+                  1
+              )
+
+          p.write_text(text)
+          PY
 
       - name: Prepare Syria Live HTML
         run: |
@@ -45,11 +75,17 @@ jobs:
           p = Path("pubspec.yaml")
           text = p.read_text()
 
-          if "  assets:" not in text:
-              text = text.replace(
-                  "flutter:\n",
-                  "flutter:\n  assets:\n    - assets/index.html\n"
-              )
+          # Remove old missing asset directories if they exist
+          text = text.replace("  assets:\n    - assets/images/\n    - assets/animations/\n", "")
+
+          # Add the actual HTML asset
+          if "    - assets/index.html" not in text:
+              if "flutter:\n" in text:
+                  text = text.replace(
+                      "flutter:\n",
+                      "flutter:\n  assets:\n    - assets/index.html\n",
+                      1
+                  )
 
           p.write_text(text)
           PY
