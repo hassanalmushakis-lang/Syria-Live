@@ -50,7 +50,7 @@ jobs:
           p.write_text(text)
           PY
 
-      - name: Prepare Syria Live
+      - name: Prepare Syria Live HTML
         run: |
           mkdir -p assets
 
@@ -61,48 +61,46 @@ jobs:
             exit 1
           fi
 
-      - name: Add WebView
+      - name: Create Correct Pubspec
         run: |
-          flutter pub add webview_flutter
+          cat > pubspec.yaml <<'EOF'
+          name: syria_live
+          description: Syria Live | سوريا لايف
+          publish_to: "none"
 
-      - name: Configure Pubspec
-        run: |
-          python3 - <<'PY'
-          from pathlib import Path
+          version: 1.0.0+1
 
-          p = Path("pubspec.yaml")
-          text = p.read_text()
+          environment:
+            sdk: ">=3.3.0 <4.0.0"
 
-          # إزالة قسم assets القديم إن وجد
-          lines = text.splitlines()
-          new_lines = []
-          skip = False
+          dependencies:
+            flutter:
+              sdk: flutter
 
-          for line in lines:
-              if line == "  assets:":
-                  skip = True
-                  continue
+            cupertino_icons: ^1.0.8
 
-              if skip:
-                  if line.startswith("    - "):
-                      continue
-                  else:
-                      skip = False
+            firebase_core: ^3.6.0
+            firebase_auth: ^5.3.1
+            cloud_firestore: ^5.4.4
 
-              new_lines.append(line)
+            agora_rtc_engine: ^6.3.2
 
-          text = "\n".join(new_lines).rstrip() + "\n"
+            rive: ^0.13.13
+            lottie: ^3.1.2
+            webview_flutter: ^4.8.0
 
-          # إضافة assets بطريقة صحيحة
-          if "    - assets/index.html" not in text:
-              text = text.replace(
-                  "flutter:\n",
-                  "flutter:\n  assets:\n    - assets/index.html\n",
-                  1
-              )
+          dev_dependencies:
+            flutter_test:
+              sdk: flutter
 
-          p.write_text(text)
-          PY
+            flutter_lints: ^4.0.0
+
+          flutter:
+            uses-material-design: true
+
+            assets:
+              - assets/index.html
+          EOF
 
           echo "===== pubspec.yaml ====="
           cat pubspec.yaml
