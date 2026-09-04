@@ -17,13 +17,85 @@ jobs:
           flutter-version: '3.22.3'
           channel: stable
 
-      - name: Create Flutter project structure
+      - name: Create Flutter project
         run: |
           flutter create --project-name syria_live .
+          
+          mkdir -p assets
+          cp index.html assets/index.html
+          
+          flutter pub add webview_flutter
+          
           flutter pub get
 
+      - name: Create Syria Live Flutter App
+        run: |
+          cat > lib/main.dart <<'EOF'
+          import 'package:flutter/material.dart';
+          import 'package:webview_flutter/webview_flutter.dart';
+
+          void main() {
+            WidgetsFlutterBinding.ensureInitialized();
+            runApp(const SyriaLiveApp());
+          }
+
+          class SyriaLiveApp extends StatelessWidget {
+            const SyriaLiveApp({super.key});
+
+            @override
+            Widget build(BuildContext context) {
+              return MaterialApp(
+                debugShowCheckedModeBanner: false,
+                title: 'سوريا لايف',
+                theme: ThemeData(
+                  brightness: Brightness.dark,
+                  colorScheme: ColorScheme.fromSeed(
+                    seedColor: const Color(0xFF8A2BE2),
+                    brightness: Brightness.dark,
+                  ),
+                ),
+                home: const SyriaLiveHome(),
+              );
+            }
+          }
+
+          class SyriaLiveHome extends StatefulWidget {
+            const SyriaLiveHome({super.key});
+
+            @override
+            State<SyriaLiveHome> createState() => _SyriaLiveHomeState();
+          }
+
+          class _SyriaLiveHomeState extends State<SyriaLiveHome> {
+            late final WebViewController controller;
+
+            @override
+            void initState() {
+              super.initState();
+
+              controller = WebViewController()
+                ..setJavaScriptMode(JavaScriptMode.unrestricted)
+                ..setBackgroundColor(const Color(0xFF0A0A0A))
+                ..loadFlutterAsset('assets/index.html');
+            }
+
+            @override
+            Widget build(BuildContext context) {
+              return Scaffold(
+                backgroundColor: const Color(0xFF0A0A0A),
+                body: SafeArea(
+                  child: WebViewWidget(
+                    controller: controller,
+                  ),
+                ),
+              );
+            }
+          }
+          EOF
+
       - name: Build APK
-        run: flutter build apk --release
+        run: |
+          flutter build apk --release
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
