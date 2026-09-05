@@ -32,10 +32,9 @@ class _WebViewScreenState extends State<WebViewScreen> {
   @override
   void initState() {
     super.initState();
-
     _controller = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
-      ..loadFlutterAsset('index.html'); // رح يشغل ملف index.html تبعك
+      ..loadFlutterAsset('index.html');
   }
 
   @override
