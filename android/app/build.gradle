@@ -21,21 +21,3 @@ android {
     defaultConfig {
         applicationId "com.example.syria_live"
         minSdkVersion 23
-        targetSdkVersion 34
-        versionCode 1
-        versionName "1.0"
-    }
-
-    buildTypes {
-        release {
-            signingConfig signingConfigs.debug
-        }
-    }
-}
-
-flutter {
-    source '../..'
-}
-
-dependencies {
-}
